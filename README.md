@@ -32,9 +32,15 @@ Install my-project with git
 
  - [Udemy.com](https://www.udemy.com/)
  - [Masai School](https://masaischool.com/)
+ 
+ 
+## Presentation Video :-
+[Demo of project]()
+
+## Deployed Demo link :-
+[Demo of project]()
 
 ## Authors
-
 -  [Sachidanand Pradhan](https://github.com/Sachi4496)
 
 - [Gangavaram Thousif](https://github.com/Thousifg)
@@ -48,4 +54,14 @@ Install my-project with git
 - [Akash Kumar](https://github.com/KumarAkash22)
 
 ## 🛠 Tech Stacks
-Javascript, HTML, Tailwind, Node, Express, Mongodb.
+- #### HTML
+- #### Tailwind Css
+- #### JavaScript
+- #### Node
+- #### Express
+- #### Mongodb
+- #### GIT
+
+
+## Screenshots :-
+![frontpage]()
