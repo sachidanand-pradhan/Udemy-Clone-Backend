@@ -48,14 +48,7 @@ router.get("/search", async (req, res) => {
     }
 });
 
-router.post("/signup", async (req, res) => {
-    try {
-        return res.render("signup");
 
-    } catch (e) {
-        return res.status(500).json({ message: e.message, status: "Failed" })
-    }
-})
 router.get("/login", async (req, res) => {
     try {
         return res.render("login");
