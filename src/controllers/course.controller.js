@@ -51,7 +51,7 @@ router.get("/search", async (req, res) => {
 router.post("/signup", async (req, res) => {
     try {
 
-        const course = await Course.find().lean().exec()
+       
         return res.render("signup");
 
     } catch (e) {
