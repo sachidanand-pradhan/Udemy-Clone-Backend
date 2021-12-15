@@ -1,12 +1,16 @@
 const mongoose = require("mongoose");
 
 
-const authorSchema = new mongoose.Schema(
+const courseSchema = new mongoose.Schema(
     {
-      first_name: { type: String, required: true },
-      last_name: { type: String, required: true },
-      gender:{ type:String, require: true },
-      age:{ type:Number, require: true },
+      name: { type: String, required: true },
+      title: { type: String, required: true },
+      course_type:{ type:String, require: true },
+      price:{ type:Number, require: true },
+      image:{ type: String, required: true},
+      description: { type: String, required: true},
+      content: [{ type: String, required: true }],
+      learn: [{ type: String, required: true }],
     },
     {
       versionKey: false,
@@ -14,4 +18,4 @@ const authorSchema = new mongoose.Schema(
     }
   );
   
-  module.exports = mongoose.model("author", authorSchema);
+  module.exports = mongoose.model("course", courseSchema);

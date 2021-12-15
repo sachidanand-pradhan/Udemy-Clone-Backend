@@ -13,11 +13,22 @@ router.post('', async function (req, res) {
     }
 });
 
+// router.get("", async function (req, res) {
+//     const products = await Product.find().lean().exec();
+//     console.log(products);
+
+//     return res.render("products/all",{
+//         products,
+//     });
+// })
+
 router.get("", async (req, res) => {
     try{
 
         const author = await Author.find().lean().exec()
-       return res.status(201).send(author)
+        return res.render("udemy/home",{
+            author,
+        });
 
     }catch(e){
         return res.status(500).json({message: e.message, status: "Failed"})
