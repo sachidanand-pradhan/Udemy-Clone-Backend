@@ -62,11 +62,7 @@ router.post("/signup", async (req, res) => {
 })
 router.get("/login", async (req, res) => {
     try {
-
-        const course = await Course.find().lean().exec()
-        return res.render("login", {
-            course,
-        });
+        return res.render("login");
 
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
