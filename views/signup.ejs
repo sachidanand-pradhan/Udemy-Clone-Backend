@@ -31,7 +31,7 @@
     <hr style="width: 350px;" class="ml-7">
    
     <div class="flex" style="width: 380px; padding: 24px 24px 16px 24px;">
-      <form onsubmit="setdata(event)" id="form" class="grid gap-y-2">
+      <form action="/register" method="post" id="form" class="grid gap-y-2">
         <div style="border: 1.5px solid #1c1d1f" class="flex w-80">
           <div>
             <span class="material-icons p-2"> person </span>
@@ -43,6 +43,7 @@
               type="text"
               placeholder="Full Name"
               id="name"
+              name="fullName"
               required
             />
           </div>
@@ -61,6 +62,7 @@
               type="email"
               id="email"
               placeholder="Email"
+              name="email"
               required
             />
           </div>
@@ -79,12 +81,13 @@
               type="password"
               id="password"
               placeholder="Password"
+              name="password"
               required
             />
           </div>
         </div>
         <div class="mt-2">
-          <input type="checkbox" id="checkbox" required />
+          <input type="checkbox" id="checkbox" name="check" required />
         <label for=""
           >I’m in for emails with exciting discounts and personalized
           recommendations</label
