@@ -6,7 +6,7 @@ app.use(express.json());
 
 app.set("view engine", "ejs");
 
-app.use(express.static("publicss"));
+app.use(express.static("public"));
 
 const author = require("./controllers/author.controller");
 
