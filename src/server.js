@@ -6,5 +6,5 @@ const port = 2345;
 
 app.listen(port, async function () {
     await connect();
-    console.log(`server started at http://localhost:${port}`);
+    console.log(`server is running at http://localhost:${port}`);
 })
