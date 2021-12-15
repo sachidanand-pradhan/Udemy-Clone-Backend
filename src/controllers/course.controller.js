@@ -50,8 +50,6 @@ router.get("/search", async (req, res) => {
 
 router.post("/signup", async (req, res) => {
     try {
-
-       
         return res.render("signup");
 
     } catch (e) {
