@@ -10,13 +10,15 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 const course = require("./controllers/course.controller");
-//const sign = require('./controllers/signup.controller');
-const userController= require('./controllers/user.controller')
+const sign = require('./controllers/signup.controller');
+const login = require('./controllers/login.controller');
 
-app.use("/users",userController);
 
 
 app.use("/udemy",course);
-//app.use("/signup",sign);
+app.use('/udemy/signup',sign);
+app.use('/udemy/login',login);
+
+
 
 module.exports = app;

@@ -1,10 +1,10 @@
 const express = require('express');
-const signup = require('../models/signup.model');
+const login = require('../models/login.model');
 const router = express.Router();
 
-router.post("", async (req, res) => {
+router.get("", async (req, res) => {
     try {
-        return res.render("signup");
+        return res.render("login");
 
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
