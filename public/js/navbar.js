@@ -2612,6 +2612,7 @@ function appendMovies(course) {
     // console.log("-------",course[0].name);
     let ShowCoursesName = document.getElementById("ShowCoursesName");
     ShowCoursesName.style.display = "block";
+
     if (course === undefined) {
         ShowCoursesName.innerHTML = null;
         p = document.createElement("p");
@@ -2648,9 +2649,8 @@ async function main() {
         return false;
     }
 
-    let res = await searchMovies(name.toLowerCase());
-
-    let course_data = res;
+    // let res = await searchMovies(name.toLowerCase());
+    let course_data = [ {name:"javaScript"} ]
 
     if (course_data.length === undefined) {
         alert("courses not available!")
