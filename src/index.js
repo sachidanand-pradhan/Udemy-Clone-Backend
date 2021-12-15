@@ -10,6 +10,6 @@ app.use(express.static("public"));
 
 const course = require("./controllers/course.controller");
 
-app.use("/udemy",course);
+app.use("/udemy", course);
 
 module.exports = app;
