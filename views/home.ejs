@@ -12,11 +12,13 @@
 <body class="text-xs">
     <div id='navbar'></div>
     <h1 class="mx-4">Hello sir</h1>
+    <div id="udemy"></div>
+   
     <div id="footer"></div>
 </body>
 
 </html>
-<script type='module'>
+<!-- <script type='module'>
     // import navbar from './components/navbar.js';
     // import footer from './components/footer.js';
 
@@ -32,4 +34,19 @@
 
     let footerDiv = document.getElementById('footer');
     footerDiv.innerHTML = footer();
-</script>
+</script> -->
+
+<!-- <script>
+    let udemy = document.getElementById('udemy');
+    function showdatas(){
+        let div = document.createElement('div');
+        let heading = document.createElement('heading');
+        let p = document.createElement('p');
+        heading.innerText = "Name";
+        p.innerText = "Sachida";
+        div.append(heading,p);
+        udemy.append(div);
+    }
+    showdatas();
+</script> -->
+<script src='scripts/navbar.js'></script>
