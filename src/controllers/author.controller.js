@@ -26,7 +26,7 @@ router.get("", async (req, res) => {
     try{
 
         const author = await Author.find().lean().exec()
-        return res.render("udemy/home",{
+        return res.render("home",{
             author,
         });
 

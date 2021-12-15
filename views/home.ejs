@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Udemy</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="text-xs">
+    <div id='navbar'></div>
+    <h1 class="mx-4">Hello sir</h1>
+    <div id="footer"></div>
+</body>
+
+</html>
+<script type='module'>
+    // import navbar from './components/navbar.js';
+    // import footer from './components/footer.js';
+
+    import navbar from './components/header.js';
+    import footer from './components/footer.js';
+
+    let promise = new Promise((resolve, reject) => {
+        let header = document.getElementById('navbar');
+
+        header.innerHTML = navbar();
+        resolve('Navbar imported');
+    });
+
+    let footerDiv = document.getElementById('footer');
+    footerDiv.innerHTML = footer();
+</script>
