@@ -3,11 +3,9 @@ const mongoose = require("mongoose");
 
 const registrationSchema = new mongoose.Schema(
     {
-      name: { type: String, required: true },
+      full_Name: { type: String, required: true },
       email:{ type:String,required:true,unique:true},
-      password:{type:String, required:true},
-      checkBox:{type: Boolean,required:true}
-     
+      password:{type:String, required:true}
     },
     {
       versionKey: false,
@@ -15,4 +13,4 @@ const registrationSchema = new mongoose.Schema(
     }
   );
   
-  module.exports = mongoose.model("registration", registrationSchema);
+  module.exports = mongoose.model("Register", registrationSchema);

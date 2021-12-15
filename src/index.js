@@ -9,6 +9,8 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 
+app.use(express.urlencoded({extended:false}));
+
 const course = require("./controllers/course.controller");
 const sign = require('./controllers/signup.controller');
 const login = require('./controllers/login.controller');
@@ -16,7 +18,7 @@ const login = require('./controllers/login.controller');
 
 
 app.use("/udemy",course);
-app.use('/udemy/signup',sign);
+app.use('/signup',sign);
 app.use('/udemy/login',login);
 
 
