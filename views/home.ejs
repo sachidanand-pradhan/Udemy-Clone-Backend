@@ -7,48 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Udemy</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src='scripts/navbar.js'></script>
 </head>
 
-<body class="text-xs">
-    <div id='navbar'></div>
-    
-
-    <h1 class="mx-4">Hello sir</h1>
-    <div id="udemy"></div>
-   
-    <div id="footer"></div>
+<body>
+    <%- include('./components/header') %>
 </body>
 
-</html>
-<script type='module'>
-    // import navbar from './components/navbar.js';
-    // import footer from './components/footer.js';
+</html> 
 
-    import navbar from './components/header.js';
-    import footer from './components/footer.js';
 
-    let promise = new Promise((resolve, reject) => {
-        let header = document.getElementById('navbar');
-
-        header.innerHTML = navbar();
-        resolve('Navbar imported');
-    });
-
-    let footerDiv = document.getElementById('footer');
-    footerDiv.innerHTML = footer();
-</script>
-
-<script>
-    let udemy = document.getElementById('udemy');
-    function showdatas(){
-        let div = document.createElement('div');
-        let heading = document.createElement('heading');
-        let p = document.createElement('p');
-        heading.innerText = "Name";
-        p.innerText = "Sachida";
-        div.append(heading,p);
-        udemy.append(div);
-    }
-    showdatas();
-</script>
+<script src = 'js/navbar.js'></script>
