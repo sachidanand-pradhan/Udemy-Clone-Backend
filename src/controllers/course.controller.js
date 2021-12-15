@@ -28,18 +28,18 @@ router.get("", async (req, res) => {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }
 })
-router.get("/search", async (req, res) => {
-    try {
+// router.get("/search", async (req, res) => {
+//     try {
         
-        const course = await Course.find().lean().exec()
-        return res.render("home", {
-            course,
-        });
+//         const course = await Course.find().lean().exec()
+//         return res.render("home", {
+//             course,
+//         });
         
-    } catch (e) {
-        return res.status(500).json({ message: e.message, status: "Failed" })
-    }
-})
+//     } catch (e) {
+//         return res.status(500).json({ message: e.message, status: "Failed" })
+//     }
+// })
 
 router.get("/show", async function (req, res) {
     try {
