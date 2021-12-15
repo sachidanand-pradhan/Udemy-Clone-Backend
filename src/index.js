@@ -8,8 +8,8 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 
-const author = require("./controllers/author.controller");
+const course = require("./controllers/course.controller");
 
-app.use("/author",author);
+app.use("/udemy",course);
 
 module.exports = app;
