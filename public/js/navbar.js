@@ -2691,3 +2691,30 @@ function dataStored(course) {
 function cartPage() {
     window.location.href = "cartPage.html";
 }
+
+
+// Renuka - Belongs to the home page
+let selectPopularCourses = document.getElementById('slct-pplr-courses');
+let selectPopularCoursesRBtn = selectPopularCourses.querySelector('.scrlRight');
+let selectPopularCoursesLBtn = selectPopularCourses.querySelector('.scrlLeft');
+
+window.onresize = () => {
+    if (window.innerWidth <= 850) {
+        selectPopularCoursesRBtn.style.display = 'flex';
+        selectPopularCoursesLBtn.style.display = 'flex';
+    }
+    else {
+        selectPopularCoursesRBtn.style.display = 'none';
+        selectPopularCoursesLBtn.style.display = 'none';
+    }
+}
+
+selectPopularCoursesRBtn.addEventListener('click', (event) => {
+    let selectUl = document.getElementById('select-ul');
+    selectUl.scrollLeft += 100;
+})
+
+selectPopularCoursesLBtn.addEventListener('click', (event) => {
+    let selectUl = document.getElementById('select-ul');
+    selectUl.scrollLeft -= 100;
+})
