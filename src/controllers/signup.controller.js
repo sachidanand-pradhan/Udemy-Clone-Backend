@@ -23,6 +23,12 @@ router.post("", async (req, res) => {
 
        const token = await registerUser.generateAuthToken();
 
+       res.cookie("jwt", token,{
+           expires:new Date(Date.now() + 60000000000000000000000000000),
+           httpOnly:true
+       });
+       console.log(cookie);
+
       const register = await registerUser.save();
       console.log(register);
       
