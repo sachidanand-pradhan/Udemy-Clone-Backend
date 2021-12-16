@@ -16,6 +16,7 @@ const courseSchema = new mongoose.Schema(
       description: { type: String, required: true},
       requirement: [{ type: String, required: true }],
       include: [{ type: String, required: true }],
+      tags : [{type: String, required: true }]
     },
     {
       versionKey: false,
