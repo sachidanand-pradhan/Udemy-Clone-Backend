@@ -5,7 +5,7 @@ async function createCarousel(data) {
 
     console.log("carouselData", data);
 
-    // makeCarouselOf(JSON.parse(input));
+    makeCarouselOf(JSON.parse(data));
 
     // a function to create the carousel
     function makeCarouselOf(data) {
@@ -37,7 +37,7 @@ async function createCarousel(data) {
 
                 // course image
                 let img = document.createElement('img');
-                img.src = product.image;
+                img.src = "https://img-c.udemycdn.com/course/240x135/567828_67d0.jpg"
                 img.setAttribute('class', 'w-full border');
 
                 // course title
