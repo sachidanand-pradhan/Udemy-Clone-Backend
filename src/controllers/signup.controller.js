@@ -1,4 +1,5 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const signup = require('../models/signup.model');
 const router = express.Router();
 
@@ -19,6 +20,15 @@ router.post("", async (req, res) => {
         email : req.body.Email,
      password : req.body.Password
        });
+
+       const token = await registerUser.generateAuthToken();
+
+       res.cookie("jwt", token,{
+           expires:new Date(Date.now() + 60000000000000000000000000000),
+           httpOnly:true
+       });
+       console.log(cookie);
+
       const register = await registerUser.save();
       console.log(register);
       

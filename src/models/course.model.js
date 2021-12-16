@@ -8,7 +8,6 @@ const courseSchema = new mongoose.Schema(
       image:{ type: String, required: true},
       rating:{ type: String, required: true},
       price:{ type:Number, require: true },
-      oldprice:{ type:Number, require: true },
       shortDecp:{ type: String, required: true},
       author: { type: String, required: true},
       learn: [{ type: String, required: true }],
@@ -16,7 +15,7 @@ const courseSchema = new mongoose.Schema(
       description: { type: String, required: true},
       requirement: [{ type: String, required: true }],
       include: [{ type: String, required: true }],
-      tags : [{type: String, required: true }]
+      tags: [{type: String, required: true }]
     },
     {
       versionKey: false,

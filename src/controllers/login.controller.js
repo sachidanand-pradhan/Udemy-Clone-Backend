@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 const login = require('../models/signup.model');
 const router = express.Router();
 
@@ -16,7 +17,16 @@ router.post("",async(req,res)=>{
       const email = req.body.Email;
       const password = req.body.Password;
       const useremail = await login.findOne({email:email});
-      if(useremail.password===password){
+      const isMatch = bcrypt.compare(password, useremail.password);
+
+      const token = await useremail.generateAuthToken();
+
+      res.cookie("jwt", token,{
+        expires:new Date(Date.now() + 60000000000000000000),
+        httpOnly:true
+    });
+
+      if(isMatch){
         
           res.render("home")
       }else{
