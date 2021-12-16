@@ -10,6 +10,7 @@ router.get("", async (req, res) => {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }
 });
+
 router.post("", async (req, res) => {
     try {
 
@@ -21,7 +22,7 @@ router.post("", async (req, res) => {
       const register = await registerUser.save();
       console.log(register);
       
-      // res.status(201).render("home");
+      res.status(201).render("home");
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }

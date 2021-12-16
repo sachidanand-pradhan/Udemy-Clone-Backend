@@ -19,7 +19,7 @@ const login = require('./controllers/login.controller');
 
 app.use("/udemy",course);
 app.use('/signup',sign);
-app.use('/udemy/login',login);
+app.use('/login',login);
 
 
 
