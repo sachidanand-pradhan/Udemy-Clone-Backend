@@ -2650,7 +2650,7 @@ async function main() {
     }
 
     // let res = await searchMovies(name.toLowerCase());
-    let course_data = [ {name:"javaScript"} ]
+    let course_data = [ {name:"javaScript"} ] //this is a custom edit, will give the real data after api
 
     if (course_data.length === undefined) {
         alert("courses not available!")

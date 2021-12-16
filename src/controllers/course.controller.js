@@ -24,8 +24,8 @@ router.get("/courses", async function (req, res) {
 
 router.get("/", async (req, res) => {
     try {
-
-        const author = await Author.find().lean().exec()
+        const author = await Author.find().lean().exec();
+        
         return res.render("home", {
             author,
         });
@@ -38,7 +38,8 @@ router.get("/", async (req, res) => {
 router.get("/search", async (req, res) => {
     try {
 
-        const author = await Author.find().lean().exec()
+        const author = await Author.find().lean().exec();
+
         return res.render("courses", {
             author,
         });
