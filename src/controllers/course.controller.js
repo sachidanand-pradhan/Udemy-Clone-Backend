@@ -15,8 +15,8 @@ router.post('', async function (req, res) {
 
 router.get("/courses", async function (req, res) {
     try {
-        const author = await Author.find().lean().exec()
-        res.status(201).send({author})
+        const course = await Author.find().lean().exec()
+        res.status(201).send({course})
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }
