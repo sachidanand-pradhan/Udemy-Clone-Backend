@@ -32,6 +32,11 @@ app.use('/login',login);
 
 app.use('/desc',desc);
 
+//This API for when we checkout user logedin or not
+app.get('/checkoutAuth', auth , (req,res)=>{
+    res.render('signup');
+})
+
 app.use('/checkout',checkout);
 app.use('/cart',cart);
 
