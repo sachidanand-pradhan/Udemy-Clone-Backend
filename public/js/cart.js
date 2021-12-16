@@ -158,9 +158,16 @@
     // console.log(promocode);
 
     function discount() {
-
+        
         let coupon = document.getElementById("promocode");
         console.log(coupon.value);
+         
+        const applied = document.getElementById("applid");
+        const para = document.getElementById("para")  
+
+        applied.addEventListener("click",()=>{
+            para.style.display = "none";
+        })
 
         if (coupon.value == "masai10") {
 
