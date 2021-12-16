@@ -16,7 +16,7 @@ router.get('', auth , async (req,res)=>{
         res.render('login');
     }
     catch(e){
-        res.status(500).send({message:e.message, staus:"Failed"});
+        res.status(500).send({message:e.message, staus:"Logout Error"});
     }
 })
 

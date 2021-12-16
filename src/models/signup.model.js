@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
-const { validator } = require('express-fastest-validator');
+const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const res = require("express/lib/response");
 
@@ -8,7 +8,15 @@ const res = require("express/lib/response");
 const registrationSchema = new mongoose.Schema(
     {
       full_Name: { type: String},
-      email:{ type:String,required:true,unique:true, min:10},
+      email:{ type:String,
+        required:true,
+        unique:true,
+        validate(value){
+          if(!validator.isEmail(value)){
+            throw new Error("Email is Invalid")
+          }
+        } 
+      },
       password:{type:String, required:true, min: 8},
       tokens:[{
         token:{

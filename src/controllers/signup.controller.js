@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const {body,validationResult}=require('express-validator');
 const signup = require('../models/signup.model');
 const router = express.Router();
 
@@ -24,7 +25,7 @@ router.post("", async (req, res) => {
        const token = await registerUser.generateAuthToken();
 
        res.cookie("jwt", token,{
-           expires:new Date(Date.now() + 60000000000000000000000000000),
+           expires:new Date(Date.now() + 6000000000000000),
            httpOnly:true
        });
        console.log(cookie);
@@ -34,7 +35,7 @@ router.post("", async (req, res) => {
       
       res.status(201).render("home");
     } catch (e) {
-        return res.status(500).json({ message: e.message, status: "Failed" })
+        return res.status(500).json({ message: e.message, status: "JWT Auth" })
     }
 });
 

@@ -30,7 +30,7 @@ router.post("",async(req,res)=>{
         
           res.render("home")
       }else{
-        res.send("Invalid Login Details Kindly Go Back");
+        res.send("Invalid Login Credential");
       }
     }catch(e){
       res.status(400).send({message:e.message, status:"Invalid Email Id or Password"})
