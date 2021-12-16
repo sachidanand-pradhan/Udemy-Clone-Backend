@@ -2510,9 +2510,9 @@ if (dt != undefined) {
     if (dt[1] === 'logedin') {
         done()
         change()
-    }
+    }   
 }
-console.log(dt);
+// console.log(dt);
 function change() {
     let u = JSON.parse(localStorage.getItem("udemyUsers"))
     u.forEach((e) => {
@@ -2593,7 +2593,7 @@ async function searchMovies(course_name) {
         let res = await fetch(`http://localhost:5000/api/${course_name}`);
 
         let data = await res.json();
-        console.log("Data:--", data);
+        // console.log("Data:--", data);
         return data;
 
 

@@ -29,12 +29,11 @@ router.get('/restaurants/search', async (req, res) => {
     res.render('courses', { restaurants });
 })
 
-router.get("/", async (req, res) => {
+router.get("/home", async (req, res) => {
     try {
         const author = await Author.find().lean().exec();
-        
-        return res.render("home", {
-            author,
+
+        return res.render("home", { author
         });
 
     } catch (e) {
@@ -45,7 +44,7 @@ router.get("/", async (req, res) => {
 router.get("/search", async (req, res) => {
     try {
 
-        const author = await Author.find().lean().exec();
+        const author = await Author.find({}).lean().exec();
 
         return res.render("courses", {
             author,

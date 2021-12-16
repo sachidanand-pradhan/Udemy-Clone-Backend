@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Udemy</title>
-    <link rel = 'stylesheet' href = '/css/style.css'>    
-
+    <link rel='stylesheet' href='/css/style.css'>
+    <script src='/js/carousel.js'></script>
 </head>
 
 
 <body onclick="hide()">
     <%- include('./components/header') %>
-    
         <!-- intro -->
         <div class="intro h-auto w-full">
-            <img class="w-full" src='https://img-b.udemycdn.com/notices/web_banner/slide_1_image_udlite/db24b94e-d190-4d5a-b1dd-958f702cc8f5.jpg?secure=rzO5o24POVnBKsw0jfCtIA%3D%3D%2C1636530597'
+            <img class="w-full"
+                src='https://img-b.udemycdn.com/notices/web_banner/slide_1_image_udlite/db24b94e-d190-4d5a-b1dd-958f702cc8f5.jpg?secure=rzO5o24POVnBKsw0jfCtIA%3D%3D%2C1636530597'
                 alt='intro img' />
         </div>
 
@@ -306,7 +306,8 @@
                 <div class='lg:mx-10 lg:my-28 my-6 px-5 md:px-0'>
                     <h3 class="font-bold text-4xl text-center lg:text-left">Become and instructor</h3>
 
-                    <p class="md:text-lg md:text-md my-2 text-center lg:text-left max-w-xl m-auto">Instructors from around the world teach
+                    <p class="md:text-lg md:text-md my-2 text-center lg:text-left max-w-xl m-auto">Instructors from
+                        around the world teach
                         millions
                         of students on Udemy. We provide
                         the tools and skills to teach what you love.</p>
@@ -337,7 +338,8 @@
                     <img src='https://www.udemy.com/staticx/udemy/images/v7/logo-ub.svg' alt='udemy-business'
                         class='w-60 m-auto lg:m-0'>
 
-                    <p class="md:text-lg md:text-md my-2 text-center lg:text-left max-w-xl m-auto">Instructors from around the world teach
+                    <p class="md:text-lg md:text-md my-2 text-center lg:text-left max-w-xl m-auto">Instructors from
+                        around the world teach
                         millions
                         of students on Udemy. We provide
                         the tools and skills to teach what you love.</p>
@@ -352,7 +354,8 @@
             </div>
 
             <!-- Transform your life -->
-            <div class='lg:w-4/5 m-auto lg:px-10 lg:flex'>
+
+            <div class='lg:w-4/5 m-auto lg:px-10 lg:flex' onclick = "createCarousel('<%= JSON.stringify(author) %>')">
                 <img src='https://s.udemycdn.com/home/non-student-cta/transform-1x-v3.jpg' alt='become an instructor'
                     class='px-28 lg:px-14 m-auto' />
 
@@ -370,22 +373,12 @@
                         Find out how</div>
                 </div>
             </div>
+
             <!-- footer -->
             <%- include('./components/footer') %>
-</body>
-
 </html>
 
-
 <script src='/js/navbar.js'></script>
-<script src='/js/carousel.js'></script>
-
 
 <script>
-    let ShowCoursesName = document.getElementById("ShowCoursesName");
-    </script>
-<script>
-    // console.log("script is running")
-    createCarousel(data);
-
 </script>

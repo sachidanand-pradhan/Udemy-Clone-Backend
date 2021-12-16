@@ -1,14 +1,16 @@
 
-function createCarousel(data) {
-    // a function to get the data via api
-    console.log("This is working");
 
-    makeCarouselOf(data);
+    console.log("carousel script is working");
+async function createCarousel(data) {
+
+    console.log("carouselData", data);
+
+    // makeCarouselOf(JSON.parse(input));
+
     // a function to create the carousel
-
     function makeCarouselOf(data) {
         let carouselList = document.querySelectorAll('.carousel');
-        console.log(data, 'data');
+        // console.log(data, 'data');
 
         carouselList.forEach((carousel) => {
             // creating container for the carousel
