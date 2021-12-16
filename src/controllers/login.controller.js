@@ -18,6 +18,9 @@ router.post("",async(req,res)=>{
       const password = req.body.Password;
       const useremail = await login.findOne({email:email});
       const isMatch = bcrypt.compare(password, useremail.password);
+
+      const token = await useremail.generateAuthToken();
+
       if(isMatch){
         
           res.render("home")
