@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const bcrypt = require('bcrypt');
+const { validator } = require('express-fastest-validator');
 
 
 const registrationSchema = new mongoose.Schema(
@@ -12,5 +14,10 @@ const registrationSchema = new mongoose.Schema(
       timestamps: true,
     }
   );
+
+  registrationSchema.pre("save",async function(next){
+    this.password = await bcrypt.hash(this.password,10)
+    next();
+  })
   
   module.exports = mongoose.model("Register", registrationSchema);

@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const { validator } = require('express-fastest-validator');
+
 
 app.use(express.json());
 

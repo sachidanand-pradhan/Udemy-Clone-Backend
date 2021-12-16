@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 const login = require('../models/signup.model');
 const router = express.Router();
 
@@ -16,7 +17,8 @@ router.post("",async(req,res)=>{
       const email = req.body.Email;
       const password = req.body.Password;
       const useremail = await login.findOne({email:email});
-      if(useremail.password===password){
+      const isMatch = bcrypt.compare(password, useremail.password);
+      if(isMatch){
         
           res.render("home")
       }else{
