@@ -14,12 +14,14 @@ app.use(express.urlencoded({extended:false}));
 const course = require("./controllers/course.controller");
 const sign = require('./controllers/signup.controller');
 const login = require('./controllers/login.controller');
+const desc = require('./controllers/desc.controller');
 
 
 
 app.use("/udemy",course);
 app.use('/signup',sign);
 app.use('/login',login);
+app.use('/desc',desc);
 
 
 
