@@ -55,30 +55,7 @@ router.get("/search", async (req, res) => {
     }
 });
 
-router.get("/signup", async (req, res) => {
-    try {
 
-        const course = await Course.find().lean().exec()
-        return res.render("signup", {
-            course,
-        });
-
-    } catch (e) {
-        return res.status(500).json({ message: e.message, status: "Failed" })
-    }
-})
-router.get("/login", async (req, res) => {
-    try {
-
-        const course = await Course.find().lean().exec()
-        return res.render("login", {
-            course,
-        });
-
-    } catch (e) {
-        return res.status(500).json({ message: e.message, status: "Failed" })
-    }
-})
 
 router.get("/:id", async (req, res) => {
     try {

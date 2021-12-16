@@ -1,7 +1,7 @@
 const express=require('express');
 const {body,validationResult}=require('express-validator');
 const router = express.Router();
-const user =require("../models/user.model");
+const user =require("../models/signup.model");
 router.post("/",
 body("name").isLength({min:1, max:20}).withMessage("Full Name is require"),
 
