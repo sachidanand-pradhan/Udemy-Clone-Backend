@@ -16,10 +16,17 @@ router.post('', async function (req, res) {
 router.get("/courses", async function (req, res) {
     try {
         const author = await Author.find().lean().exec()
-        res.status(201).send(author)
+        res.status(201).send({author})
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }
+})
+
+router.get('/restaurants/search', async (req, res) => {
+    const { resName } = req.query;
+    const restaurants = await Author.find({ $text: { $search: { name: resName } } });
+    console.log(restaurants);
+    res.render('courses', { restaurants });
 })
 
 router.get("/", async (req, res) => {
