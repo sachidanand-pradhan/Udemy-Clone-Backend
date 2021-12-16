@@ -1,3 +1,4 @@
+
 // function for category----------------------------------****************--------------------
 let cat = document.getElementById("cat")
 var firstdiv = document.getElementById("firstdiv")
@@ -2608,25 +2609,27 @@ function hide() {
     ShowCoursesName.style.display = "none";
 }
 
-function appendMovies(course) {
-    // console.log("-------",course[0].name);
+function appendMovies(courses) {
+    console.log("-------", courses);
     let ShowCoursesName = document.getElementById("ShowCoursesName");
     ShowCoursesName.style.display = "block";
 
-    if (course === undefined) {
+    if (courses === undefined) {
         ShowCoursesName.innerHTML = null;
-        p = document.createElement("p");
+        let p = document.createElement("p");
         p.innerText = "course not available!";
         return false;
     } else {
-        p = document.createElement("p");
-        p.innerText = "✔ " + course[0].name;
-        console.log(course[0].name, "name---");
-        p.setAttribute('class', 'ml-4 mt-2');
-        ShowCoursesName.append(p);
-        p.addEventListener('click', () => {
-            dataStored(course);
-        });
+        courses.forEach(course => {
+            let p = document.createElement("p");
+            p.innerText = "✔ " + course.name;
+            // console.log(course[0].name, "name---");
+            p.setAttribute('class', 'ml-4 mt-2');
+            ShowCoursesName.append(p);
+            p.addEventListener('click', () => {
+                dataStored(courses);
+            });
+        })
     }
     // ShowCoursesName.innerHTML = null;
     // console.log("datafetch", course);
@@ -2640,35 +2643,37 @@ function appendMovies(course) {
 
 }
 
-async function main() {
+async function main(incomingData) {
     let name = document.getElementById("courseData").value;
     // console.log("coursename", name);
 
+    incomingData = JSON.parse(incomingData);
 
     if (name.length < 3) {
         return false;
     }
 
-    // let res = await searchMovies(name.toLowerCase());
-    let course_data = [ {name:"javaScript"} ] //this is a custom edit, will give the real data after api
+    let course_data = incomingData.filter( course => {
+        if( course.tags.includes(name)) return true;
+    })  
 
     if (course_data.length === undefined) {
         alert("courses not available!")
     }
-    // console.log("datas--:::::", course_data);
+    console.log("datas--:::::", course_data);
 
     appendMovies(course_data);
 
     // console.log(res)
 }
 
-function debounce(func, delay) {
+function debounce(func, delay, incomingData) {
     if (timerId) {
         clearTimeout(timerId)
     }
 
     timerId = setTimeout(function () {
-        func();
+        func(incomingData);
     }, delay);
 }
 
