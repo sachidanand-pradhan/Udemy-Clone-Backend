@@ -20,6 +20,6 @@
         setTimeout(function () {
 
             alert("Congratulations! your payment is successfully paid");
-            window.location.href = "home.html";
+            window.location.href = "home.ejs";
         }, 1000);
     }
