@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
-const res = require("express/lib/response");
 
 
 const registrationSchema = new mongoose.Schema(
