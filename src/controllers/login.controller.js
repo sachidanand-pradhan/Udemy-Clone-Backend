@@ -21,6 +21,11 @@ router.post("",async(req,res)=>{
 
       const token = await useremail.generateAuthToken();
 
+      res.cookie("jwt", token,{
+        expires:new Date(Date.now() + 60000000000000000000),
+        httpOnly:true
+    });
+
       if(isMatch){
         
           res.render("home")
