@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 const login = require('../models/signup.model');
 const router = express.Router();
 
@@ -16,14 +17,18 @@ router.post("",async(req,res)=>{
       const email = req.body.Email;
       const password = req.body.Password;
       const useremail = await login.findOne({email:email});
-      if(useremail.password===password){
+      const isMatch = bcrypt.compare(password, useremail.password);
+
+      const token = await useremail.generateAuthToken();
+
+      if(isMatch){
         
           res.render("home")
       }else{
         res.send("Invalid Login Details Kindly Go Back");
       }
-    }catch(error){
-      res.status(400).send("error")
+    }catch(e){
+      res.status(400).send({message:e.message, status:"Invalid Email Id or Password"})
     }
     
     });

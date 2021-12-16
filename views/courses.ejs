@@ -8,6 +8,7 @@
     <title>Udemy</title>
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://kit.fontawesome.com/41129917e5.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <%- include('./components/header') %>
@@ -17,12 +18,31 @@
        <h2 class="text-xl font-bold">Explore <span class="text-blue-800">JavaScript courses</span></h2>
        <h2 class="lg:text-xl text-sm  font-semibold my-2">Students also learn <span class="text-blue-800">Web Development Node.Js React MongoDB CSS HTML</span></h2>
    </div>
-   
+
    <div class="w-10/12 h-20 m-auto border-2">
-    <div class="lg:w-6/12 w-full my-4 mx-2">
-        <span class="mx-2 lg:text-xl text-sm"><i class="fas fa-exclamation-circle mx-2"></i>Not sure? All courses have a 30-day money-back guarantee</span>
+    <div class="lg:w-8/12 w-full my-4 mx-2">
+        <span class="mx-0 lg:text-xl text-sm"><i class="fas fa-exclamation-circle mx-2"></i>Not sure? All courses have a 30-day money-back guarantee</span>
     </div>
    </div>
+   <div class="w-full mx-6">
+            <div class="lg:w-3/12 sm:ml-10 flex justify-center"> 
+                    <div class="my-5 w-1/4 border hover:bg-gray-100">
+                        <span><span class="material-icons mx-2">filter_list</span>Filter</span>
+                    </div>
+                    <div class="my-5 mx-5 w-32 border py-1 px-1 hover:bg-gray-100" onclick="show()">
+                        <button >Sort by <br>
+                            Most Relevent</button>
+                    </div>
+            </div>
+                <div class="lg:w-36 w-36 hidden lg:mt-20 lg:ml-52 mt-6 ml-48 absolute z-50 bg-white" id="sortFun">
+                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer">Most Relevent</div>
+                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick="sortLH()">Price L-H</div>
+                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick="sortHL()">Price H-L</div>
+                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick="highestR()">Highest rated</div>
+                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick="lowestR()">Lowest rated</div>
+                </div>  
+         </div>
+         
 
 
     <div class = 'carousel relative p-4'></div>

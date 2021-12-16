@@ -1,4 +1,5 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const signup = require('../models/signup.model');
 const router = express.Router();
 
@@ -19,6 +20,9 @@ router.post("", async (req, res) => {
         email : req.body.Email,
      password : req.body.Password
        });
+
+       const token = await registerUser.generateAuthToken();
+
       const register = await registerUser.save();
       console.log(register);
       

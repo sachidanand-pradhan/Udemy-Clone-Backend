@@ -6,11 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Udemy</title>
+    <script src="/public/js/checkout.js"> </script>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <div id='header'></div>
+    
+    <div><%- include('./components/header') %></div>
 
     <div class="text-5xl ml-96 py-5  font-bold">Checkout</div>
     <div class="ml-36 py-2 ">
@@ -88,16 +90,25 @@
     </div>
 
     <div>
-        <button id="make-pay" onclick="makePayment()"
-            class="bg-blue-600 text-white p-3 text-2xl ml-36 mt-4 px-5 ml-96 center rounded hover:bg-blue-800">Complete
-            Payment</button>
+        <button id="make-pay" onclick="makePayment()" class="bg-blue-600 text-white p-3 text-2xl ml-36 mt-4 px-5 ml-96 center rounded hover:bg-blue-800">Complete Payment</button>
     </div>
+    
 
-    <div id='footerPart'></div>
+    <div><%- include('./components/footer') %></div>
 </body>
 
 </html>
 
 <script type="module" src="../public/js/checkout.js">
+
+</script>
+<script>
+    function makePayment() {
+        setTimeout(function () {
+
+            alert("Congratulations! your payment is successfully paid");
+            window.location.href="udemy";
+        }, 1000);
+    }
 
 </script>
