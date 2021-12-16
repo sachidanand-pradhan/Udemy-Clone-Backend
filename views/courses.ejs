@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://kit.fontawesome.com/41129917e5.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src='/js/courses.js'></script>
 </head>
 
 <body>
@@ -37,8 +38,13 @@
                         Most Relevent</button>
                 </div>
             </div>
+            <div class="w-11/12 m-auto border-2 flex">
+                <div class="w-3/12 border-2 bg-gray-600">1 price langugae..</div>
+                <div class="w-9/12 border-2 bg-yellow-400">2</div>
+            </div>
         </div>
-        <div class="lg:w-36 w-36 hidden lg:mt-20 lg:ml-52 ml-48 absolute z-50 bg-white" id="sortFun">
+        <div class="lg:w-36 w-36 hidden lg:mt-20 lg:ml-56 ml-48 absolute z-50 bg-white" style="margin-top:-18px"
+            id="sortFun">
             <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer">Most Relevent</div>
             <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick="sortLH()">Price
                 L-H</div>
@@ -75,23 +81,8 @@
     getData();
 
 
-  
 
-function show() {
-    let count = 0;
-    console.log("show div")
-    let sortFun = document.getElementById("sortFun");
-    if (count === 0) {
-        sortFun.style.display = "block";
-        sortFun.style.position = "absolute";
-        sortFun.style.zIndex = "40";
-        sortFun.style.border = "1px solid black";
-        count++;
-    } else if (count === 1) {
-        sortFun.style.display = "none";
-        count--;
-    }
 
-}
+    
 
 </script>
