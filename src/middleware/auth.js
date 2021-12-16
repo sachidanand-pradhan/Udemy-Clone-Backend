@@ -11,6 +11,9 @@ const auth = async(res,req,next)=>{
 
         const user = await Register.findOne({_id:verifyUser._id});
 
+        req.token = token;
+        req.user = user;
+
         console.log("This is user Data "+user);
         next();
     }

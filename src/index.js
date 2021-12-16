@@ -23,6 +23,7 @@ const desc = require('./controllers/desc.controller');
 
 const checkout = require("./controllers/chechout.controller")
 const cart = require("./controllers/cart.controller")
+const logout = require('./controllers/logout.controller');
 
 
 
@@ -36,6 +37,10 @@ app.use('/desc',desc);
 app.get('/checkoutAuth', auth , (req,res)=>{
     res.render('signup');
 })
+
+//This APi for Logout
+app.use('/logout', logout);
+
 
 app.use('/checkout',checkout);
 app.use('/cart',cart);
