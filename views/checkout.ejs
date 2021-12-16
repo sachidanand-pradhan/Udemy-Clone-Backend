@@ -90,9 +90,9 @@
     </div>
 
     <div>
-        <button id="make-pay" onclick="makePayment()"
-            class="bg-blue-600 text-white p-3 text-2xl ml-36 mt-4 px-5 ml-96 center rounded hover:bg-blue-800">Complete Payment</button>
+        <button id="make-pay" onclick="makePayment()" class="bg-blue-600 text-white p-3 text-2xl ml-36 mt-4 px-5 ml-96 center rounded hover:bg-blue-800">Complete Payment</button>
     </div>
+    
 
     <div><%- include('./components/footer') %></div>
 </body>
@@ -100,5 +100,15 @@
 </html>
 
 <script type="module" src="../public/js/checkout.js">
+
+</script>
+<script>
+    function makePayment() {
+        setTimeout(function () {
+
+            alert("Congratulations! your payment is successfully paid");
+            window.location.href="udemy";
+        }, 1000);
+    }
 
 </script>
