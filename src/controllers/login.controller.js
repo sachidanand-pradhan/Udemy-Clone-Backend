@@ -1,5 +1,5 @@
 const express = require('express');
-const login = require('../models/login.model');
+const login = require('../models/signup.model');
 const router = express.Router();
 
 router.get("", async (req, res) => {
@@ -11,14 +11,14 @@ router.get("", async (req, res) => {
     }
 });
 
-router.post("/login",async(req,res)=>{
+router.post("",async(req,res)=>{
     try{
       const email = req.body.Email;
       const password = req.body.Password;
       const useremail = await login.findOne({email:email});
       if(useremail.password===password){
         
-          res.render("homepage/homereal")
+          res.render("home")
       }else{
         res.send("Invalid Login Details Kindly Go Back");
       }
