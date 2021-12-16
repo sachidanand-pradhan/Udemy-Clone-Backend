@@ -71,7 +71,7 @@
              </span>
          </div>
      <div >
-         <input style="font: size 18px; outline: none;" class=" text-xl text-gray-500 p-2"type="email"  id="email" placeholder="Email" required>
+         <input style="font: size 18px; outline: none;" class=" text-xl text-gray-500 p-2"type="email" name="Email" id="email" placeholder="Email" required>
        </div>
         </div>
         <div  style="
@@ -87,7 +87,7 @@
                  </span>
             </div>
                 <div>
-                 <input style=" font: size 18px; outline: none;"  class="text-xl text-gray-500 p-2" type="password"  id="password" placeholder="Password" required>
+                 <input style=" font: size 18px; outline: none;"  class="text-xl text-gray-500 p-2" type="password"  id="password" name="Password" placeholder="Password" required>
                 </div>
             </div>
            
@@ -110,7 +110,7 @@
     text-align:center;">
         Don't have an account? <a style="color:#401b9c;
         font-size:15px;
-        font-weight:700;" href="signup.html">Sign up</a>
+        font-weight:700;" href="views/signup.ejs">Sign up</a>
     </div>
     <div style="color:#401b9c;
     font-size:15px;
@@ -141,44 +141,44 @@ promise.then((res) => {
 })
 
 
-let btn = document.getElementById('logIn_Btn');
-btn.onclick = ()=>{
-    login(event);
-}
+// let btn = document.getElementById('logIn_Btn');
+// btn.onclick = ()=>{
+//     login(event);
+// }
 
-function login(e) {
-  e.preventDefault();
+// function login(e) {
+//   e.preventDefault();
 
-  let form = document.getElementById("form");
+//   let form = document.getElementById("form");
 
-  let retrieveData = JSON.parse(localStorage.getItem("udemyUsers"));
+//   let retrieveData = JSON.parse(localStorage.getItem("udemyUsers"));
 
-  let email = form.email.value;
-  let password = form.password.value;
+//   let email = form.email.value;
+//   let password = form.password.value;
 
-  let flag = false;
-  retrieveData.forEach(function (i) {
-    if (email == i.email && password == i.password) {
-      flag = true;
-    }
-  });
-  if (flag === true) {
-    alert("Login Sucessfully!");
-    if (localStorage.getItem("check") === null) {
-        localStorage.setItem("check", JSON.stringify([]))
-    }
-    let dt = JSON.parse(localStorage.getItem("check"));
-    dt = [];
-    dt.push(email,'logedin');
-     //console.log(dt);
-    localStorage.setItem("check", JSON.stringify(dt));
+//   let flag = false;
+//   retrieveData.forEach(function (i) {
+//     if (email == i.email && password == i.password) {
+//       flag = true;
+//     }
+//   });
+//   if (flag === true) {
+//     alert("Login Sucessfully!");
+//     if (localStorage.getItem("check") === null) {
+//         localStorage.setItem("check", JSON.stringify([]))
+//     }
+//     let dt = JSON.parse(localStorage.getItem("check"));
+//     dt = [];
+//     dt.push(email,'logedin');
+//      //console.log(dt);
+//     localStorage.setItem("check", JSON.stringify(dt));
 
-    window.location.href = "home.html";
+//     window.location.href = "home.html";
     
-  } else {
-    alert("Invalid usename or password!");
-  }
-}
+//   } else {
+//     alert("Invalid usename or password!");
+//   }
+// }
 
 
 </script>
