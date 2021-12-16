@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
 
 
 const registrationSchema = new mongoose.Schema(
@@ -30,16 +32,17 @@ const registrationSchema = new mongoose.Schema(
     }
   );
 
+  //const generateAuthToken = require('../controllers/signup.controller')
   //Generating token
-  registrationSchema.methods.generateAuthToken = async function(){
+  registrationSchema.methods.generateAuthToken = async function(req, res){
     try{
-        const token = jwt.sign({_id:this._id.toString()},process.env.SECRET_KEY);
+        const token = jwt.sign({_id:this._id},process.env.SECRET_KEY);
         this.tokens = this.tokens.concat({token:token})
         await this.save();
-        console.log("This is Your Token "+token);
+       // console.log("This is Your Token "+token);
         return token;
     }catch(e){
-      res.send("This is your error "+e);
+      res.status(500).send({message: e.message, status: "Inside model JWT"})
     }
   }
 
