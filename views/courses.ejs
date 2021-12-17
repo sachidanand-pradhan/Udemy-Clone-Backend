@@ -30,22 +30,37 @@
             </div>
         </div>
         <div class="w-full mx-6">
-            <div class="lg:w-3/12 sm:ml-10 flex justify-center">
-                <div class="my-5 w-1/4 border hover:bg-gray-100">
+            <div class="lg:w-3/12 sm:ml-10 flex justify-evenly">
+                <div class="my-5 w-1/4 border-2 border-black hover:bg-gray-100">
                     <span><span class="material-icons mx-2">filter_list</span>Filter</span>
                 </div>
-                <div class="my-5 mx-5 w-32 border py-1 px-1 hover:bg-gray-100" onclick="show()">
+                <div class="my-5 mx-5 w-32 border-2 border-black py-1 px-1 hover:bg-gray-100" onclick="show()">
                     <button>Sort by <br>
                         Most Relevent</button>
                 </div>
+                <div class="lg:w-36 w-36 hidden lg:ml-20 mt-20 ml-40 absolute z-50 bg-white"
+                    id="sortFun">
+                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer">Most Relevent</div>
+                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick = 'window.location.href = `/search/sort/${1}`'>
+                        Price
+                        L-H</div>
+                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick = 'window.location.href = `/search/sort/${2}`'>
+                        Price
+                        H-L</div>
+                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick = 'window.location.href = `/search/sort/${3}`'>
+                        Highest rated</div>
+                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick = 'window.location.href = `/search/sort/${4}`'>
+                        Lowest
+                        rated</div>
+                </div>
             </div>
             <div class="w-11/12 ml-8 flex">
-                <div class="w-3/12 border-2 p-2 mr-4">
+                <div class="w-3/12 lg:block hidden p-2 mr-4">
                     <div onclick="showDiv()" class="font-bold mt-4 flex justify-between">
                         <div>Topic</div>
                         <div><span class="material-icons mr-6 font-bold">expand_more</span></div>
                     </div>
-                
+
                     <div id="listOfCourses" class="mt-2 border-t-2" style="display: none;">
                         <ul>
                             <input type="checkbox" id="videod">
@@ -92,7 +107,7 @@
                             <label>Paid</label><br>
                             <input type="checkbox" id="videod">
                             <label>Free</label><br>
-                
+
                         </ul>
                     </div>
                     <div onclick="showDiv3()" class="font-bold mt-4 flex justify-between">
@@ -125,7 +140,7 @@
                             <label>⭐⭐⭐⭐ 3.5 & up (556)</label><br>
                             <input type="checkbox" id="videod">
                             <label>⭐⭐⭐ 3.0 & up (579)</label><br>
-                
+
                         </ul>
                     </div>
                     <div onclick="showDiv5()" class="font-bold mt-4 flex justify-between">
@@ -141,7 +156,7 @@
                             <label>3-6 Hour (2,628)</label><br>
                             <input type="checkbox" id="videod">
                             <label>6-17 Hour (2,973)</label><br>
-                
+
                         </ul>
                     </div>
                     <div onclick="showDiv6()" class="font-bold mt-4 flex justify-between">
@@ -162,35 +177,35 @@
                             <label>Francais</label><br>
                             <input type="checkbox" id="videod">
                             <label>Italino</label><br>
-                
+
                         </ul>
                     </div>
-                
-            </div>
-                <div class="w-9/12 border-2">
+
+                </div>
+                <div class="lg:w-9/12 w-full">
                     <div class="border-0">
                         <% author.forEach(course=>{ %>
                             <a href="desc/<%= course._id %>">
                                 <div class="flex my-4" onclick="clickcourseName('<%= JSON.stringify(course) %>')">
                                     <div class="w-1/3"><img class="w-full" src="<%= course.image %>"
                                             alt="<%course.name%>"></div>
-                                    <div class="w-3/4 mx-4">
-                                        <p>
+                                    <div class="w-3/4 mx-4 lg:text-base text-xs">
+                                        <p class="font-bold">
                                             <%= course.name %>
                                         </p>
                                         <p>
                                             <%= course.title %>
                                         </p>
-                                        <p>
+                                        <p class="font-light text-gray-800 text-sm">
                                             <%= course.author %>
                                         </p>
-                                        <p>
-                                            <%= course.rating %> ⭐⭐⭐⭐⭐(12564)
+                                        <p class="font-bold text-sm text-yellow-700 ">
+                                            <%= course.rating %> <span class="font-light text-sm">⭐⭐⭐⭐⭐(12564)</span>
                                         </p>
-                                        <p>69 total hours ◦ 319 lectures ◦ all levels</p>
-                                        <p class="inline-block bg-yellow-300 px-2">Bestseller</p>
+                                        <p class="font-light text-gray-800 text-sm">69 total hours ◦ 319 lectures ◦ all levels</p>
+                                        <p class="inline-block bg-yellow-300 text-sm px-2 mt-2">Bestseller</p>
                                     </div>
-                                    <div class="w-1/5">
+                                    <div class="w-1/5 lg:text-base text-xs">
                                         <p>
                                             $ <%= course.price %> /-
                                         </p>
@@ -205,29 +220,9 @@
                             <hr>
 
                             <% }) %>
-                                <div class="flex">
-                                    <section class="flex">
-                                        <option value="hg">1</option>
-                                        <option value="hg">2</option>
-                                        <option value="hg">3</option>
-                                        <option value="hg">4</option>
-                                    </section>
-                                </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="lg:w-36 w-36 hidden lg:mt-20 lg:ml-56 ml-48 absolute z-50 bg-white" style="margin-top:-18px"
-            id="sortFun">
-            <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer">Most Relevent</div>
-            <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick="sortLH()">Price
-                L-H</div>
-            <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick="sortHL()">Price
-                H-L</div>
-            <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick="highestR()">
-                Highest rated</div>
-            <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick="lowestR()">Lowest
-                rated</div>
         </div>
 
         <div class='carousel relative p-4'></div>
@@ -243,13 +238,16 @@
 <!-- http://localhost:2345/udemy -->
 
 <script>
-    console.log("Abcde")
     async function getData() {
         let res = await fetch(`http://localhost:2345/udemy/courses`);
         let data = await res.json();
         console.log(data)
         // add(data);
     }
-
     getData();
+
+    function sortFun(){
+        let sortFun = document.getElementById("sortFun");
+        sortFun.setAttribute("class","block");
+    }
 </script>
