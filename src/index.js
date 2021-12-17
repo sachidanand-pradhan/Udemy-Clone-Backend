@@ -33,9 +33,6 @@ app.use('/login', login);
 app.use('/desc',desc);
 
 //This API for when we checkout user logedin or not
-app.get('/checkoutAuth', auth , (req,res)=>{
-    res.render('signup');
-})
 
 //This APi for Logout
 app.use('/logout', logout);

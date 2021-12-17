@@ -566,7 +566,7 @@ function navbar() {
         <hr>
         <!--  -->
         <div class="m-4 text-sm text-gray-600 hover:text-blue-700"><a href="#">Help</a></div>
-        <div id="logout" class="m-4 text-sm text-gray-600 hover:text-blue-700"><a href="#">Log out</a></div>
+        <div id="logout" class="m-4 text-sm text-gray-600 hover:text-blue-700"><a href="/logout">Log out</a></div>
     </div>`
 }
 

@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Courses - Learn Anything, On Your Schedule | Udemy</title>
-    <link rel = "icon" href = "https://www.udemy.com/staticx/udemy/images/v8/favicon-32x32.png" type = "image/x-icon">
+    <link rel="icon" href="https://www.udemy.com/staticx/udemy/images/v8/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://kit.fontawesome.com/41129917e5.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src='/js/courses.js'></script>
 </head>
 
-<body>
+<body onclick="hide()">
     <%- include('./components/header') %>
 
         <div class="w-10/12 m-auto">
@@ -41,7 +41,54 @@
             </div>
             <div class="w-11/12 m-auto border-2 flex">
                 <div class="w-3/12 border-2 bg-gray-600">1 price langugae..</div>
-                <div class="w-9/12 border-2 bg-yellow-400">2</div>
+                <div class="w-9/12 border-2">
+                    <div class="border-0">
+                        <% author.forEach(course=>{ %>
+                            <a href="desc/<%= course._id %>">
+                                <div class="flex my-4" onclick="clickcourseName('<%= JSON.stringify(course) %>')">
+                                    <div class="w-1/3"><img class="w-full" src="<%= course.image %>"
+                                            alt="<%course.name%>"></div>
+                                    <div class="w-3/4 mx-4">
+                                        <p>
+                                            <%= course.name %>
+                                        </p>
+                                        <p>
+                                            <%= course.title %>
+                                        </p>
+                                        <p>
+                                            <%= course.author %>
+                                        </p>
+                                        <p>
+                                            <%= course.rating %> ⭐⭐⭐⭐⭐(12564)
+                                        </p>
+                                        <p>69 total hours ◦ 319 lectures ◦ all levels</p>
+                                        <p class="inline-block bg-yellow-300 px-2">Bestseller</p>
+                                    </div>
+                                    <div class="w-1/5">
+                                        <p>
+                                            $ <%= course.price %> /-
+                                        </p>
+                                        <p class="line-through">
+                                            $ 4999 /-
+                                        </p>
+                                    </div>
+
+                                    <!-- <p><a href="course/<%= course._id %>">Click Here</a></p> -->
+                                </div>
+                            </a>
+                            <hr>
+
+                            <% }) %>
+                                <div class="flex">
+                                    <section class="flex">
+                                        <option value="hg">1</option>
+                                        <option value="hg">2</option>
+                                        <option value="hg">3</option>
+                                        <option value="hg">4</option>
+                                    </section>
+                                </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="lg:w-36 w-36 hidden lg:mt-20 lg:ml-56 ml-48 absolute z-50 bg-white" style="margin-top:-18px"
@@ -79,10 +126,4 @@
     }
 
     getData();
-
-
-
-
-    
-
 </script>
