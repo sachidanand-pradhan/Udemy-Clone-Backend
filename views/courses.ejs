@@ -16,33 +16,189 @@
 <body onclick="hide()">
     <%- include('./components/header') %>
 
-        <div class="w-10/12 m-auto">
+        <div class="w-11/12 m-auto">
             <h1 class="font-bold lg:text-4xl text-2xl my-4">10,000 results for “javascript”</h1>
             <h2 class="text-xl font-bold">Explore <span class="text-blue-800">JavaScript courses</span></h2>
             <h2 class="lg:text-xl text-sm  font-semibold my-2">Students also learn <span class="text-blue-800">Web
                     Development Node.Js React MongoDB CSS HTML</span></h2>
         </div>
 
-        <div class="w-10/12 h-20 m-auto border-2">
+        <div class="w-11/12 h-20 m-auto border-2">
             <div class="lg:w-8/12 w-full my-4 mx-2">
                 <span class="mx-0 lg:text-xl text-sm"><i class="fas fa-exclamation-circle mx-2"></i>Not sure? All
                     courses have a 30-day money-back guarantee</span>
             </div>
         </div>
-        <div class="w-full mx-6">
+        <div class="w-11/12 mx-6">
             <div class="lg:w-3/12 sm:ml-10 flex justify-center">
-                <div class="my-5 w-1/4 border hover:bg-gray-100">
-                    <span><span class="material-icons mx-2">filter_list</span>Filter</span>
+                <div class="my-8 w-2/4 h-16 border-2 hover:bg-gray-100">
+                    <div><span class="material-icons ml-2 mt-2 mr-1 p-1">filter_list</span><span class="mb-4">Filter</span></div>
                 </div>
-                <div class="my-5 mx-5 w-32 border py-1 px-1 hover:bg-gray-100" onclick="show()">
-                    <button>Sort by <br>
+                <div class="w-11/12 my-5 mx-5  w-32 border-2 py-1 px-1 hover:bg-gray-100" onclick="show()">
+                    <button class="p-4">Sort by <br>
                         Most Relevent</button>
                 </div>
             </div>
-            <div class="w-11/12 m-auto border-2 flex">
-                <div class="w-3/12 border-2 bg-gray-600">1 price langugae..</div>
-                <div class="w-9/12 border-2">
-                    <div class="border-0">
+            <div class="w-11/12 m-auto  flex">
+                <div class="w-3/12 mr-6 border-2 p-2">
+                    <div onclick="showDiv()" class="font-bold mt-4 flex justify-between">
+                        <div>Topic</div>
+                        <div><span class="material-icons mr-6 font-bold">expand_more</span></div>
+                    </div>
+                    <div id="listOfCourses" class="mt-2 border-t-2" style="display: none;">
+                        <ul>
+                            <input type="checkbox" id="videod" >
+                            <label>JAVASCRIPT</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>PYTHON</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>CSS</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>PHP</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>HTML</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>NODE</label><br>
+                        </ul>
+                    </div>
+                    <div onclick="showDiv1()" class="font-bold mt-4 flex justify-between">
+                        <div>Language</div>
+                        <div><span class="material-icons mr-6 font-bold">expand_more</span></div>
+                    </div>
+                    <div id="listOfCourses1" class="mt-2 border-t-2" style="display: none;">
+                        <ul>
+                            <input type="checkbox" id="videod" >
+                            <label>English</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>Espanol</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>Prtugues</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>Turkce</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>Francais</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>Italino</label><br>
+                        </ul>
+                    </div>
+                    <div onclick="showDiv2()" class="font-bold mt-4 flex justify-between">
+                        <div>Price</div>
+                        <div><span class="material-icons mr-6 font-bold">expand_more</span></div>
+                    </div>
+                    <div id="listOfCourses2" class="mt-2 border-t-2" style="display: none;">
+                        <ul>
+                            <input type="checkbox" id="videod" >
+                            <label>Paid</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>Free</label><br>
+                           
+                        </ul>
+                    </div>
+                    <div onclick="showDiv3()" class="font-bold mt-4 flex justify-between">
+                        <div>Features</div>
+                        <div><span class="material-icons mr-6 font-bold">expand_more</span></div>
+                    </div>
+                    <div id="listOfCourses3" class="mt-2 border-t-2" style="display: none;">
+                        <ul>
+                            <input type="checkbox" id="videod" >
+                            <label>Subtitles</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>Quizzes</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>Coding Exercises</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>Practice Tests</label><br>
+                        </ul>
+                    </div>
+                    <div onclick="showDiv4()" class="font-bold mt-4 flex justify-between">
+                        <div>Ratings</div>
+                        <div><span class="material-icons mr-6 font-bold">expand_more</span></div>
+                    </div>
+                    <div id="listOfCourses4" class="mt-2 border-t-2" style="display: none;">
+                        <ul>
+                            <input type="checkbox" id="videod" >
+                            <label>⭐⭐⭐⭐⭐ 4.5 & up (222)</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>⭐⭐⭐⭐ 4.0 & up (455)</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>⭐⭐⭐⭐ 3.5 & up (556)</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>⭐⭐⭐ 3.0 & up (579)</label><br>
+                           
+                        </ul>
+                    </div>
+                    <div onclick="showDiv5()" class="font-bold mt-4 flex justify-between">
+                        <div>Video Duration</div>
+                        <div><span class="material-icons mr-6 font-bold">expand_more</span></div>
+                    </div>
+                    <div id="listOfCourses5" class="mt-2 border-t-2" style="display: none;">
+                        <ul><input type="checkbox" id="videod" >
+                            <label>0-1 Hour (1,223)</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>1-3 Hour (3,666)</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>3-6 Hour (2,628)</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>6-17 Hour (2,973)</label><br>
+                           
+                        </ul>
+                    </div>
+                    <div onclick="showDiv6()" class="font-bold mt-4 flex justify-between">
+                        <div>Subtitles</div>
+                        <div><span class="material-icons mr-6 font-bold">expand_more</span></div>
+                    </div>
+                    <div id="listOfCourses6" class="mt-2 border-t-2" style="display: none;">
+                        <ul>
+                            <input type="checkbox" id="videod" >
+                            <label>English</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>Espanol</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>Prtugues</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>Turkce</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>Francais</label><br>
+                            <input type="checkbox" id="videod" >
+                            <label>Italino</label><br>
+                           
+                        </ul>
+                    </div>
+                </div>
+                <div class="w-9/12">
+                    <div>
+                        <% author.forEach(product=>{ %>
+                            <div class="flex my-4" onclick="clickProductName('<%= JSON.stringify(product) %>')">
+                                <div class="w-1/3"><img class="w-full" src="<%= product.image %>" alt="<%product.name%>"></div>
+                                <div class="w-3/4 mx-4">
+                                    <p>
+                                        <%= product.name %>
+                                    </p>
+                                    <p>
+                                        <%= product.title %>
+                                    </p>
+                                    <p>
+                                        <%= product.author %>
+                                    </p>
+                                    <p>
+                                        <%= product.rating %> ⭐⭐⭐⭐⭐(12564)
+                                    </p>
+                                    <p>69 total hours ◦ 319 lectures ◦ all levels</p>
+                                    <p class="inline-block bg-yellow-300 px-2">Bestseller</p>
+                                </div>
+                                <div class="w-1/5">
+                                    <p>
+                                        $ <%= product.price %> /-
+                                    </p>
+                                    <p class="line-through">
+                                        $ 4999 /-
+                                    </p>
+                                </div>
+                
+                                <!-- <p><a href="course/<%= product._id %>">Click Here</a></p> -->
+                            </div>
+                            <hr>
+                
                         <% author.forEach(course=>{ %>
                             <a href="desc/<%= course._id %>">
                                 <div class="flex my-4" onclick="clickcourseName('<%= JSON.stringify(course) %>')">
@@ -89,7 +245,7 @@
                                 </div>
                     </div>
                 </div>
-            </div>
+                </div>
         </div>
         <div class="lg:w-36 w-36 hidden lg:mt-20 lg:ml-56 ml-48 absolute z-50 bg-white" style="margin-top:-18px"
             id="sortFun">
