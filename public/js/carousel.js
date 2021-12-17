@@ -1,9 +1,8 @@
 
-
-    console.log("carousel script is working");
+console.log("carousel script is working");
 async function createCarousel(data) {
 
-    console.log("carouselData", data);
+    // console.log("carouselData", data);
 
     makeCarouselOf(JSON.parse(data));
 
@@ -37,7 +36,7 @@ async function createCarousel(data) {
 
                 // course image
                 let img = document.createElement('img');
-                img.src = "https://img-c.udemycdn.com/course/240x135/567828_67d0.jpg"
+                img.src = product.image;
                 img.setAttribute('class', 'w-full border');
 
                 // course title
@@ -81,7 +80,7 @@ async function createCarousel(data) {
 
                 let oldPrice = document.createElement('p');
                 oldPrice.setAttribute('class', 'text-md text-gray-500 line-through mx-2 font-light');
-                oldPrice.innerText = '₹' + product.oldprice;
+                oldPrice.innerText = '₹' + 1055;
 
                 // append everything to card1
                 priceDiv.append(newPrice, oldPrice);
@@ -294,13 +293,37 @@ async function createCarousel(data) {
 
 
     function addtocart(p) {
-        let data = JSON.parse(localStorage.getItem("cart"));
+        let data = JSON.parse(localStorage.getItem("udemyCart")) || [];
         data.push(p);
-        localStorage.setItem("cart", JSON.stringify(data));
+        localStorage.setItem("udemyCart", JSON.stringify(data));
         alert("Course added to cart");
     }
 
 }
 
 
+// Renuka - Belongs to the home page
+// let selectPopularCourses = document.getElementById('slct-pplr-courses');
+// let selectPopularCoursesRBtn = selectPopularCourses.querySelector('.scrlRight');
+// let selectPopularCoursesLBtn = selectPopularCourses.querySelector('.scrlLeft');
 
+// window.onresize = () => {
+//     if (window.innerWidth <= 850 ) {
+//         selectPopularCoursesRBtn.style.display = 'flex';
+//         selectPopularCoursesLBtn.style.display = 'flex';
+//     }
+//     else {
+//         selectPopularCoursesRBtn.style.display = 'none';
+//         selectPopularCoursesLBtn.style.display = 'none';
+//     }
+// }
+
+// selectPopularCoursesRBtn.addEventListener('click', (event) => {
+//     let selectUl = document.getElementById('select-ul');
+//     selectUl.scrollLeft += 100;
+// })
+
+// selectPopularCoursesLBtn.addEventListener('click', (event) => {
+//     let selectUl = document.getElementById('select-ul');
+//     selectUl.scrollLeft -= 100;
+// })

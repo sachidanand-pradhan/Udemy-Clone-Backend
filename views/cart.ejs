@@ -6,51 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
-    <link rel = "icon" href = "https://www.udemy.com/staticx/udemy/images/v8/favicon-32x32.png" type = "image/x-icon">
+    <link rel="icon" href="https://www.udemy.com/staticx/udemy/images/v8/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
-    
-    <script src='./scripts/navbar.js'></script>
-    <script src='./scripts/carousel.js'></script>
+    <script src='/js/carousel.js'></script>
 </head>
 
-<body>
+<body onload="loadCart('<%= JSON.stringify(author) %>')">
 
-<%- include('./components/header') %>
+    <%- include('./components/header') %>
+        <%= console.log(author) %>
 
-    <div class="w-full bg-black flex">
-        <div class="font-bold text-5xl text-white py-12 pl-60">Shopping Cart</div>
-    </div>
-    <div id="courseCart" class='ml-20 my-4' style = ' margin-top:40px; font-size:20px'>Courses in Cart</div>
-    <div id="cart" class="w-10/12 ml-20 flex border border-gray-200 h-auto mb-10" style = 'width:80%'></div>
-    <div id="cart" class="w-10/12 ml-20 h-auto flex mb-10">
-        <div id="cart_items" class="w-10/12 h-auto" style="height: fit-content;">
-
-        </div>
-        <div class="w-4/12 ml-4">
-            <p class="ml-2 mt-2 text-2xl">Total :</p>
-            <p id="TotalPrice" class="ml-2 mt-2 text-xl font-bold"></p>
-            <a href="checkout"><button class="px-28 py-4 bg-purple-600 hover:bg-purple-800 mt-4 text-white rounded-sm">Checkout</button></a>
-            <h4 class="mt-4">Promotions</h4>
-            <div>
-                <button id="applid">X</button>
-                <p  id="para"class="inline-block">masai10 is applied</p>
+            <div class="w-full bg-black flex">
+                <div class="font-bold text-5xl text-white py-12 pl-60">Shopping Cart</div>
             </div>
-            <p class="mt-2 ml-8" id="update"></p>
-            <input class="mt-5  py-4 border-2" type="text" id="promocode" placeholder="promo code">
-            <button class="mt-2 bg-purple-600 hover:bg-purple-800 text-white px-6 py-4 rounded-sm"
-                onclick="discount()">Apply</button>
-        </div>
-    </div>
+            <div id="courseCart" class='ml-20 my-4' style=' margin-top:40px; font-size:20px'>Courses in Cart</div>
+            <div id="cart" class="w-10/12 ml-20 flex border border-gray-200 h-auto mb-10" style='width:80%'></div>
 
-    <div>
-        <h3 class='text-2xl font-bold mx-20'>Explore new courses</h3>
-        <div class='carousel relative mx-14 px-6 '></div>
-    </div>
+            <div id="cart" class="w-10/12 ml-20 h-auto flex mb-10">
+                <div id="items_inCart" class="w-10/12 h-auto m-auto justify-center" style="height: fit-content;"></div>
 
-    <%- include('./components/footer') %>
+                <div class="w-4/12 ml-4" id='cartSummary'>
+                    <p class="ml-2 mt-2 text-2xl">Total :</p>
+                    <div id="TotalPrice" class="ml-2 mt-2 text-xl font-bold flex">
+                        <p id="old" class='my-1' ></p>
+                        <p id="new" class='my-1 px-3'></p>
+                    </div>
+                    <a href="/checkout"><button
+                            class="px-28 py-4 bg-purple-600 hover:bg-purple-800 mt-4 text-white rounded-sm">Checkout</button></a>
+                    <h4 class="mt-4">Promotions</h4>
+                    <div>
+                        <button id="applid">X</button>
+                        <p id="paragraph" class="inline-block">masai10 is applied</p>
+                    </div>
+
+                    <p class="mt-2 ml-8" id="update"></p>
+                    <input class="mt-5 p-4 border-2" type="text" id="promocode" placeholder="promo code">
+                    <button class="mt-2 bg-purple-600 hover:bg-purple-800 text-white px-6 py-4 rounded-sm"
+                        onclick="discount('<%= JSON.stringify(author) %>')">Apply</button>
+                </div>
+            </div>
+
+            <div>
+                <h3 class='text-2xl font-bold mx-20'>Explore new courses</h3>
+                <div class='carousel relative mx-14 px-6 '></div>
+            </div>
+
+            <%- include('./components/footer') %>
 </body>
 
 </html>
-<script type="module" src="../public/js/cart.js">
-
+<script src="/js/cart.js"> </script>
+<script src='/js/navbar.js'></script>
+<script>
 </script>
