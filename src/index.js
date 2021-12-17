@@ -27,7 +27,7 @@ const logout = require('./controllers/logout.controller');
 
 
 
-app.use("/udemy",course);
+app.use("/udemy", course);
 app.use('/signup',sign);
 app.use('/login',login);
 

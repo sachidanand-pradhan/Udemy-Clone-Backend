@@ -37,9 +37,8 @@ router.post("", async (req, res) => {
       const register = await registerUser.save();
       console.log(register);
       
-      const author = await Author.find().lean().exec();
-      return res.render("home", { author
-      });
+      return res.redirect("udemy/home");
+
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "error is in this particular block" })
     }

@@ -99,8 +99,9 @@
           style="background-color: #7325a3; height: 48px; width: 320px; border: 1px solid #ffffff;"
           class="p-3 font-bold"
           type="submit"
+          onclick = "redirectToHomepage()"
         >
-          Sign Up
+        Sign Up
         </button>
        </div>
        <div class="w-80">
@@ -147,6 +148,10 @@ promise.then((res) => {
     addFunctionalityToNavbar();
     console.log( 'done' );
 })
+
+function redirectToHomepage() {
+  window.location.href = '/udemy/home'
+}
 
 </script>
 
