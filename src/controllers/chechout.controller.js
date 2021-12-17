@@ -3,6 +3,8 @@ const express = require('express');
 const Payment = require('../models/checkout.model')
 const Course = require('../models/course.model')
 
+const Author = require('../models/course.model');
+
 const router = express.Router();
 
 
