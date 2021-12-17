@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Udemy</title>
+    <title>Online Courses - Learn Anything, On Your Schedule | Udemy</title>
+    <link rel = "icon" href = "https://www.udemy.com/staticx/udemy/images/v8/favicon-32x32.png" type = "image/x-icon">
     <link rel='stylesheet' href='/css/style.css'>
     <script src='/js/carousel.js'></script>
 </head>
@@ -13,6 +14,8 @@
 
 <body onclick="hide()">
     <%- include('./components/header') %>
+    <% var dataToBeSent = author %>
+
         <!-- intro -->
         <div class="intro h-auto w-full">
             <img class="w-full"
@@ -355,30 +358,34 @@
 
             <!-- Transform your life -->
             <% console.log(author) %>
-            <div class='lg:w-4/5 m-auto lg:px-10 lg:flex' onclick = "createCarousel('<%= JSON.stringify(author) %>')">
-                <img src='https://s.udemycdn.com/home/non-student-cta/transform-1x-v3.jpg' alt='become an instructor'
-                    class='px-28 lg:px-14 m-auto' />
+                <div class='lg:w-4/5 m-auto lg:px-10 lg:flex' onclick="createCarousel('<%= JSON.stringify(author) %>')">
+                    <img src='https://s.udemycdn.com/home/non-student-cta/transform-1x-v3.jpg'
+                        alt='become an instructor' class='px-28 lg:px-14 m-auto' />
 
-                <div class='mx-10 lg:my-28 '>
-                    <h3 class="font-bold text-3xl text-center lg:text-left lg:text-4xl max-w-lg m-auto">Transform your
-                        life
-                        through education</h3>
+                    <div class='mx-10 lg:my-28 '>
+                        <h3 class="font-bold text-3xl text-center lg:text-left lg:text-4xl max-w-lg m-auto">Transform
+                            your
+                            life
+                            through education</h3>
 
-                    <p class="md:text-lg md:text-md my-2 text-center lg:text-left max-w-xl m-auto">Learners around the
-                        world are
-                        launching new careers, advancing in their fields, and
-                        enriching their lives.</p>
-                    <div
-                        class="bg-gray-900 sm:w-max text-white p-2.5 cursor-pointer m-auto lg:m-0 font-bold hover:bg-black my-4 text-center">
-                        Find out how</div>
+                        <p class="md:text-lg md:text-md my-2 text-center lg:text-left max-w-xl m-auto">Learners around
+                            the
+                            world are
+                            launching new careers, advancing in their fields, and
+                            enriching their lives.</p>
+                        <div
+                            class="bg-gray-900 sm:w-max text-white p-2.5 cursor-pointer m-auto lg:m-0 font-bold hover:bg-black my-4 text-center">
+                            Find out how</div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- footer -->
-            <%- include('./components/footer') %>
+                <!-- footer -->
+                <%- include('./components/footer') %>
+
 </html>
 
 <script src='/js/navbar.js'></script>
 
 <script>
+        console.log(dataToBeSent);
 </script>
