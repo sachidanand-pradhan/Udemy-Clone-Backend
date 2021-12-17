@@ -2,13 +2,16 @@ const express = require('express');
 
 const Payment = require('../models/checkout.model')
 
+const Author = require('../models/course.model');
+
 const router = express.Router();
 
 
 
 router.get("/", async function (req, res) {
     try {
-        res.render("checkout")
+        const author = Author.find().lean().exec();
+        res.render("checkout", author)
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }
