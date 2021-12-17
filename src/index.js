@@ -42,7 +42,7 @@ app.get('/checkoutAuth', auth , (req,res)=>{
 app.use('/logout', logout);
 
 
-app.use('/checkout',checkout);
+app.use("/checkout",checkout);
 app.use('/cart',cart);
 
 
