@@ -1,68 +1,61 @@
+console.log("cart script is running");
+var total = 0;
 
-    import navbar from './components/header.js';
+let courseCart = document.getElementById("courseCart");
+courseCart.innerText = null;
 
-    let promise = new Promise((resolve, reject) => {
-        let header = document.getElementById('navbar');
+// add(cart);
+function loadCart(input) {
+    // data = JSON.parse(data);
+    createCarousel(input);
+    let data = JSON.parse(localStorage.getItem('udemyCart'));
+    console.log("data in loadCart", data);
 
-        header.innerHTML = navbar();
+    if (!data || data.length == 0) {
+        courseCart.innerText = data.length + " Courses in Cart";
 
-        resolve('Navbar imported');
-    });
-    promise.then((res) => {
-        // console.log( res );
-        addFunctionalityToNavbar();
-        // console.log( 'done' );
-    })
 
-    import footer from './components/footer.js';
+        const cartItems = document.getElementById("items_inCart")
+        const cartSummary = document.getElementById("cartSummary");
+        cartSummary.style.display = 'none';
+        // console.log(cartItems);
 
-    let footerDiv = document.getElementById('footer');
-    footerDiv.innerHTML = footer();
-    createCarousel();
-    var total = 0;
-    let cart = JSON.parse(localStorage.getItem("cart"));
-    console.log("----", cart);
-    let courseCart = document.getElementById("courseCart");
-    courseCart.innerText = null;
-    courseCart.append(cart.length + " Courses in Cart")
-    // add(cart);
+        var img = document.createElement("img");
+        img.src = "https://s.udemycdn.com/browse_components/flyout/empty-shopping-cart-v2.jpg";
+        img.className = 'm-auto'
 
-    if (cart == null) {
-        var div = document.getElementById("cart_items")
-        div.setAttribute("class", "cart_item")
-
-        var img = document.createElement("img")
-        img.src = "https://s.udemycdn.com/browse_components/flyout/empty-shopping-cart-v2.jpg"
         var para = document.createElement("p")
-        para.textContent = "Your cart is empty. Keep shopping to find a course"
+        para.textContent = "Your cart is empty. Keep shopping to find a course";
+        para.className = 'm-auto';
+        para.style.width = 'fit-content';
 
-        var button = document.createElement("button")
-        button.textContent = "Keep shopping"
+        let keepShopping = document.createElement("div");
+        keepShopping.innerText = "Keep Shopping";
+        keepShopping.className = 'bg-purple-800 p-4 m-auto text-white my-10';
+        keepShopping.style.width = 'fit-content';
+        keepShopping.onclick = () => { window.location.href = '/home' };
 
 
-        button.setAttribute("class", "buttons")
-        var link = document.createElement("a")
-        link.href = "home_page.html"
-        link.append(button)
 
-
-        div.append(img, para, link)
-        var p_item = document.getElementById("coursenum")
-        p_item.textContent = `${total} Courses in the cart`;
+        cartItems.append(img, para, keepShopping)
+        // var p_item = document.getElementById("coursenum")
+        // p_item.textContent = `${total} Courses in the cart`;
     }
     else {
 
-        add(cart);
+        add(data);
 
     }
     function add(data) {
         // console.log("hii"+data);
-        var d = document.getElementById("cart_items");
+        var d = document.getElementById("items_inCart");
 
         data.forEach((el) => {
+            courseCart.innerText = data.length + " Courses in Cart";
 
             let div = document.createElement("div");
-            div.setAttribute('class', 'flex mt-2 border')
+            div.setAttribute('class', 'flex m-2 border ');
+            div.width = 'fit-content';
 
             let left = document.createElement("div");
             let mid = document.createElement("div");
@@ -86,7 +79,7 @@
             img.src = el.image;
             left.append(img);
             img.style.width = "100%";
-            img.setAttribute('class','cursor-pointer')
+            img.setAttribute('class', 'cursor-pointer my-4  ')
 
             let p = document.createElement("p");
             p.innerText = el.name;
@@ -106,89 +99,102 @@
 
 
             let price = document.createElement("p");
-            price.innerText = "₹ " + el.price;
+            price.innerText = "Rs " + el.price;
             price.setAttribute('class', 'font-bold');
             let oldprice = document.createElement("p");
             // text-decoration: line-through;
-            oldprice.innerText = "₹ " + el.oldprice;
+            oldprice.innerText = "₹" + 1055;
             oldprice.setAttribute('class', 'line-through');
 
-            let removeDiv = document.createElement('p');
-            removeDiv.innerHTML = 'Remove';
-            removeDiv.className = 'text-purple-500 mx-8 mt-4 cursor-pointer';
-            removeDiv.addEventListener('click', (event) => {
+            let removeDiv = document.createElement('div');
+            removeDiv.className = 'm-4 w-48';
+            let remove = document.createElement('p');
+            remove.innerHTML = 'Remove';
+            remove.className = 'text-purple-500  cursor-pointer text-sm';
+
+            let saveForLater = document.createElement('p');
+            saveForLater.innerHTML = 'Save For Later';
+            saveForLater.className = 'text-purple-500  cursor-pointer text-sm';
+
+            let moveToWishlist = document.createElement('p');
+            moveToWishlist.innerHTML = 'Move To Wishlist';
+            moveToWishlist.className = 'text-purple-500 cursor-pointer text-sm';
+
+            removeDiv.append(remove, saveForLater, moveToWishlist);
+            remove.addEventListener('click', removeCourse);
+            function removeCourse(event) {
                 let child = event.target.parentNode;
 
-                cart = cart.filter((item) => {
+                let cart = data.filter((item) => {
                     if (item.title != el.title) return item;
                 })
-
-                localStorage.setItem('cart', JSON.stringify(cart));
+                localStorage.setItem('udemyCart', JSON.stringify(cart));
                 child.remove();
 
                 let tot = cart.reduce(price_sum, 0);
                 console.log(tot);
+
                 let TotalPrice = document.getElementById("TotalPrice");
-                TotalPrice.innerHTML = `Rs. ${tot}`;
+                TotalPrice.querySelector('#old').textContent = `Rs. ${tot}`;
 
                 let courseCart = document.getElementById("courseCart");
                 courseCart.innerText = `${cart.length} courses in Cart`;
-            });
+                window.location.href = '/cart';
+            }
             right.append(price, oldprice);
-
             div.append(left, mid, removeDiv, right);
-
             d.append(div);
         });
 
+        var tot = data.reduce(price_sum, 0);
+        console.log(tot);
+
+        document.getElementById('old').textContent = `Rs ${tot}`;
     }
-
-    function price_sum(ac, el) {
-
-        return ac + el.price;
-    }
-
-    var tot = cart.reduce(price_sum, 0);
-    console.log(tot);
-    let TotalPrice = document.getElementById("TotalPrice");
-    TotalPrice.append(tot);
+}
 
 
-    // let promocode = document.getElementById("promocode").value;
-    // console.log(promocode);
-    const applied = document.getElementById("applid");
+function price_sum(ac, el) {
+    return ac + el.price;
+}
+
+
+let promocode = document.getElementById("promocode").value;
+// console.log(promocode);
+const applied = document.getElementById("applid");
+// console.log(applied);
+applied.addEventListener("click", () => {
     const paragraph = document.getElementById("paragraph");
-    console.log(applied);
+    paragraph.style.display = "none";
+    applied.style.display = 'none';
+})
 
-    function discount() {
-        
-        let coupon = document.getElementById("promocode");
-        console.log(coupon.value);
-         
-          
-        applied.addEventListener("click",()=>{
-            // paragraph.style.display = "none";
-            alert("hii");
 
-        })
+function discount() {
+    let data = JSON.parse(localStorage.getItem("udemyCart"));
+    let coupon = document.getElementById("promocode");
+    console.log(coupon.value);
 
-        if (coupon.value == "masai10") {
+    let tot = data.reduce(price_sum, 0);
+    console.log(tot);
 
-            alert('10% discount has been applied');
-            var sum = "Rs. " + (tot - (tot * 0.10));
-            TotalPrice.innerText = null;
-            TotalPrice.append(sum);
-            let update = document.getElementById("update");
-            update.innerText = null;
-            update.append("coupon code is applied");
-            update.style.color = "green";
-        } else {
-            let update = document.getElementById("update");
-            update.innerText = null;
-            update.append("Coupon Code Not Valid!");
-            update.style.color = "red";
-            return;
-        }
 
+    if (coupon.value == "masai10") {
+        alert('10% discount has been applied');
+        var sum = Math.ceil(tot - (tot * 0.10));
+        TotalPrice.querySelector('#old').style.textDecoration = 'line-through';
+        TotalPrice.querySelector('#new').textContent = "Rs" + sum;
+        let update = document.getElementById("update");
+        update.innerText = null;
+        update.append("coupon code is applied");
+        update.style.color = "green";
+    } else {
+        let update = document.getElementById("update");
+        update.innerText = null;
+        update.append("Coupon Code Not Valid!");
+        update.style.color = "red";
+        return;
     }
+
+}
 

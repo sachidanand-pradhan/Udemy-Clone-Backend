@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Udemy</title>
+    <title>Checkout</title>
+    <link rel = "icon" href = "https://www.udemy.com/staticx/udemy/images/v8/favicon-32x32.png" type = "image/x-icon">
     <script src="/js/checkout.js"> </script>
     <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -90,7 +91,9 @@
     </div>
 
     <div>
+       <form action="/checkoutAuth" method="post">
         <button id="make-pay" onclick="makePayment()" class="bg-blue-600 text-white p-3 text-2xl ml-36 mt-4 px-5 ml-96 center rounded hover:bg-blue-800">Complete Payment</button>
+       </form>
     </div>
     
 

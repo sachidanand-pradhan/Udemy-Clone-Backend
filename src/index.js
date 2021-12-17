@@ -27,23 +27,21 @@ const logout = require('./controllers/logout.controller');
 
 
 
-app.use("/udemy", course);
-app.use('/signup',sign);
-app.use('/login',login);
+app.use('/signup', sign);
+app.use('/login', login);
 
 app.use('/desc',desc);
 
 //This API for when we checkout user logedin or not
-app.get('/checkoutAuth', auth , (req,res)=>{
-    res.render('signup');
-})
 
 //This APi for Logout
 app.use('/logout', logout);
 
 
+
 app.use("/checkout",checkout);
 app.use('/cart',cart);
+app.use("/", course);
 
 
 

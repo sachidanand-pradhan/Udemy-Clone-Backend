@@ -2371,8 +2371,69 @@ hoveronteach.addEventListener('mouseout', () => {
 //  after hover on ****   cart  ****   
 
 let cart = document.getElementById("cart")
-let hovercart = document.getElementById("hovercart")
 cart.addEventListener('mouseover', () => {
+    let hovercart = document.getElementById("hovercart")
+
+    let cart = JSON.parse(localStorage.getItem('udemyCart'));
+
+    if (cart.length == 0) {
+        hovercart.innerHTML = "";
+        let h1 = document.createElement('h1');
+        h1.className = 'text-center m-3 font-normal text-gray-400';
+        h1.innerText = 'Your cart is empty'
+        let div = document.createElement('div');
+        div.className = 'text-center font-medium text-blue-700 m-4';
+        div.onclick = () => { window.location.href = '/home' };
+        div.innerText = 'Keep Shopping';
+
+        hovercart.append(h1, div);
+    } else {
+        hovercart.innerHTML = "";
+
+        cart.forEach((course) => {
+            let div = document.createElement('div');
+            div.className = 'flex h-auto';
+
+            let imgDiv = document.createElement('div');
+            imgDiv.className = 'w-18 my-2 mx-1';
+
+            let img = document.createElement('img');
+            img.src = course.image;
+            img.className = 'w-18';
+            imgDiv.append(img);
+
+            let contentDiv = document.createElement('div');
+
+            let h1 = document.createElement('p');
+            h1.innerText = course.title;
+            h1.className = 'font-bold h-8 overflow-hidden leading-4 m-0 text-sm w-44  ';
+
+            let author = document.createElement('p');
+            author.innerText = course.author;
+            author.className = 'text-gray-400 h-4 overflow overflow-hidden text-xs m-0 w-44';
+
+            let price = document.createElement('p');
+            price.innerHTML = "₹"+ course.price;
+            price.className = 'w-auto font-bold text-sm m-0 w-44'
+
+            contentDiv.append(h1, author, price);
+            div.append(imgDiv, contentDiv);
+            hovercart.append(div);
+        })
+
+        let totalDiv = document.createElement('div');
+        console.log('cart in navbar', cart);
+
+        let sum = 0;
+        cart.forEach(({price}) => {
+            sum += price;
+        });
+        console.log('el.price', sum);
+        totalDiv.innerHTML = `<h1 class = 'font-bold m-2 mx-4'>Total: ₹${sum}</h1><div onclick = 'window.location.href = "/cart"' class = 'bg-gray-900 p-3 text-center font-bold text-white m-4  '>Go To Cart</div>`;
+        totalDiv.className = 'border border-gray-300';
+        hovercart.append(totalDiv);
+    }
+
     hovercart.setAttribute('class', 'hidden md:block w-72 break-words bg-white justify-center absolute ')
 })
 
@@ -2511,7 +2572,7 @@ if (dt != undefined) {
     if (dt[1] === 'logedin') {
         done()
         change()
-    }   
+    }
 }
 // console.log(dt);
 function change() {
@@ -2547,11 +2608,11 @@ logout.addEventListener('click', () => {
 // links for sign in and sign up 
 
 signin.addEventListener('click', () => {
-    window.location.href = "login.html"
+    window.location.href = "/login"
 })
 // ------- //
 signup.addEventListener('click', () => {
-    window.location.href = "signup.html"
+    window.location.href = "/signup"
 })
 
 //    --------------------------------------------------- //
@@ -2626,8 +2687,8 @@ function appendMovies(courses) {
             // console.log(course[0].name, "name---");
             p.setAttribute('class', 'ml-4 mt-2');
             ShowCoursesName.append(p);
-            p.addEventListener('click', () => {
-                dataStored(courses);
+            p.addEventListener('click', (event) => {
+                dataStored(event);
             });
         })
     }
@@ -2653,9 +2714,9 @@ async function main(incomingData) {
         return false;
     }
 
-    let course_data = incomingData.filter( course => {
-        if( course.tags.includes(name)) return true;
-    })  
+    let course_data = incomingData.filter(course => {
+        if (course.tags.includes(name)) return true;
+    })
 
     if (course_data.length === undefined) {
         alert("courses not available!")
@@ -2679,47 +2740,17 @@ function debounce(func, delay, incomingData) {
 
 
 
-function dataStored(course) {
-    console.log("00000", course);
-    if (localStorage.getItem("searchData") == null) {
-        localStorage.setItem("searchData", JSON.stringify([]));
-    }
-    let allData = JSON.parse(localStorage.getItem("searchData"));
-    allData.push(course);
-    localStorage.setItem("searchData", JSON.stringify(allData));
-    let ShowCoursesName = document.getElementById("ShowCoursesName");
-    ShowCoursesName.style.display = "none";
-    window.location.href = "afterSearchShowCoursePage.html";
+function dataStored(e) {
+    let div = e.target;
+    let query = div.textContent;
+
+    query = query.split(' ')[1];
+    query = query.toLowerCase();
+    console.log('event.target = ', query);
+    window.location.href = `/search/${query}`;   
 }
 
 
 function cartPage() {
-    window.location.href = "cartPage.html";
+    window.location.href = "/cart";
 }
-
-
-// Renuka - Belongs to the home page
-let selectPopularCourses = document.getElementById('slct-pplr-courses');
-let selectPopularCoursesRBtn = selectPopularCourses.querySelector('.scrlRight');
-let selectPopularCoursesLBtn = selectPopularCourses.querySelector('.scrlLeft');
-
-window.onresize = () => {
-    if (window.innerWidth <= 850) {
-        selectPopularCoursesRBtn.style.display = 'flex';
-        selectPopularCoursesLBtn.style.display = 'flex';
-    }
-    else {
-        selectPopularCoursesRBtn.style.display = 'none';
-        selectPopularCoursesLBtn.style.display = 'none';
-    }
-}
-
-selectPopularCoursesRBtn.addEventListener('click', (event) => {
-    let selectUl = document.getElementById('select-ul');
-    selectUl.scrollLeft += 100;
-})
-
-selectPopularCoursesLBtn.addEventListener('click', (event) => {
-    let selectUl = document.getElementById('select-ul');
-    selectUl.scrollLeft -= 100;
-})

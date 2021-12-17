@@ -6,7 +6,7 @@ const courseSchema = new mongoose.Schema(
       name: { type: String, required: true },
       title: { type: String, required: true },
       image:{ type: String, required: true},
-      rating:{ type: String, required: true},
+      rating:{ type: Number, required: true},
       price:{ type:Number, require: true },
       shortDecp:{ type: String, required: true},
       author: { type: String, required: true},
