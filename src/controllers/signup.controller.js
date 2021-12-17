@@ -25,8 +25,9 @@ router.post("", async (req, res) => {
      password : req.body.Password
        });
 
-        token = await registerUser.generateAuthToken();
-
+       token = await registerUser.generateAuthToken();
+       console.log("Token is being generated");
+       
        res.cookie("jwt", token,{
            expires:new Date(Date.now() + 6000000000000000),
            httpOnly:true
@@ -37,11 +38,10 @@ router.post("", async (req, res) => {
       console.log(register);
       
       const author = await Author.find().lean().exec();
-
       return res.render("home", { author
       });
     } catch (e) {
-        return res.status(500).json({ message: e.message, status: "JWT Auth" })
+        return res.status(500).json({ message: e.message, status: "error is in this particular block" })
     }
 });
 
