@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Signup</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <body>
-  <div id="nav"></div>
-  <div  style="
+  <title>Signup</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+
+<body>
+  <%- include('./components/header') %>
+    <div style="
   font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto,
     segoe ui, Helvetica, Arial, sans-serif, apple color emoji,
     segoe ui emoji, segoe ui symbol;
@@ -23,135 +21,87 @@
   line-height: 1.43;
   color: #1c1d1f;
 " class="grid justify-items-center">
-    <div class="flex mt-2" style="height: 70px; width: 380px; padding: 24px 64px 24px 24px; ">
-      <h1 class="font-bold" style="font-size: 15px; text-align: center;">
-        Sign Up and Start Learning!
-      </h1>
-    </div>
-    <hr style="width: 350px;" class="ml-7">
-   
-    <div class="flex" style="width: 380px; padding: 24px 24px 16px 24px;">
-      <form action="/signup" method="post" id="form" class="grid gap-y-2">
-        <div style="border: 1.5px solid #1c1d1f" class="flex w-80">
-          <div>
-            <span class="material-icons p-2"> person </span>
+      <div class="flex mt-2" style="height: 70px; width: 380px; padding: 24px 64px 24px 24px; ">
+        <h1 class="font-bold" style="font-size: 15px; text-align: center;">
+          Sign Up and Start Learning!
+        </h1>
+      </div>
+      <hr style="width: 350px;" class="ml-7">
+
+      <div class="flex" style="width: 380px; padding: 24px 24px 16px 24px;">
+        <form action="/signup" method="post" id="form" class="grid gap-y-2">
+          <div style="border: 1.5px solid #1c1d1f" class="flex w-80">
+            <div>
+              <span class="material-icons p-2"> person </span>
+            </div>
+            <div>
+              <input style="font: size 18px; outline: none;" class="text-xl text-gray-500 p-2" type="text"
+                placeholder="Full Name" id="name" name="fullName" required />
+            </div>
           </div>
-          <div>
-            <input
-              style="font: size 18px; outline: none;"
-              class="text-xl text-gray-500 p-2"
-              type="text"
-              placeholder="Full Name"
-              id="name"
-              name="fullName"
-              required
-            />
+          <div style="border: 1.5px solid #1c1d1f" class="border-gray-800 border-2 flex w-80">
+            <div>
+              <span class="material-icons p-2"> email </span>
+            </div>
+            <div>
+              <input style="font: size 18px; outline: none; " class="text-xl text-gray-500 p-2" type="email" id="email"
+                placeholder="Email" name="Email" required />
+            </div>
           </div>
-        </div>
-        <div
-          style="border: 1.5px solid #1c1d1f"
-          class="border-gray-800 border-2 flex w-80"
-        >
-          <div>
-            <span class="material-icons p-2"> email </span>
+          <div style="border: 1.5px solid #1c1d1f" class="border-gray-800 border-2 flex w-80">
+            <div>
+              <span class="material-icons p-2"> lock </span>
+            </div>
+            <div>
+              <input style="font: size 18px; outline: none;" class="text-xl text-gray-500 p-2" type="password"
+                id="password" placeholder="Password" name="Password" required />
+            </div>
           </div>
-          <div>
-            <input
-              style="font: size 18px; outline: none; "
-              class="text-xl text-gray-500 p-2"
-              type="email"
-              id="email"
-              placeholder="Email"
-              name="Email"
-              required
-            />
+          <div class="mt-2">
+            <input type="checkbox" id="checkbox" name="check" required />
+            <label for="">I’m in for emails with exciting discounts and personalized
+              recommendations</label>
           </div>
-        </div>
-        <div
-          style="border: 1.5px solid #1c1d1f"
-          class="border-gray-800 border-2 flex w-80"
-        >
-          <div>
-            <span class="material-icons p-2"> lock </span>
+          <br />
+          <div class="flex text-white  items-center">
+            <button style="background-color: #7325a3; height: 48px; width: 320px; border: 1px solid #ffffff;"
+              class="p-3 font-bold" type="submit" onclick="redirectToHomepage()">
+              Sign Up
+            </button>
           </div>
-          <div>
-            <input
-              style="font: size 18px; outline: none;"
-              class="text-xl text-gray-500 p-2"
-              type="password"
-              id="password"
-              placeholder="Password"
-              name="Password"
-              required
-            />
-          </div>
-        </div>
-        <div class="mt-2">
-          <input type="checkbox" id="checkbox" name="check" required />
-        <label for=""
-          >I’m in for emails with exciting discounts and personalized
-          recommendations</label
-        >
-        </div>
-        <br />
-       <div class="flex text-white  items-center">
-          <button 
-          style="background-color: #7325a3; height: 48px; width: 320px; border: 1px solid #ffffff;"
-          class="p-3 font-bold"
-          type="submit"
-          onclick = "redirectToHomepage()"
-        >
-        Sign Up
-        </button>
-       </div>
-       <div class="w-80">
-          <p style="text-align: center; font-size: 12px">
+          <div class="w-80">
+            <p style="text-align: center; font-size: 12px">
               By signing up, you agree to our
               <a style="color: #401b9c" href="">Terms of Use</a> and
               <a style="color: #401b9c" href="">Privacy Policy.</a>
             </p>
-       </div>
-       <hr/>
-       <div class="flex mt-2" style="height: 45px; width: 380px; padding: 0 0 24px 0; text-align: center;">
-         <h1 class="ml-14"> Already have an account?</h1>
-            <a href="/login" style="color: #5624d0" class="font-bold"
-              >Login</a
-            >
+          </div>
+          <hr />
+          <div class="flex mt-2" style="height: 45px; width: 380px; padding: 0 0 24px 0; text-align: center;">
+            <h1 class="ml-14"> Already have an account?</h1>
+            <a href="/login" style="color: #5624d0" class="font-bold">Login</a>
 
-        </div>
-        </div>
+          </div>
+      </div>
       </form>
-    
-       
-     
-    </div>
- </div>
-  </div>
 
-  
-  </body>
+
+
+    </div>
+    </div>
+    </div>
+
+
+</body>
+
 </html>
 <script src="./scripts/signup.js"></script>
 <script src="./scripts/navbar.js"></script>
+
+
 <script type="module">
-   import navbar from './components/header.js';
-
-let promise = new Promise((resolve,reject) => {
-    let header = document.getElementById('nav');
-
-    header.innerHTML = navbar();
-
-    resolve('Navbar imported');
-});
-promise.then((res) => {
-    console.log( res );
-    addFunctionalityToNavbar();
-    console.log( 'done' );
-})
-
-function redirectToHomepage() {
-  window.location.href = '/udemy/home'
-}
+  function redirectToHomepage() {
+    window.location.href = '/home'
+  }
 
 </script>
-

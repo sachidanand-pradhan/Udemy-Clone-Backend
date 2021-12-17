@@ -8,7 +8,8 @@ const Author = require('../models/course.model')
 
 router.get("", async (req, res) => {
     try {
-        return res.render("signup");
+        const author = Author.find().lean().exec();
+        return res.render("signup", { author });
 
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
@@ -36,7 +37,7 @@ router.post("", async (req, res) => {
 
       const register = await registerUser.save();
       console.log(register);
-      
+
       return res.redirect("udemy/home");
 
     } catch (e) {

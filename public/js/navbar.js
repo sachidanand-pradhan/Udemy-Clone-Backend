@@ -2547,11 +2547,11 @@ logout.addEventListener('click', () => {
 // links for sign in and sign up 
 
 signin.addEventListener('click', () => {
-    window.location.href = "login.html"
+    window.location.href = "/login"
 })
 // ------- //
 signup.addEventListener('click', () => {
-    window.location.href = "signup.html"
+    window.location.href = "/signup"
 })
 
 //    --------------------------------------------------- //

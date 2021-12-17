@@ -13,6 +13,7 @@ router.get("/", async function (req, res) {
     try {
         const author = Course.find().lean().exec();
         res.render("checkout", { author })
+        
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }
