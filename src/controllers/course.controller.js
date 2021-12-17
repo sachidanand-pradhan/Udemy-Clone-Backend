@@ -49,6 +49,19 @@ router.get("/search", async (req, res) => {
     }
 });
 
+router.get("/search/:query", async (req, res) => {
+    try {
+
+        const author = await Author.find({tags: req.params.query}).lean().exec();
+        return res.render("courses", {
+            author,
+        });
+
+    } catch (e) {
+        return res.status(500).json({ message: e.message, status: "Failed" })
+    }
+});
+
 router.get("/desc/:id", async function (req, res) {
     const author = await Author.findById(req.params.id).lean().exec();
 

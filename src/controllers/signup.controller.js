@@ -38,7 +38,9 @@ router.post("", async (req, res) => {
       const register = await registerUser.save();
       console.log(register);
 
-      return res.redirect("udemy/home");
+      
+
+      return res.redirect("/home");
 
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "error is in this particular block" })

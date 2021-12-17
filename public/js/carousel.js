@@ -290,6 +290,9 @@ async function createCarousel(data) {
     if (localStorage.getItem("cart") == null) {
         localStorage.setItem("cart", JSON.stringify([]));
     }
+    
+}
+
 
 
     function addtocart(p) {
@@ -298,9 +301,6 @@ async function createCarousel(data) {
         localStorage.setItem("udemyCart", JSON.stringify(data));
         alert("Course added to cart");
     }
-
-}
-
 
 // Renuka - Belongs to the home page
 // let selectPopularCourses = document.getElementById('slct-pplr-courses');

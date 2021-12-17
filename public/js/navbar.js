@@ -2687,8 +2687,8 @@ function appendMovies(courses) {
             // console.log(course[0].name, "name---");
             p.setAttribute('class', 'ml-4 mt-2');
             ShowCoursesName.append(p);
-            p.addEventListener('click', () => {
-                dataStored(courses);
+            p.addEventListener('click', (event) => {
+                dataStored(event);
             });
         })
     }
@@ -2740,17 +2740,14 @@ function debounce(func, delay, incomingData) {
 
 
 
-function dataStored(course) {
-    console.log("00000", course);
-    if (localStorage.getItem("searchData") == null) {
-        localStorage.setItem("searchData", JSON.stringify([]));
-    }
-    let allData = JSON.parse(localStorage.getItem("searchData"));
-    allData.push(course);
-    localStorage.setItem("searchData", JSON.stringify(allData));
-    let ShowCoursesName = document.getElementById("ShowCoursesName");
-    ShowCoursesName.style.display = "none";
-    window.location.href = "afterSearchShowCoursePage.html";
+function dataStored(e) {
+    let div = e.target;
+    let query = div.textContent;
+
+    query = query.split(' ')[1];
+    query = query.toLowerCase();
+    console.log('event.target = ', query);
+    window.location.href = `/search/${query}`;   
 }
 
 

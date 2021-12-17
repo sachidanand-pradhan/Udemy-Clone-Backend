@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <script src="./scripts/navbar.js"></script>
     <script src='/js/courses.js'></script>
+    <script src='/js/carousel.js'></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
 
@@ -258,7 +259,7 @@ color: #1c1d1f;">
                         <p>4 hours left at this price!</p>
                     </div>
                     <div class="w-full flex">
-                        <button class="px-8 py-2 bg-blue-600">
+                        <button class="px-8 py-2 bg-blue-600" onclick = 'addtocart()'>
                             Add to cart
                         </button>
                         <button class="px-2 py-2">
@@ -266,7 +267,7 @@ color: #1c1d1f;">
                         </button>
                     </div>
                     <div>
-                        <button class="px-2 py-2 hover:bg-gray-500">
+                        <button class="px-2 py-2 hover:bg-gray-500" onclick = 'window.location.href = "/cart"'>
                             Buy now
                         </button>
                     </div>
