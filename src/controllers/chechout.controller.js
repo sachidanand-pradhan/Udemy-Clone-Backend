@@ -33,15 +33,18 @@ async (req, res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
         let newError = errors.array().map(({ msg,param,location}) => {
+            let a = {[param]: msg}
+            console.log(a)
             return {
                 [param]: msg,
+                
             };
         });
         return res.status(400).json({ errors: newError});
     }
     try {
         const payment = await Payment.create(req.body);
-
+        console.log(payment)
         return res.status(201).json({payment});
     } catch (e) {
         return res.send(500).json({ status: "failed", message: e.message });

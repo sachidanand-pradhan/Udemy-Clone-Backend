@@ -30,7 +30,7 @@ async function makePayment() {
         "Content-Type": "application/json",
       },
     });
-    console.log(missprint);
+    console.log(res);
     // if(res == )
   } catch (e) {
     console.log(e);
@@ -50,8 +50,8 @@ async function makePayment() {
   //     console.log(e);
   // }
 
-  alert("Congratulations! your payment is successfully paid");
-  window.location.href = "/home";
+//   alert("Congratulations! your payment is successfully paid");
+//   window.location.href = "/home";
 // 
   // }, 1000);
 }
