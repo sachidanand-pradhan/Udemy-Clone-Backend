@@ -1,8 +1,14 @@
 const { Schema, model } = require('mongoose');
 
-const paymentSchema = new Schema({
+const checkoutSchema = new Schema({
     name:{type: String,required: true},
-    price:{type: Number,required: true},
+    card:{type: Number,required: true},
+    month:{type: Number,required: true},
+    year:{type: Number,required: true},
+    security:{type: Number,required: true},
+    country:{type: String,required: true},
+    state:{type: String,required: true},
+    
 },
 {
     versionKey: false,
@@ -10,4 +16,4 @@ const paymentSchema = new Schema({
 }
 );
 
-module.exports = model("payment",paymentSchema);
+module.exports = model("checkout",checkoutSchema);
