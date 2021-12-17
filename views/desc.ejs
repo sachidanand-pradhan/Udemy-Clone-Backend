@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Courses - Learn Anything, On Your Schedule | Udemy</title>
-    <link rel = "icon" href = "https://www.udemy.com/staticx/udemy/images/v8/favicon-32x32.png" type = "image/x-icon">
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="icon" href="https://www.udemy.com/staticx/udemy/images/v8/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="./scripts/navbar.js"></script>
+    <script src='/js/courses.js'></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="desc.css">
 </head>
 
 
-<body style="font-family: sf pro text,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+<body onclick="hide()" style="font-family: sf pro text,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
 color: #1c1d1f;">
     <header id="nav"></header>
     <div class="flex mb-10">
@@ -26,20 +26,23 @@ color: #1c1d1f;">
                             Devlopment >
                             <span id="title">Javascript</span>
                         </div>
-                        <h1 id="courseName" class="text-3xl pb-2 font-bold">The Complete JavaScript Course 2021: From
-                            Zero to Expert!
+                        <h1 id="courseName" class="text-3xl pb-2 font-bold">
+                            <%= author.name %>
                         </h1>
-                        <h3 id="course1" class="text-lg pb-2 font-semibold">The modern JavaScript course for everyone!
-                            Master JavaScript with
-                            projects, challenges and theory. Many courses in one!</h3>
+                        <h3 id="course1" class="text-lg pb-2 font-semibold">
+                            <%= author.title %>
+                        </h3>
                         <div class="pb-2"> <span
                                 style="background-color: #eceb98;color:#3d3c0a; padding: 4px 6px;">Bestseller</span><span
-                                id="rating"><p>⭐⭐⭐⭐⭐</p> 4.7</span><span><a href="#" style="color: #CEC0FC;"> <u>.(118,739
+                                id="rating">
+                                <p>⭐⭐⭐⭐⭐</p> 4.7
+                            </span><span><a href="#" style="color: #CEC0FC;"> <u>.(118,739
                                         ratings).</u> </a></span><span>521,515
                                 students</span></div>
                         <div class="pb-2">
-                            <span>Created by </span><a id="author_name" style="color: #CEC0FC;" href=""><u>Jonas
-                                    Schmedtmann</u></a>
+                            <span>Created by </span><a id="author_name" style="color: #CEC0FC;" href=""><u>
+                                    <%= author.author %>
+                                </u></a>
                         </div>
                         <div class="pb-2">
                             <span>Last updated 10/2021 </span><span>English</span><span> English, French
@@ -47,8 +50,8 @@ color: #1c1d1f;">
                         </div>
                     </div>
                 </div>
-                <div id="blackRight" class="border mt-32" style="width: 336px;">
-
+                <div id="blackRight" class="border mt-32" style="width: 25%;">
+                    <img class="w-full" src="<%= author.image %>" alt="<%author.name%>">
                 </div>
             </div>
             <div id="white" class="flex">
@@ -244,14 +247,38 @@ color: #1c1d1f;">
                     </div>
                 </div>
                 <div id="whiteRight" class="w-3/12 sticky top-0 z-50 border  bg-white h-96 mr-28  "
-                    style="width: 336px;"></div>
+                    style="width: 336px;">
+                    <div>
+                        <p class="ml-6 font-bold mt-4 text-3xl">
+                            $ <%= author.price %> /- <span class="line-through font-normal text-base">$ 4999 /- 20%
+                                    off</span>
+                        </p>
+                    </div>
+                    <div>
+                        <p>4 hours left at this price!</p>
+                    </div>
+                    <div class="w-full flex">
+                        <button class="px-8 py-2 bg-blue-600">
+                            Add to cart
+                        </button>
+                        <button class="px-2 py-2">
+                            🤍
+                        </button>
+                    </div>
+                    <div>
+                        <button class="px-2 py-2 hover:bg-gray-500">
+                            Buy now
+                        </button>
+                    </div>
+
+                </div>
 
 
             </div>
         </div>
     </div>
-      <!-- footer -->
-      <div id="footer"></div>
+    <!-- footer -->
+    <div id="footer"></div>
 </body>
 
 </html>
@@ -517,7 +544,7 @@ color: #1c1d1f;">
         alert("Course added to cart");
     }
 
-    function buyNowfun(p){
+    function buyNowfun(p) {
         let data = JSON.parse(localStorage.getItem("cart"));
         data.push(p);
         localStorage.setItem("cart", JSON.stringify(data));
