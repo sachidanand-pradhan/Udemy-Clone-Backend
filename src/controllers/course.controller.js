@@ -13,16 +13,16 @@ router.post('', async function (req, res) {
     }
 });
 
-// router.get("/courses", async function (req, res) {
-//     try {
-//         const course = await Author.find().lean().exec()
-//         return res.render("courses",{
-//             course,
-//         });
-//     } catch (e) {
-//         return res.status(500).json({ message: e.message, status: "Failed" })
-//     }
-// })
+router.get("/courses", async function (req, res) {
+    try {
+        const author = await Author.find().lean().exec()
+        return res.render("courses",{
+            author,
+        });
+    } catch (e) {
+        return res.status(500).json({ message: e.message, status: "Failed" })
+    }
+})
 
 router.get("/home", async (req, res) => {
     try {
@@ -40,6 +40,11 @@ router.get("/search", async (req, res) => {
     try {
 
         const author = await Author.find({}).lean().exec();
+        // const author = [{
+        //     name:"js",
+        //     title:"intro to js",
+        //     price: 555
+        // }]
         return res.render("courses", {
             author,
         });
@@ -53,6 +58,7 @@ router.get("/search/:query", async (req, res) => {
     try {
 
         const author = await Author.find({tags: req.params.query}).lean().exec();
+
         return res.render("courses", {
             author,
         });
