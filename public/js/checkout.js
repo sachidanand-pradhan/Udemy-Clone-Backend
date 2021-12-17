@@ -18,8 +18,29 @@
 
     function makePayment() {
         setTimeout(function () {
+const cardName = document.getElementById("card_name").value
+const cardId = document.getElementById("card_id").value
+const cardMonth = document.getElementById("card_month").value
+const cardYear = document.getElementById("card_year").value
+const cardSecurity = document.getElementById("card_security").value
+const country = document.getElementById("country").value
+const terrio = document.getElementById("terrio").value
+
+const missprint = {cardName,cardId,cardMonth,cardYear,cardSecurity,country,terrio};
+            
 
             alert("Congratulations! your payment is successfully paid");
             window.location.href = "home.ejs";
+
         }, 1000);
     }
+    // if (
+    //     signData.email == "" ||
+    //     signData.password == "" ||
+    //     signData.password_conf == "" ||
+    //     signData.first_name == "" ||
+    //     signData.last_name == "" 
+    //   ) {
+    //     alert("please fill all the madatory fields");
+    //   }
+    

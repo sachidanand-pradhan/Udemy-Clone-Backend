@@ -156,17 +156,20 @@
 
     // let promocode = document.getElementById("promocode").value;
     // console.log(promocode);
+    const applied = document.getElementById("applid");
+    const paragraph = document.getElementById("paragraph");
+    console.log(applied);
 
     function discount() {
         
         let coupon = document.getElementById("promocode");
         console.log(coupon.value);
          
-        const applied = document.getElementById("applid");
-        const para = document.getElementById("para")  
-
+          
         applied.addEventListener("click",()=>{
-            para.style.display = "none";
+            // paragraph.style.display = "none";
+            alert("hii");
+
         })
 
         if (coupon.value == "masai10") {
