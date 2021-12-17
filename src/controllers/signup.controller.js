@@ -4,6 +4,8 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const cookie = require('cookie');
 
+const Author = require('../models/course.model')
+
 router.get("", async (req, res) => {
     try {
         return res.render("signup");
@@ -34,7 +36,10 @@ router.post("", async (req, res) => {
       const register = await registerUser.save();
       console.log(register);
       
-      res.render("home");
+      const author = await Author.find().lean().exec();
+
+      return res.render("home", { author
+      });
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "JWT Auth" })
     }
