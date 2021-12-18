@@ -1,5 +1,7 @@
-const user = require('../models/signup.model')
+const express = require('express');
+const signup = require('../models/signup.model');
+const router = express.Router();
 
-app.get('/checkoutAuth', auth , (req,res)=>{
+router.get('/checkoutAuth', auth , (req,res)=>{
     res.render('signup');
 })

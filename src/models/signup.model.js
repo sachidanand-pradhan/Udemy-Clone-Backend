@@ -8,17 +8,22 @@ require('dotenv').config();
 
 const registrationSchema = new mongoose.Schema(
     {
-      full_Name: { type: String},
+      full_Name: { type: String,
+        trim : true,
+        minlength : 3
+      },
       email:{ type:String,
         required:true,
-        unique:true,
-        validate(value){
-          if(!validator.isEmail(value)){
-            throw new Error("Email is Invalid")
-          }
-        } 
+        trim : true,
+        unique: true,
+        match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+   
       },
-      password:{type:String, required:true, min: 8},
+      password:{type:String,
+        required : true,
+      trim : true,
+      minlength : 5
+      },
       tokens:[{
         token:{
           type:String,

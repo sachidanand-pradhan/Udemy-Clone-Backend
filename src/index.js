@@ -38,8 +38,9 @@ app.use('/desc',desc);
 app.use('/logout', logout);
 
 
-app.use('/checkout', checkout);
-app.use('/cart', cart);
+
+app.use("/checkout",checkout);
+app.use('/cart',cart);
 app.use("/", course);
 
 

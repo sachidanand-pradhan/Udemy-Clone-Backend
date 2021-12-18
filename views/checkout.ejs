@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <link rel = "icon" href = "https://www.udemy.com/staticx/udemy/images/v8/favicon-32x32.png" type = "image/x-icon">
-    <script src="/public/js/checkout.js"> </script>
+    <script src="/js/checkout.js"> </script>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -40,8 +40,8 @@
     </div>
 
     <div class="bg-gray-50 ml-96  mt-4 border-black h-1/2 py-4 m-2" style="width: 660px;">
-        <div><input id="card_name" class=" py-3 border-black m-2  ml-6 w-11/12 border-2" placeholder="Name on Card" /></div>
-        <div><input id="card_id" class="py-3 border-black m-2 ml-6 w-11/12 border-2" placeholder="Card Number" /></div>
+        <div><input id="card_name" class=" py-3 border-black m-2  ml-6 w-11/12 border-2" placeholder="Name on Card" required/></div>
+        <div><input id="card_id" class="py-3 border-black m-2 ml-6 w-11/12 border-2" placeholder="Card Number" required/></div>
         <div  class="flex justify-between">
             <div>
                 <select id="card_month" class="border-black ml-6 border-2 h-14 w-48">
@@ -91,27 +91,16 @@
     </div>
 
     <div>
-       <form action="/checkoutAuth" method="post">
         <button id="make-pay" onclick="makePayment()" class="bg-blue-600 text-white p-3 text-2xl ml-36 mt-4 px-5 ml-96 center rounded hover:bg-blue-800">Complete Payment</button>
-       </form>
     </div>
-    
-
    <%- include('./components/footer') %>
+   
+
 </body>
 
 </html>
 
-<script type="module" src="../public/js/checkout.js">
 
-</script>
 <script>
-    function makePayment() {
-        setTimeout(function () {
-
-            alert("Congratulations! your payment is successfully paid");
-            window.location.href="udemy/home";
-        }, 1000);
-    }
 
 </script>
