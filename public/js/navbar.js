@@ -2555,7 +2555,9 @@ function ok() {
     beforlogin.setAttribute('class', 'block')
     afterlogin.setAttribute('class', 'hidden')
 }
+
 function done() {
+    console.log("done func from navbar is running");
     signin.setAttribute('class', 'hidden')
     signup.setAttribute('class', 'hidden')
     user.setAttribute('class', 'py-9 px-1 mr-4 hidden md:block')
@@ -2576,48 +2578,35 @@ function done() {
 // }
 
 async function makeRequest(token) {
-    // console.log("make request is working with the token", token);
-    if(token !== 'not logged in') {
-        try{
+    console.log("make request is working with the token", token);
+    if (token !== 'not logged in') {
+        try {
             let res = await fetch(`http://localhost:2345/signup/${token}`);
             res = await res.json();
             console.log(res);
             done()
             change(res);
         } catch (e) {
-            alert(e.message);
+            console.log("error in makeRequest from navbar ", e.message);
         }
     }
-    else { alert("user has not logged in")}
 }
 
 // console.log(dt);
 function change(u) {
+    console.log("data in change func :", u);
     u.forEach((e) => {
-        if (e.email) {
-            let A = e.full_Name.toUpperCase()
-            pahlaleter.innerText = A
-            username.innerText = A
-            useremail.innerText = e.email
-            userkanaam.innerText = e.full_Name
-            mobusername.innerText = A
-            mobuserkanaam.innerText = e.full_Name
-            mobuseremail.innerText = e.email
-        }
+        let A = e.full_Name[0].toUpperCase()
+        pahlaleter.innerText = A
+        username.innerText = A
+        useremail.innerText = e.email
+        userkanaam.innerText = e.full_Name
+        mobusername.innerText = A
+        mobuserkanaam.innerText = e.full_Name
+        mobuseremail.innerText = e.email
     });
 }
 
-// delete function 
-function itemdelete() {
-    localStorage.removeItem("check")
-}
-
-// ----  for log out -----
-let logout = document.getElementById("logout")
-logout.addEventListener('click', () => {
-    ok()
-    itemdelete()
-})
 
 // links for sign in and sign up 
 
@@ -2756,4 +2745,10 @@ function debounce(func, delay, incomingData) {
 
 function cartPage() {
     window.location.href = "/cart";
+}
+
+function loadFunc(authorData, cookie) {
+    cookie = cookie || "not logged in";
+    if (createCarousel) { createCarousel(authorData) };
+    makeRequest(cookie);
 }

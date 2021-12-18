@@ -9,8 +9,8 @@
         <div id="afterlogin" class="hidden">
             <div id="mobusername" class="bg-black rounded-full font-bold text-2xl text-white py-4 px-6">A</div>
             <div class="grid my-auto">
-                <a href="#" id="mobuserkanaam" class="font-medium hover:text-blue-700">Avdhesh</a>
-                <a href="#" id="mobuseremail" class="text-sm text-gray-500">stpaul886@gmail.com</a>
+                <a href="#" id="mobuserkanaam" class="font-medium hover:text-blue-700"></a>
+                <a href="#" id="mobuseremail" class="text-sm text-gray-500"></a>
             </div>
         </div>
         <hr>
@@ -471,8 +471,7 @@
     id="ShowCoursesName"></div>
     
 <!-- ----------   after hover on bussiness   --------- -->
-<% cookie = cookie || "not logged in"; %>
-    <div id="bussiness" class="hidden" style="margin-left: 49%;" onclick = 'makeRequest("<%= cookie %>")'>
+    <div id="bussiness" class="hidden" style="margin-left: 49%;">
     <h1 class="text-center m-3 font-bold text-xl leading-5">Get your team access to over 6,000 top Udemy courses,
         anytime, anywhere.</h1>
     <a href="#">
@@ -519,8 +518,8 @@
     <div class="flex gap-2 m-4">
         <div id="username" class="bg-black rounded-full font-bold text-2xl text-white py-4 px-6">A</div>
         <div class="grid my-auto">
-            <a href="#" id="userkanaam" class="font-medium hover:text-blue-700">Avdhesh</a>
-            <a href="#" id="useremail" class="text-sm text-gray-500">stpaul886@gmail.com</a>
+            <a href="#" id="userkanaam" class="font-medium hover:text-blue-700"></a>
+            <a href="#" id="useremail" class="text-sm text-gray-500"></a>
         </div>
     </div>
     <hr>
@@ -562,6 +561,6 @@
     <hr>
     <!--  -->
     <div class="m-4 text-sm text-gray-600 hover:text-blue-700"><a href="#">Help</a></div>
-    <div id="logout" class="m-4 text-sm text-gray-600 hover:text-blue-700"><a href="#">Log out</a></div>
+    <div id="logout" class="m-4 text-sm text-gray-600 hover:text-blue-700"><a onclick = 'window.location.href = "/logout"'>Log out</a></div>
 </div>
 
