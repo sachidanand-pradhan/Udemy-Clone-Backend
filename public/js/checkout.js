@@ -51,9 +51,9 @@ async function makePayment() {
   //     console.log(e);
   // }
 
-//   alert("Congratulations! your payment is successfully paid");
-//   window.location.href = "/home";
-// 
+  //   alert("Congratulations! your payment is successfully paid");
+  //   window.location.href = "/home";
+  // 
   // }, 1000);
 }
 // if (
