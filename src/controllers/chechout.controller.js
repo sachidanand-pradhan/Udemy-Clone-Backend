@@ -5,17 +5,17 @@ const { body, validationResult } = require('express-validator');
 const Payment = require('../models/checkout.model')
 const Course = require('../models/course.model')
 
-const Author = require('../models/course.model');
+//const Author = require('../models/course.model');
 const auth = require('../middleware/auth')
 const router = express.Router();
 
 
 
-router.get("/", auth, async function (req, res) {
+router.get("", auth, async function (req, res) {
     try {
-        
+            const cookie = req.cookies.jwt;
             const author = Course.find().lean().exec();
-            res.render("checkout", { author })
+            res.render("checkout", { author, cookie})
         
        
         

@@ -4,7 +4,8 @@ const Register = require("../models/signup.model");
 const auth = async (res, req, next) => {
   try {
    console.log("Inside Auth")
-    const token = req.cookies.jwt;
+    const token = '';
+    
     console.log("This is token" + token);
     const verifyUser = jwt.verify(token, "mynameissurajkarosiafrommasaischool");
     console.log("This is Verify for User " + verifyUser);
