@@ -6,17 +6,19 @@ const Payment = require('../models/checkout.model')
 const Course = require('../models/course.model')
 
 const Author = require('../models/course.model');
-
+const auth = require('../middleware/auth')
 const router = express.Router();
 
 
 
-router.get("/", async function (req, res) {
+router.get("/", auth, async function (req, res) {
     try {
-        const author = Course.find().lean().exec();
-        const cookie = req.cookies.jwt;
-        res.render("checkout", { author, cookie })
-
+        
+            const author = Course.find().lean().exec();
+            res.render("checkout", { author })
+        
+       
+        
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }

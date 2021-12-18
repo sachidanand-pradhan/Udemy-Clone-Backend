@@ -1,24 +1,30 @@
 const jwt = require('jsonwebtoken');
-const Register = require('../models/signup.model');
+const Register = require("../models/signup.model");
 
-const auth = async(res,req,next)=>{
+const auth = async (res, req, next) => {
+  try {
+   console.log("Inside Auth")
+    const token = req.cookies.jwt;
+    console.log("This is token" + token);
+    const verifyUser = jwt.verify(token, "mynameissurajkarosiafrommasaischool");
+    console.log("This is Verify for User " + verifyUser);
 
-    try{
+    const user = await Register.findOne({ _id:verifyUser._id });
+    if (!user) {
+      throw new Error()
+  }
 
-        const token = req.cookies.jwt;
-        const verifyUser = jwt.verify(token, process.env.SECRET_KEY);
-        console.log("This is Verify for User "+verifyUser);
+  req.token = token
+  req.user = user
+  next()
 
-        const user = await Register.findOne({_id:verifyUser._id});
+    req.token = token;
+    req.user = user;
 
-        req.token = token;
-        req.user = user;
-
-        console.log("This is user Data "+user);
-        next();
-    }
-    catch(e){
-        res.status(500).send({message:e.message, status:"Failed"})
-    }
-}
+    console.log("This is user Data " + user);
+    next();
+  } catch (e) {
+   console.log(e);
+  }
+};
 module.exports = auth;

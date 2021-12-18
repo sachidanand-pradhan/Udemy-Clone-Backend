@@ -30,7 +30,8 @@ router.post("",async(req,res)=>{
     });
 
       if(isMatch){
-          res.redirect("/home")
+        
+        return res.redirect("/home");
       }else{
         res.send("Invalid Login Credential");
       }
