@@ -32,7 +32,6 @@ router.post("/", body("name").isLength({ min: 4, max: 20 }).withMessage("Name is
 
     async (req, res) => {
         const errors = validationResult(req);
-        try {
             if (!errors.isEmpty()) {
                 let newError = errors.array().map(({ msg, param, location }) => {
                     let a = { [param]: msg }
@@ -41,14 +40,16 @@ router.post("/", body("name").isLength({ min: 4, max: 20 }).withMessage("Name is
                         [param]: msg,
                     };
                 });
-                return res.status(400).send("error is here");
+                return res.status(400).json(newError);
             }
+            try{
             const payment = await Payment.create(req.body);
-            console.log(payment)
-            return res.redirect("/home");
+            // console.log(payment)
+            return res.status(201).json({payment});
         } catch (e) {
             return res.send(500).json({ status: "failed", message: e.message });
         }
+    
     })
 
 
