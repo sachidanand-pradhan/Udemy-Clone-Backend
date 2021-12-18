@@ -185,9 +185,8 @@
 
                 </div>
                 <div class="lg:w-9/12 w-full">
-                    <div class="border-0">
                         <% author.forEach(course=>{ %>
-                            <a href="desc/<%= course._id %>">
+                            <a href="desc/<%= course._id %>"> <span onclick = 'window.location.href = `/search/desc/course._id `'>
                                 <div class="flex my-4" onclick="clickcourseName('<%= JSON.stringify(course) %>')">
                                     <div class="w-1/3"><img class="w-full" src="<%= course.image %>"
                                             alt="<%course.name%>"></div>
@@ -218,6 +217,7 @@
 
                                     <!-- <p><a href="course/<%= course._id %>">Click Here</a></p> -->
                                 </div>
+                            </span>
                             </a>
                             <hr>
 

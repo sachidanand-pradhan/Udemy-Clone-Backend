@@ -52,17 +52,11 @@ router.get("/search", async (req, res) => {
         const page = +req.query.page || 1;
         const size = +req.query.size || 2;
 
-        // page = 1 skip (0) limit (2) // (1 -1) * 2 = 0
-        // page = 2 skip(2) limit (2) // (2 -1 )* 2 = 2
-        // skip items = (page - 1) * size
-
         const skip = (page - 1) * size;
 
         const author = await Author.find().skip(skip).limit(size).lean().exec();
 
         const totalPages = Math.ceil((await Author.find().countDocuments()) / size);
-
-        console.log(author,totalPages,page);
 
         const cookie = req.cookies.jwt;
         return res.render("courses", {
@@ -79,10 +73,25 @@ router.get("/search", async (req, res) => {
 
 router.get("/search/:query", async (req, res) => {
     try {
-        const author = await Author.find({type: req.params.query}).lean().exec();
+        let author;
+        author = await Author.find({type: req.params.query}).lean().exec();
+
+        const page = +req.query.page || 1;
+        const size = +req.query.size || 10;
+
+        const skip = (page - 1) * size;
+
+        author = await Author.find().skip(skip).limit(size).lean().exec();
+
+        const totalPages = Math.ceil((await Author.find().countDocuments()) / size);
+
+        const cookie = req.cookies.jwt;
 
         return res.render("courses", {
             author,
+            cookie,
+            totalPages,
+            page
         });
 
     } catch (e) {
@@ -107,10 +116,6 @@ router.get("/search/sort/:query", async (req, res) => {
 
         const page = +req.query.page || 1;
         const size = +req.query.size || 10;
-
-        // page = 1 skip (0) limit (2) // (1 -1) * 2 = 0
-        // page = 2 skip(2) limit (2) // (2 -1 )* 2 = 2
-        // skip items = (page - 1) * size
 
         const skip = (page - 1) * size;
 
@@ -157,6 +162,13 @@ router.get("/desc/:id", async function (req, res) {
         author,
     });
 });
+router.get("/search/desc/:id", async function (req, res) {
+    const author = await Author.findById(req.params.id).lean().exec();
+
+    return res.render("desc", {
+        author,
+    });
+});
 
 router.get("/search/sort/desc/:id", async function (req, res) {
     const author = await Author.findById(req.params.id).lean().exec();
@@ -165,17 +177,6 @@ router.get("/search/sort/desc/:id", async function (req, res) {
         author,
     });
 });
-
-
-
-// router.get("/:id", async (req, res) => {
-//     try {
-//         const author = await Author.findById(req.params.id).lean().exec()
-//         return res.status(201).send(author)
-//     } catch (e) {
-//         return res.status(500).json({ message: e.message, status: "Failed" })
-//     }
-// })
 
 router.patch("/:id", async (req, res) => {
     try {
