@@ -65,7 +65,6 @@ router.get("/search", async (req, res) => {
 
         
         const cookie = req.cookies.jwt;
-
         return res.render("courses", {
             cookie,
             author,

@@ -1,31 +1,35 @@
-const jwt = require('jsonwebtoken');
+const jasonWt = require('jsonwebtoken');
 const Register = require("../models/signup.model");
 
-const auth = async (res, req, next) => {
+const auth = async (req, res, next) => {
   try {
-   console.log("Inside Auth")
-    const token = '';
-    
-    console.log("This is token" + token);
-    const verifyUser = jwt.verify(token, "mynameissurajkarosiafrommasaischool");
-    console.log("This is Verify for User " + verifyUser);
+    console.log("Inside Auth")
+    const token = req.cookies.jwt;
 
-    const user = await Register.findOne({ _id:verifyUser._id });
-    if (!user) {
-      throw new Error()
-  }
+    if (!token) {
+      return res.redirect('/signup');
+    } else {
+      console.log("This is token" + token);
+      const verifyUser = jasonWt.verify(token, "mynameissurajkarosiafrommasaischool");
+      console.log("This is Verify for User " + verifyUser);
 
-  req.token = token
-  req.user = user
-  next()
+      const user = await Register.findOne({ _id: verifyUser._id });
+      if (!user) {
+        throw new Error()
+      }
 
-    req.token = token;
-    req.user = user;
+      req.token = token
+      req.user = user
+      next()
 
-    console.log("This is user Data " + user);
-    next();
+      req.token = token;
+      req.user = user;
+
+      console.log("This is user Data " + user);
+      next();
+    }
   } catch (e) {
-   console.log(e);
+    console.log(e);
   }
 };
 module.exports = auth;
