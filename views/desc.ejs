@@ -15,7 +15,7 @@
 </head>
 
 
-<body onclick="hide()" style="font-family: sf pro text,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+<body onclick="hide()" onload = "makeRequest(`<%= cookie %>`)" style="font-family: sf pro text,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
 color: #1c1d1f;">
     <header id="nav"></header>
     <div class="flex mb-10">
@@ -254,7 +254,7 @@ color: #1c1d1f;">
                             </p>
                         </div>
                         <div class="w-full flex">
-                            <button class="w-4/5 py-2 text-white font-semibold" style="background-color: #A534F0;"
+                            <button class="w-4/5 h-12 py-2 text-white font-semibold bg-purple-600 hover:bg-purple-800"
                                 onclick='addtocart()'>
                                 Add to cart
                             </button>

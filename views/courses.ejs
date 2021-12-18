@@ -11,12 +11,10 @@
     <script src="https://kit.fontawesome.com/41129917e5.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src='/js/courses.js'></script>
-    <script src="/js/pagination.js"></script>>
+    <script src="/js/pagination.js"></script>
 </head>
 
-
-<body onclick="hide()" onload = "senddata(`<%=JSON.stringify(author)%>`,`<%=totalPages%>`,`<%=page%>`)">
-    
+<body onclick="hide()" onload = "senddata(`<%=JSON.stringify(author)%>`,`<%=totalPages%>`,`<%=page%>`), makeRequest(`<%= cookie %>`)">
     <%- include('./components/header') %>
         <div class="w-11/12 m-auto">
             <h1 class="font-bold lg:text-4xl text-2xl my-4">10,000 results for “javascript”</h1>
@@ -68,9 +66,9 @@
                     <div id="listOfCourses" class="mt-2 border-t-2 cursor-pointer" style="display: none;">
                         <ul>
                             <input type="checkbox" id="videod">
-                            <label><a href="/search/topic/javascript">JAVASCRIPT</a></label><br>
+                            <label><a onclick = 'clearOldDiv("javascript")'>JAVASCRIPT</a></label><br>
                             <input type="checkbox" id="videod">
-                            <label><a href="/search/topic/python">PYTHON</a></label><br>
+                            <label><a onclick = 'clearOldDiv("python")'>PYTHON</a></label><br>
                             <input type="checkbox" id="videod">
                             <label><a href="/search/topic/css">CSS</a></label><br>
                             <input type="checkbox" id="videod">
@@ -108,9 +106,9 @@
                     <div id="listOfCourses2" class="mt-2 border-t-2 cursor-pointer" style="display: none;">
                         <ul>
                             <input type="checkbox" id="videod">
-                            <label>Paid</label><br>
+                            <label><a href="/search/sort/1">price Low to High</a></label><br>
                             <input type="checkbox" id="videod">
-                            <label>Free</label><br>
+                            <label><a href="/search/sort/2">Rating High to Low</a></label><br>
 
                         </ul>
                     </div>
@@ -138,13 +136,9 @@
                     <div id="listOfCourses4" class="mt-2 border-t-2 cursor-pointer" style="display: none;">
                         <ul>
                             <input type="checkbox" id="videod">
-                            <label>⭐⭐⭐⭐⭐ 4.5 & up (222)</label><br>
+                            <label><a href="/search/sort/3">Rating High to Low</a></label><br>
                             <input type="checkbox" id="videod">
-                            <label>⭐⭐⭐⭐ 4.0 & up (455)</label><br>
-                            <input type="checkbox" id="videod">
-                            <label>⭐⭐⭐⭐ 3.5 & up (556)</label><br>
-                            <input type="checkbox" id="videod">
-                            <label>⭐⭐⭐ 3.0 & up (579)</label><br>
+                            <label><a href="/search/sort/4">Rating Low to High</a></label><br>
 
                         </ul>
                     </div>
@@ -190,7 +184,7 @@
                     
 
                 </div>
-                <div class="lg:w-9/12 w-full" id="ClearDiv" onloadstart="clearOldDiv()">
+                <div class="lg:w-9/12 w-full" id="clearDiv" onloadstart="clearOldDiv()">
                         <% author.forEach(course=>{ %>
                             <a href="desc/<%= course._id %>"> <span onclick = 'window.location.href = `/search/desc/course._id `'>
                                 <div class="flex my-4" onclick="clickcourseName('<%= JSON.stringify(course) %>')">
@@ -235,12 +229,6 @@
 
         <div class="w-8/12 m-auto mt-8">
             <div class="w-4/12 m-auto" onload = "senddata(`<%=JSON.stringify(author)%>`,`<%=totalPages%>`)" id="pagination">
-                 <!-- <a href="#" class="text-2xl px-4 py-2 hover:bg-gray-600 rounded">❮</a>
-                <a href="#" class="text-2xl px-4 py-2 hover:bg-gray-600 rounded">1</a>
-                <a href="#" class="text-2xl px-4 py-2 hover:bg-gray-600 rounded">2</a>
-                <a href="#" class="text-2xl px-4 py-2 hover:bg-gray-600 rounded">3</a>
-                <a href="#" class="text-2xl px-4 py-2 hover:bg-gray-600 rounded">4</a>
-                <a href="#" class="text-2xl px-4 py-2 hover:bg-gray-600 rounded">❯</a> -->
             </div>
         </div>
 
@@ -263,9 +251,9 @@
     //     sortFun.setAttribute("class","block");
     // }
 
-    function clearOldDiv(){
-        let a = document.createElement("clearDiv");
-        a.innerHTML = "";
+    function clearOldDiv(query){
+        console.log("clearOldDiv func is running with query:", query);
+        document.getElementById("clearDiv").innerHTML = "";
+        window.location.href = `/search/topic/${query}`
     }
-    
 </script>
