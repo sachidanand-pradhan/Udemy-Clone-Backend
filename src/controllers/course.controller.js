@@ -35,9 +35,10 @@ router.get("/courses", async function (req, res) {
 router.get("/home", async (req, res) => {
     try {
         const author = await Author.find().lean().exec();
-
+        const cookie = req.cookies.jwt;
         return res.render("home", {
-            author
+            author,
+            cookie
         });
 
     } catch (e) {
