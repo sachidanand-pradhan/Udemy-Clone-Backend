@@ -36,8 +36,8 @@ router.get("/home", async (req, res) => {
     try {
         const author = await Author.find().lean().exec();
 
-        return res.render("home", {
-            author
+        const cookie = req.cookies.jwt;
+        return res.render("home", { author, cookie
         });
 
     } catch (e) {
@@ -62,12 +62,15 @@ router.get("/search", async (req, res) => {
         const totalPages = Math.ceil((await Author.find().countDocuments()) / size);
 
         console.log(author,totalPages,page);
+
+        const author = await Author.find({}).lean().exec();
+
         return res.render("courses", {
             author,
             totalPages,
             page
         });
-
+        
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }

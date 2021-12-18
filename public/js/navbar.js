@@ -2413,7 +2413,7 @@ cart.addEventListener('mouseover', () => {
             author.className = 'text-gray-400 h-4 overflow overflow-hidden text-xs m-0 w-44';
 
             let price = document.createElement('p');
-            price.innerHTML = "₹"+ course.price;
+            price.innerHTML = "₹" + course.price;
             price.className = 'w-auto font-bold text-sm m-0 w-44'
 
             contentDiv.append(h1, author, price);
@@ -2425,7 +2425,7 @@ cart.addEventListener('mouseover', () => {
         console.log('cart in navbar', cart);
 
         let sum = 0;
-        cart.forEach(({price}) => {
+        cart.forEach(({ price }) => {
             sum += price;
         });
         console.log('el.price', sum);
@@ -2565,40 +2565,54 @@ function done() {
     favorite.setAttribute('class', 'mx-2 py-7 hidden md:block')
     beforlogin.setAttribute('class', 'hidden')
     afterlogin.setAttribute('class', 'flex gap-2 m-4')
+}
+// let dt = JSON.parse(localStorage.getItem("check"));// This line?
 
-}
-let dt = JSON.parse(localStorage.getItem("check"));
-if (dt != undefined) {
-    if (dt[1] === 'logedin') {
-        done()
-        change()
+// if (dt != undefined) {
+//     if (dt[1] === 'logedin') {
+//         done()
+//         change()
+//     }
+// }
+
+async function makeRequest(token) {
+    // console.log("make request is working with the token", token);
+    if(token !== 'not logged in') {
+        try{
+            let res = await fetch(`http://localhost:2345/signup/${token}`);
+            res = await res.json();
+            console.log(res);
+            done()
+            change(res);
+        } catch (e) {
+            alert(e.message);
+        }
     }
+    else { alert("user has not logged in")}
 }
+
 // console.log(dt);
-function change() {
-    let u = JSON.parse(localStorage.getItem("udemyUsers"))
+function change(u) {
     u.forEach((e) => {
-        if (e.email === dt[0]) {
-            let A = e.name[0].toUpperCase()
+        if (e.email) {
+            let A = e.full_Name.toUpperCase()
             pahlaleter.innerText = A
             username.innerText = A
             useremail.innerText = e.email
-            userkanaam.innerText = e.name
+            userkanaam.innerText = e.full_Name
             mobusername.innerText = A
-            mobuserkanaam.innerText = e.name
+            mobuserkanaam.innerText = e.full_Name
             mobuseremail.innerText = e.email
         }
     });
 }
 
 // delete function 
-
 function itemdelete() {
     localStorage.removeItem("check")
 }
 
 // ----  for log out -----
-
 let logout = document.getElementById("logout")
 logout.addEventListener('click', () => {
     ok()
@@ -2687,7 +2701,7 @@ function appendMovies(courses) {
             // console.log(course[0].name, "name---");
             p.setAttribute('class', 'ml-4 mt-2');
             ShowCoursesName.append(p);
-            p.onclick = () => { window.location.href = `/search/${course.type}`}
+            p.onclick = () => { window.location.href = `/search/${course.type}` }
         })
     }
     // ShowCoursesName.innerHTML = null;

@@ -14,8 +14,8 @@
 
 <body onclick="hide()" onload="createCarousel('<%= JSON.stringify(author) %>')">
     <%- include('./components/header') %>
+    <%= console.log("This is the cookie", cookie); %>
         <!-- intro -->
-
         <div class="intro h-auto w-full">
             <img class="w-full"
                 src='https://img-b.udemycdn.com/notices/web_banner/slide_1_image_udlite/db24b94e-d190-4d5a-b1dd-958f702cc8f5.jpg?secure=rzO5o24POVnBKsw0jfCtIA%3D%3D%2C1636530597'
@@ -383,6 +383,5 @@
 </html>
 
 <script src='/js/navbar.js'></script>
-
 <script>
 </script>

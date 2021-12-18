@@ -42,10 +42,10 @@
         <div class="bg-gray-50 ml-96  mt-4 border-black h-1/2 py-4 m-2" style="width: 660px;">
             <div><input id="card_name" class=" py-3 border-black m-2  ml-6 w-11/12 border-2" placeholder="Name on Card"
                     required /></div>
-            <div class="ml-6 text-red-500">sdf</div>
+            <div class="ml-6 text-red-500" id="name_error"></div>
             <div><input id="card_id" class="py-3 border-black m-2 ml-6 w-11/12 border-2" placeholder="Card Number"
                     required /></div>
-            <div class="ml-6 mb-1 text-red-500">sadfkj</div>
+            <div class="ml-6 mb-1 text-red-500" id="num_error"></div>
             <div class="flex">
                     <div class="ml-6">
                         <select id="card_month" class="border-black  border-2 h-14 w-48">
@@ -63,7 +63,7 @@
                             <option>11</option>
                             <option>12</option>
                         </select>
-                        <div class="text-red-500">month</div>
+                        <div class="text-red-500" id="month_error"></div>
                     </div>
                     <div class="px-2">
                         <select id="card_year" class="border-black border-2 h-14 w-48">
@@ -81,12 +81,12 @@
                             <option>2031</option>
                             <option>2032</option>
                         </select>
-                        <div class="text-red-500">year</div>
+                        <div class="text-red-500" id="year_error"></div>
                     </div>
                     <div class="ml-4">
                         <input id="card_security" class=" border-black border-2 h-14 w-48"
                             placeholder="Security Code" /></br>
-                        <div class="text-red-500">Security</div>
+                        <div class="text-red-500" id="sec_error"></div>
                     </div>
                 </div>
             
@@ -98,9 +98,15 @@
         <div class="ml-96 mt-6 w-2/5">
             <p>Billing Address</p>
             <div class="flex ml-5">
-                <input id="country" class="py-3 m-2 w-90 px-12 border-black border-2" placeholder="Country" />
-                <input id="terrio" class="py-3 m-2 w-90 px-12 border-black border-2"
-                    placeholder="State/Union Terriotory" />
+                <div>
+                    <input id="country" class="py-3 m-2 w-90 px-12 border-black border-2" placeholder="Country" />
+                    <div id="country_error" class="ml-2 text-red-500"></div>
+                </div>
+                <div>
+                    <input id="terrio" class="py-3 m-2 w-90 px-12 border-black border-2"
+                        placeholder="State/Union Terriotory" />
+                    <div id="state_error" class="ml-2 text-red-500"></div>
+                </div>
             </div>
         </div>
 
