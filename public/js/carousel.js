@@ -160,7 +160,7 @@ async function createCarousel(data) {
 
                 let content1 = document.createElement('p');
                 content1.className = 'text-sm text-gray-500 h-10 overflow-hidden w-max mt-1';
-                content1.innerText = product.learn[0].l1;
+                content1.innerText = "Become an advanced, confident, and modern JavaScript developer from scratch"
                 contentDiv1.append(tick1, content1);
 
                 // creating content line 2
@@ -175,7 +175,7 @@ async function createCarousel(data) {
 
                 let content2 = document.createElement('p');
                 content2.className = 'text-sm text-gray-500  h-10 overflow-hidden';
-                content2.innerText = product.learn[0].l2;
+                content2.innerText = "Become job-ready by understanding how JavaScript really works behind the scenes";
                 contentDiv2.append(tick2, content2);
 
                 // creating content line 3
@@ -190,7 +190,7 @@ async function createCarousel(data) {
 
                 let conten3 = document.createElement('p');
                 conten3.className = 'text-sm text-gray-500 text-left h-10 overflow-hidden';
-                conten3.innerText = product.learn[0].l3;
+                conten3.innerText = "Modern OOP: Classes, constructors, prototypal inheritance, encapsulation, etc.";
                 contentDiv3.append(tick3, conten3);
                 contentParent.append(contentDiv1, contentDiv2, contentDiv3);
 

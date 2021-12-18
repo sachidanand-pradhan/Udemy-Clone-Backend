@@ -34,7 +34,9 @@ router.get("/courses", async function (req, res) {
 
 router.get("/home", async (req, res) => {
     try {
-        const author = await Author.find().lean().exec();
+        let author = await Author.find().lean().exec();
+        // console.log("author in course controller:", author);
+
         const cookie = req.cookies.jwt;
         return res.render("home", {
             author,

@@ -2741,8 +2741,6 @@ function debounce(func, delay, incomingData) {
 }
 
 
-
-
 function cartPage() {
     window.location.href = "/cart";
 }
@@ -2752,3 +2750,13 @@ function loadFunc(authorData, cookie) {
     if (createCarousel) { createCarousel(authorData) };
     makeRequest(cookie);
 }
+
+
+
+// 'Become an advanced, confident, and modern JavaScript developer from scratch',
+// 'Become job-ready by understanding how JavaScript really works behind the scenes',
+// 'JavaScript fundamentals: variables, if/else, operators, boolean logic, functions, arrays, objects, loops, strings, etc.',
+// 'Modern OOP: Classes, constructors, prototypal inheritance, encapsulation, etc.',
+// 'Asynchronous JavaScript: Event loop, promises, async/await, AJAX calls and APIs',
+// 'Become an advanced, confident, and modern JavaScript developer from scratch'
+// 
