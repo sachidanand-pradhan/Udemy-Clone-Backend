@@ -63,7 +63,7 @@ router.get("/search", async (req, res) => {
 
         console.log(author,totalPages,page);
 
-        const author = await Author.find({}).lean().exec();
+        
         const cookie = req.cookies.jwt;
 
         return res.render("courses", {
