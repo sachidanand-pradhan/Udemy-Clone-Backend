@@ -31,6 +31,13 @@ async function makePayment() {
   let country_error= document.getElementById("country_error");
   let state_error= document.getElementById("state_error");
 
+  name_error.innerHTML = "";
+  num_error.innerHTML = "";
+  month_error.innerHTML = "";
+  year_error.innerHTML = "";
+  sec_error.innerHTML = "";
+  country_error.innerHTML = "";
+  state_error.innerHTML = "";
 
   try { 
     let res = await fetch(`http://localhost:2345/checkout`, {
@@ -49,11 +56,9 @@ async function makePayment() {
       for(key in k){
          console.log(key,k[key]);
         if(key === "name"){
-          name_error.innerText = ""
+          name_error.innerText = "* "+k[key]
         }
-         else{name_error.innerText = "* "+k[key]}
-        // else if(key === "card" || key === "month" || key === "year" || key === "security"){name_error.innerText = ""}
-        //else{name_error.innerText=""}
+        // else{name_error.innerText = }
         if(key === "card"){
           num_error.innerText = "* "+k[key]
         }
@@ -72,7 +77,6 @@ async function makePayment() {
         if(key === "state"){
           state_error.innerText = "* "+k[key]
         }
-
       }
     }
 
