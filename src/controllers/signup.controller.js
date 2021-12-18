@@ -9,13 +9,12 @@ const Author = require('../models/course.model')
 router.get("", async (req, res) => {
     try {
         const author = Author.find().lean().exec();
-        return res.render("signup", { author });
-
+        const cookie = req.cookies.jwt;
+        return res.render("signup", { author, cookie });
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }
 });
-
 
 router.post("", async (req, res) => {
     try {
@@ -23,7 +22,7 @@ router.post("", async (req, res) => {
        const registerUser = new signup({
         full_Name : req.body.fullName,
         email : req.body.Email,
-     password : req.body.Password
+        password : req.body.Password
        });
 
        token = await registerUser.generateAuthToken();
@@ -38,12 +37,20 @@ router.post("", async (req, res) => {
       const register = await registerUser.save();
       console.log(register);
 
-      
-
       return res.redirect("/home");
 
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "error is in this particular block" })
+    }
+});
+
+router.get("/:token", async (req, res) => {
+    try {
+        const user = await signup.find({tokens: {$elemMatch: {token: req.params.token}}}).lean().exec();
+        res.status(200).send(user);
+
+    } catch (e) {
+        return res.status(500).json({ message: e.message, status: "Failed" })
     }
 });
 

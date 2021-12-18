@@ -2565,7 +2565,6 @@ function done() {
     favorite.setAttribute('class', 'mx-2 py-7 hidden md:block')
     beforlogin.setAttribute('class', 'hidden')
     afterlogin.setAttribute('class', 'flex gap-2 m-4')
-
 }
 // let dt = JSON.parse(localStorage.getItem("check"));// This line?
 
@@ -2576,29 +2575,33 @@ function done() {
 //     }
 // }
 
-// async function makeRequest() {
-//     try {
-//         let res = await fetch("http://localhost/login/cookie");
-//         res = res.json();
-//         alert(res);
-//     } catch (e) {
-//         alert("request failed");
-//     }
-// }
-// makeRequest();
+async function makeRequest(token) {
+    // console.log("make request is working with the token", token);
+    if(token !== 'not logged in') {
+        try{
+            let res = await fetch(`http://localhost:2345/signup/${token}`);
+            res = await res.json();
+            console.log(res);
+            done()
+            change(res);
+        } catch (e) {
+            alert(e.message);
+        }
+    }
+    else { alert("user has not logged in")}
+}
 
 // console.log(dt);
-function change() {
-    let u = JSON.parse(localStorage.getItem("udemyUsers"))
+function change(u) {
     u.forEach((e) => {
-        if (e.email === dt[0]) {
-            let A = e.name[0].toUpperCase()
+        if (e.email) {
+            let A = e.full_Name.toUpperCase()
             pahlaleter.innerText = A
             username.innerText = A
             useremail.innerText = e.email
-            userkanaam.innerText = e.name
+            userkanaam.innerText = e.full_Name
             mobusername.innerText = A
-            mobuserkanaam.innerText = e.name
+            mobuserkanaam.innerText = e.full_Name
             mobuseremail.innerText = e.email
         }
     });

@@ -28,11 +28,18 @@ async function makePayment() {
   let month_error = document.getElementById("month_error")
   let year_error = document.getElementById("year_error")
   let sec_error = document.getElementById("sec_error")
-  // let _error= document.getElementById("country").value;
-  // let _error= document.getElementById("terrio").value;
+  let country_error= document.getElementById("country_error");
+  let state_error= document.getElementById("state_error");
 
+  name_error.innerHTML = "";
+  num_error.innerHTML = "";
+  month_error.innerHTML = "";
+  year_error.innerHTML = "";
+  sec_error.innerHTML = "";
+  country_error.innerHTML = "";
+  state_error.innerHTML = "";
 
-  try {
+  try { 
     let res = await fetch(`http://localhost:2345/checkout`, {
       method: "POST",
       body: JSON.stringify(missprint),
@@ -49,11 +56,9 @@ async function makePayment() {
       for(key in k){
          console.log(key,k[key]);
         if(key === "name"){
-          name_error.innerText = ""
+          name_error.innerText = "* "+k[key]
         }
-         else{name_error.innerText = "* "+k[key]}
-        // else if(key === "card" || key === "month" || key === "year" || key === "security"){name_error.innerText = ""}
-        //else{name_error.innerText=""}
+        // else{name_error.innerText = }
         if(key === "card"){
           num_error.innerText = "* "+k[key]
         }
@@ -66,7 +71,12 @@ async function makePayment() {
         if(key === "security"){
           sec_error.innerText = "* "+k[key]
         }
-
+        if(key === "country"){
+          country_error.innerText = "* "+k[key]
+        }
+        if(key === "state"){
+          state_error.innerText = "* "+k[key]
+        }
       }
     }
 

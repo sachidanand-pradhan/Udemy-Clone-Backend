@@ -471,7 +471,8 @@
     id="ShowCoursesName"></div>
     
 <!-- ----------   after hover on bussiness   --------- -->
-<div id="bussiness" class="hidden" style="margin-left: 49%;">
+<% cookie = cookie || "not logged in"; %>
+    <div id="bussiness" class="hidden" style="margin-left: 49%;" onclick = 'makeRequest("<%= cookie %>")'>
     <h1 class="text-center m-3 font-bold text-xl leading-5">Get your team access to over 6,000 top Udemy courses,
         anytime, anywhere.</h1>
     <a href="#">
@@ -561,5 +562,6 @@
     <hr>
     <!--  -->
     <div class="m-4 text-sm text-gray-600 hover:text-blue-700"><a href="#">Help</a></div>
-    <div id="logout" class="m-4 text-sm text-gray-600 hover:text-blue-700"><a href="#">Log out</a></div>
+    <div id="logout" class="m-4 text-sm text-gray-600 hover:text-blue-700"><a onclick = 'window.location.href = "/logout"'>Log out</a></div>
 </div>
+
