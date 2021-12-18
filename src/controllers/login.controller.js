@@ -23,14 +23,15 @@ router.post("",async(req,res)=>{
 
       const token = await useremail.generateAuthToken();
 
-      res.cookie("jwt", token,{
+      let newCookie = res.cookie("jwt", token,{
         expires:new Date(Date.now() + 60000000000000000000),
-        httpOnly:true
+        httpOnly:false
     });
 
       if(isMatch){
-        
-          res.render("home")
+          // const author = Author.find().lean().exec();
+          alert("cookie should have been generate")
+          res.redirect("/home")
       }else{
         res.send("Invalid Login Credential");
       }
@@ -39,5 +40,16 @@ router.post("",async(req,res)=>{
     }
     
     });
+
+    
+router.get("/cookie", async (req, res) => {
+  try {
+      let rc = req;
+
+      res.status(200).send(rc);
+  } catch (e) {
+      return res.status(500).json({ message: e.message, status: "Failed" })
+  }
+});
 
 module.exports = router;
