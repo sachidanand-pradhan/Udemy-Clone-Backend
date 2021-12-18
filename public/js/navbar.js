@@ -1,4 +1,4 @@
-
+console.log("navbar script is running");
 // function for category----------------------------------****************--------------------
 let cat = document.getElementById("cat")
 var firstdiv = document.getElementById("firstdiv")
@@ -2671,7 +2671,7 @@ function hide() {
 }
 
 function appendMovies(courses) {
-    console.log("-------", courses);
+    console.log("data in append movies", courses);
     let ShowCoursesName = document.getElementById("ShowCoursesName");
     ShowCoursesName.style.display = "block";
 
@@ -2683,7 +2683,7 @@ function appendMovies(courses) {
     } else {
         courses.forEach(course => {
             let p = document.createElement("p");
-            p.innerText = "✔ " + course.name;
+            p.innerText = "✔ " + course.title;
             // console.log(course[0].name, "name---");
             p.setAttribute('class', 'ml-4 mt-2');
             ShowCoursesName.append(p);
@@ -2709,7 +2709,7 @@ async function main(incomingData) {
     // console.log("coursename", name);
 
     incomingData = JSON.parse(incomingData);
-
+    console.log("incomingData in main before filtering", incomingData);
     if (name.length < 3) {
         return false;
     }
@@ -2721,7 +2721,7 @@ async function main(incomingData) {
     if (course_data.length === undefined) {
         alert("courses not available!")
     }
-    console.log("datas--:::::", course_data);
+    console.log("data after filtering--:::::", course_data);
 
     appendMovies(course_data);
 
@@ -2729,6 +2729,7 @@ async function main(incomingData) {
 }
 
 function debounce(func, delay, incomingData) {
+    console.log("incoming data", incomingData);
     if (timerId) {
         clearTimeout(timerId)
     }
@@ -2742,12 +2743,13 @@ function debounce(func, delay, incomingData) {
 
 function dataStored(e) {
     let div = e.target;
+    console.log(query);
     let query = div.textContent;
 
     query = query.split(' ')[1];
     query = query.toLowerCase();
     console.log('event.target = ', query);
-    window.location.href = `/search/${query}`;   
+    // window.location.href = `/search/${query}`;   
 }
 
 

@@ -8,7 +8,6 @@ const checkoutSchema = new Schema({
     security:{type: Number,required: true},
     country:{type: String,required: true},
     state:{type: String,required: true},
-    
 },
 {
     versionKey: false,

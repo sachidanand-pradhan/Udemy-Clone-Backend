@@ -30,8 +30,9 @@ async function makePayment() {
         "Content-Type": "application/json",
       },
     });
+    res = await res.json();
     console.log(res);
-    // if(res == )
+
   } catch (e) {
     console.log(e);
   }
