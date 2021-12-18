@@ -67,9 +67,9 @@
                     <div id="listOfCourses" class="mt-2 border-t-2 cursor-pointer" style="display: none;">
                         <ul>
                             <input type="checkbox" id="videod">
-                            <label><a href="/search/topic/javascript">JAVASCRIPT</a></label><br>
+                            <label><a onclick = 'clearOldDiv("javascript")'>JAVASCRIPT</a></label><br>
                             <input type="checkbox" id="videod">
-                            <label><a href="/search/topic/python">PYTHON</a></label><br>
+                            <label><a onclick = 'clearOldDiv("python")'>PYTHON</a></label><br>
                             <input type="checkbox" id="videod">
                             <label><a href="/search/topic/css">CSS</a></label><br>
                             <input type="checkbox" id="videod">
@@ -189,7 +189,7 @@
                     
 
                 </div>
-                <div class="lg:w-9/12 w-full" id="ClearDiv" onloadstart="clearOldDiv()">
+                <div class="lg:w-9/12 w-full" id="clearDiv" onloadstart="clearOldDiv()">
                         <% author.forEach(course=>{ %>
                             <a href="desc/<%= course._id %>"> <span onclick = 'window.location.href = `/search/desc/course._id `'>
                                 <div class="flex my-4" onclick="clickcourseName('<%= JSON.stringify(course) %>')">
@@ -262,9 +262,9 @@
     //     sortFun.setAttribute("class","block");
     // }
 
-    function clearOldDiv(){
-        let a = document.createElement("clearDiv");
-        a.innerHTML = "";
+    function clearOldDiv(query){
+        console.log("clearOldDiv func is running with query:", query);
+        document.getElementById("clearDiv").innerHTML = "";
+        window.location.href = `/search/topic/${query}`
     }
-    
 </script>

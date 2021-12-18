@@ -14,10 +14,7 @@
 
 <body onclick="hide()" onload="loadFunc('<%= JSON.stringify(author) %>', '<%= cookie %>', )">
     <%- include('./components/header') %>
-
-
-
-
+    <%= console.log("author in home.ejs", author) %>
         <!-- intro -->
         <div class="intro h-auto w-full">
             <img class="w-full"

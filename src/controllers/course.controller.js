@@ -34,7 +34,9 @@ router.get("/courses", async function (req, res) {
 
 router.get("/home", async (req, res) => {
     try {
-        const author = await Author.find().lean().exec();
+        let author = await Author.find().lean().exec();
+        // console.log("author in course controller:", author);
+
         const cookie = req.cookies.jwt;
         return res.render("home", {
             author,
@@ -161,17 +163,17 @@ router.get("/search/sort/:query", async (req, res) => {
 router.get("/search/topic/:q", async (req, res) => {
     try {
         let q = req.params.q;
-        let author;
-        author = await Author.find({ "type": q }).lean().exec();
 
         const page = +req.query.page || 1;
         const size = +req.query.size || 10;
-
+        
         const skip = (page - 1) * size;
+        
+        let author = await Author.find({"type": req.params.q}).skip(skip).limit(size).lean().exec();
+        console.log(author);
 
+        const totalPages = Math.ceil((await Author.find({type: req.params.q}).countDocuments()) / size);
         author = await Author.find({ "type": q }).skip(skip).limit(size).lean().exec();
-
-        const totalPages = Math.ceil((await Author.find().countDocuments()) / size);
 
         const cookie = req.cookies.jwt;
 
