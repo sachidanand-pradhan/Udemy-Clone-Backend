@@ -106,9 +106,9 @@
                     <div id="listOfCourses2" class="mt-2 border-t-2 cursor-pointer" style="display: none;">
                         <ul>
                             <input type="checkbox" id="videod">
-                            <label>Paid</label><br>
+                            <label><a href="/search/sort/1">price Low to High</a></label><br>
                             <input type="checkbox" id="videod">
-                            <label>Free</label><br>
+                            <label><a href="/search/sort/2">Rating High to Low</a></label><br>
 
                         </ul>
                     </div>
@@ -136,13 +136,9 @@
                     <div id="listOfCourses4" class="mt-2 border-t-2 cursor-pointer" style="display: none;">
                         <ul>
                             <input type="checkbox" id="videod">
-                            <label>⭐⭐⭐⭐⭐ 4.5 & up (222)</label><br>
+                            <label><a href="/search/sort/3">Rating High to Low</a></label><br>
                             <input type="checkbox" id="videod">
-                            <label>⭐⭐⭐⭐ 4.0 & up (455)</label><br>
-                            <input type="checkbox" id="videod">
-                            <label>⭐⭐⭐⭐ 3.5 & up (556)</label><br>
-                            <input type="checkbox" id="videod">
-                            <label>⭐⭐⭐ 3.0 & up (579)</label><br>
+                            <label><a href="/search/sort/4">Rating Low to High</a></label><br>
 
                         </ul>
                     </div>
@@ -233,12 +229,6 @@
 
         <div class="w-8/12 m-auto mt-8">
             <div class="w-4/12 m-auto" onload = "senddata(`<%=JSON.stringify(author)%>`,`<%=totalPages%>`)" id="pagination">
-                 <!-- <a href="#" class="text-2xl px-4 py-2 hover:bg-gray-600 rounded">❮</a>
-                <a href="#" class="text-2xl px-4 py-2 hover:bg-gray-600 rounded">1</a>
-                <a href="#" class="text-2xl px-4 py-2 hover:bg-gray-600 rounded">2</a>
-                <a href="#" class="text-2xl px-4 py-2 hover:bg-gray-600 rounded">3</a>
-                <a href="#" class="text-2xl px-4 py-2 hover:bg-gray-600 rounded">4</a>
-                <a href="#" class="text-2xl px-4 py-2 hover:bg-gray-600 rounded">❯</a> -->
             </div>
         </div>
 

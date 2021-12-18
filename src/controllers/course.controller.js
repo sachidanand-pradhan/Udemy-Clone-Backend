@@ -213,6 +213,13 @@ router.get("/search/sort/desc/:id", async function (req, res) {
         author,
     });
 });
+router.get("/search/topic/desc/:id", async function (req, res) {
+    const author = await Author.findById(req.params.id).lean().exec();
+
+    return res.render("desc", {
+        author,
+    });
+});
 
 router.patch("/:id", async (req, res) => {
     try {
