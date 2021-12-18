@@ -11,11 +11,10 @@
     <script src="https://kit.fontawesome.com/41129917e5.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src='/js/courses.js'></script>
-    <script src="/js/pagination.js"></script>>
+    <script src="/js/pagination.js"></script>
 </head>
 
-<body onclick="hide()" onload = "senddata(`<%=JSON.stringify(author)%>`,`<%=totalPages%>`,`<%=page%>`)">
-    
+<body onclick="hide()" onload = "senddata(`<%=JSON.stringify(author)%>`,`<%=totalPages%>`,`<%=page%>`), makeRequest(`<%= cookie %>`)">
     <%- include('./components/header') %>
         <div class="w-11/12 m-auto">
             <h1 class="font-bold lg:text-4xl text-2xl my-4">10,000 results for “javascript”</h1>

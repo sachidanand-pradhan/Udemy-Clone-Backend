@@ -11,7 +11,7 @@
     <script src='/js/carousel.js'></script>
 </head>
 
-<body onload="loadCart('<%= JSON.stringify(author) %>')">
+<body onload="loadCart('<%= JSON.stringify(author) %>'), makeRequest(`<%= cookie %>`)">
 
     <%- include('./components/header') %>
         <%= console.log(author) %>
