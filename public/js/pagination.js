@@ -2,7 +2,7 @@ function senddata(product,totalPages,page) {
     let data = JSON.parse(product);
     // console.log(data,totalPages,page);
 
-    let size = 2;
+    let size = 10;
 
 
     pagination(page, totalPages);
