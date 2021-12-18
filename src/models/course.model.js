@@ -11,7 +11,6 @@ const courseSchema = new mongoose.Schema(
       price:{ type:Number, require: true },
       shortDecp:{ type: String, required: true},
       author: { type: String, required: true},
-      learn: [{ type: String, required: true }],
       content: [{ type: String, required: true }],
       description: { type: String, required: true},
       tags: [{type: String, required: true }]
