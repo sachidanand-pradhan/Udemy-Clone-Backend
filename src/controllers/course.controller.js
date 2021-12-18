@@ -36,7 +36,8 @@ router.get("/home", async (req, res) => {
     try {
         const author = await Author.find().lean().exec();
 
-        return res.render("home", { author
+        const cookie = req.cookies.jwt;
+        return res.render("home", { author, cookie
         });
 
     } catch (e) {

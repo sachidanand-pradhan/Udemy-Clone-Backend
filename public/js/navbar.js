@@ -2413,7 +2413,7 @@ cart.addEventListener('mouseover', () => {
             author.className = 'text-gray-400 h-4 overflow overflow-hidden text-xs m-0 w-44';
 
             let price = document.createElement('p');
-            price.innerHTML = "₹"+ course.price;
+            price.innerHTML = "₹" + course.price;
             price.className = 'w-auto font-bold text-sm m-0 w-44'
 
             contentDiv.append(h1, author, price);
@@ -2425,7 +2425,7 @@ cart.addEventListener('mouseover', () => {
         console.log('cart in navbar', cart);
 
         let sum = 0;
-        cart.forEach(({price}) => {
+        cart.forEach(({ price }) => {
             sum += price;
         });
         console.log('el.price', sum);
@@ -2567,13 +2567,26 @@ function done() {
     afterlogin.setAttribute('class', 'flex gap-2 m-4')
 
 }
-let dt = JSON.parse(localStorage.getItem("check"));
-if (dt != undefined) {
-    if (dt[1] === 'logedin') {
-        done()
-        change()
-    }
-}
+// let dt = JSON.parse(localStorage.getItem("check"));// This line?
+
+// if (dt != undefined) {
+//     if (dt[1] === 'logedin') {
+//         done()
+//         change()
+//     }
+// }
+
+// async function makeRequest() {
+//     try {
+//         let res = await fetch("http://localhost/login/cookie");
+//         res = res.json();
+//         alert(res);
+//     } catch (e) {
+//         alert("request failed");
+//     }
+// }
+// makeRequest();
+
 // console.log(dt);
 function change() {
     let u = JSON.parse(localStorage.getItem("udemyUsers"))
@@ -2592,13 +2605,11 @@ function change() {
 }
 
 // delete function 
-
 function itemdelete() {
     localStorage.removeItem("check")
 }
 
 // ----  for log out -----
-
 let logout = document.getElementById("logout")
 logout.addEventListener('click', () => {
     ok()
@@ -2687,7 +2698,7 @@ function appendMovies(courses) {
             // console.log(course[0].name, "name---");
             p.setAttribute('class', 'ml-4 mt-2');
             ShowCoursesName.append(p);
-            p.onclick = () => { window.location.href = `/search/${course.type}`}
+            p.onclick = () => { window.location.href = `/search/${course.type}` }
         })
     }
     // ShowCoursesName.innerHTML = null;
