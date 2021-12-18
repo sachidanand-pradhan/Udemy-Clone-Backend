@@ -64,8 +64,7 @@ router.get("/search", async (req, res) => {
 
 router.get("/search/:query", async (req, res) => {
     try {
-
-        const author = await Author.find({tags: req.params.query}).lean().exec();
+        const author = await Author.find({type: req.params.query}).lean().exec();
 
         return res.render("courses", {
             author,

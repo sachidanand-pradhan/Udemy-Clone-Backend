@@ -1,4 +1,4 @@
-let course_datas = JSON.parse(localStorage.getItem("searchData"));
+// let course_datas = JSON.parse(localStorage.getItem("searchData"));
 
 
 async function getData(course) {
@@ -7,35 +7,35 @@ async function getData(course) {
     let data = await res.json();
     add(data);
 }
-getData(course_datas[course_datas.length - 1][0].name);
+// getData(course_datas[course_datas.length - 1][0].name);
 
-function sortLH() {
-    let arr = course_datas[course_datas.length - 1].sort(function (a, b) {
-        return a.price - b.price;
-    })
-    add(arr);
-};
+// function sortLH() {
+//     let arr = course_datas[course_datas.length - 1].sort(function (a, b) {
+//         return a.price - b.price;
+//     })
+//     add(arr);
+// };
 
-function sortHL() {
-    let arr = course_datas[course_datas.length - 1].sort(function (a, b) {
-        return b.price - a.price;
-    })
-    add(arr);
-}
+// function sortHL() {
+//     let arr = course_datas[course_datas.length - 1].sort(function (a, b) {
+//         return b.price - a.price;
+//     })
+//     add(arr);
+// }
 
-function highestR() {
-    let arr = course_datas[course_datas.length - 1].sort(function (a, b) {
-        return b.rating - a.rating;
-    })
-    add(arr);
-}
+// function highestR() {
+//     let arr = course_datas[course_datas.length - 1].sort(function (a, b) {
+//         return b.rating - a.rating;
+//     })
+//     add(arr);
+// }
 
-function lowestR() {
-    let arr = course_datas[course_datas.length - 1].sort(function (a, b) {
-        return a.rating - b.rating;
-    })
-    add(arr);
-}
+// function lowestR() {
+//     let arr = course_datas[course_datas.length - 1].sort(function (a, b) {
+//         return a.rating - b.rating;
+//     })
+//     add(arr);
+// }
 
 
 function add(data) {
@@ -268,7 +268,7 @@ function dataStored(data) {
 // }
 
 
-let count = 0;
+var count = 0;
 
 function show() {
     let sortFun = document.getElementById("sortFun");

@@ -2683,13 +2683,11 @@ function appendMovies(courses) {
     } else {
         courses.forEach(course => {
             let p = document.createElement("p");
-            p.innerText = "✔ " + course.title;
+            p.innerText = "✔ " + course.name;
             // console.log(course[0].name, "name---");
             p.setAttribute('class', 'ml-4 mt-2');
             ShowCoursesName.append(p);
-            p.addEventListener('click', (event) => {
-                dataStored(event);
-            });
+            p.onclick = () => { window.location.href = `/search/${course.type}`}
         })
     }
     // ShowCoursesName.innerHTML = null;
@@ -2740,17 +2738,6 @@ function debounce(func, delay, incomingData) {
 }
 
 
-
-function dataStored(e) {
-    let div = e.target;
-    console.log(query);
-    let query = div.textContent;
-
-    query = query.split(' ')[1];
-    query = query.toLowerCase();
-    console.log('event.target = ', query);
-    // window.location.href = `/search/${query}`;   
-}
 
 
 function cartPage() {
