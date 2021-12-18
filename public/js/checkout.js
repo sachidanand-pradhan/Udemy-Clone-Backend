@@ -22,6 +22,16 @@ async function makePayment() {
     country: country,
     state: terrio,
   };
+
+  let name_error = document.getElementById("name_error")
+  let num_error = document.getElementById("num_error")
+  let month_error = document.getElementById("month_error")
+  let year_error = document.getElementById("year_error")
+  let sec_error = document.getElementById("sec_error")
+  // let _error= document.getElementById("country").value;
+  // let _error= document.getElementById("terrio").value;
+
+
   try {
     let res = await fetch(`http://localhost:2345/checkout`, {
       method: "POST",
@@ -33,9 +43,30 @@ async function makePayment() {
     let data = await res.json();
     // console.log(data);
 
+
+
     for(k of data){
       for(key in k){
-        console.log(key,k[key]);
+         console.log(key,k[key]);
+        if(key === "name"){
+          name_error.innerText = ""
+        }
+         else{name_error.innerText = "* "+k[key]}
+        // else if(key === "card" || key === "month" || key === "year" || key === "security"){name_error.innerText = ""}
+        //else{name_error.innerText=""}
+        if(key === "card"){
+          num_error.innerText = "* "+k[key]
+        }
+        if(key === "month"){
+          month_error.innerText = "* "+k[key]
+        }
+        if(key === "year"){
+          year_error.innerText = "* "+k[key]
+        }
+        if(key === "security"){
+          sec_error.innerText = "* "+k[key]
+        }
+
       }
     }
 
