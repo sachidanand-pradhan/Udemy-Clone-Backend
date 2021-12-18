@@ -101,9 +101,7 @@ router.get("/search/:query", async (req, res) => {
 
 router.get("/search/sort/:query", async (req, res) => {
     try {
-        console.log("it's working or not")
         let q = +req.params.query;
-        console.log(q)
         var c = 0,d="";
         let author;
         if (q == 1) {
@@ -130,7 +128,6 @@ router.get("/search/sort/:query", async (req, res) => {
 
         const skip = (page - 1) * size;
 
-        console.log(d,c)
 
         if(d == "price"){
             author = await Author.find().sort({"price":c}).skip(skip).limit(size).lean().exec();
@@ -205,6 +202,14 @@ router.get("/search/desc/:id", async function (req, res) {
 });
 
 router.get("/search/sort/desc/:id", async function (req, res) {
+    const author = await Author.findById(req.params.id).lean().exec();
+
+    return res.render("desc", {
+        author,
+    });
+});
+
+router.get("/search/topic/desc/:id", async function (req, res) {
     const author = await Author.findById(req.params.id).lean().exec();
 
     return res.render("desc", {
