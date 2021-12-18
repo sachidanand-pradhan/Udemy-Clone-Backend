@@ -139,21 +139,38 @@ router.get("/search/sort/:query", async (req, res) => {
     }
 })
 
-// router.get("/search/filter/:query", async (req, res) => {
-//     try {
-//         let q = req.query.query;
-//         console.log(q);
-//         let author = Author.find({"type": q}).lean().exec();
-//         return res.render(`courses`, {
-//             author
-//         })
+router.get("/search/topic/:q", async (req, res) => {
+    try {
+        let q = req.params.q;
+        console.log(q);
+        let author;
+        author = await  Author.find({"type": q}).lean().exec();
+        console.log(author);
 
-//     } catch (e) {
-//         return res.render("error", ({
-//             status:"failed",message: e.message
-//         }));
-//     }
-// })
+        const page = +req.query.page || 1;
+        const size = +req.query.size || 10;
+
+        const skip = (page - 1) * size;
+
+        author = await Author.find().skip(skip).limit(size).lean().exec();
+
+        const totalPages = Math.ceil((await Author.find().countDocuments()) / size);
+
+        const cookie = req.cookies.jwt;
+
+        return res.render("courses", {
+            author,
+            cookie,
+            totalPages,
+            page
+        });
+
+    } catch (e) {
+        return res.render("error", ({
+            status:"failed",message: e.message
+        }));
+    }
+})
 
 router.get("/desc/:id", async function (req, res) {
     const author = await Author.findById(req.params.id).lean().exec();

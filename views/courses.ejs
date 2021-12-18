@@ -17,7 +17,6 @@
 <body onclick="hide()" onload = "senddata(`<%=JSON.stringify(author)%>`,`<%=totalPages%>`,`<%=page%>`)">
     
     <%- include('./components/header') %>
-    <%= console.log(totalPages,page) %>
         <div class="w-11/12 m-auto">
             <h1 class="font-bold lg:text-4xl text-2xl my-4">10,000 results for “javascript”</h1>
             <h2 class="text-xl font-bold">Explore <span class="text-blue-800">JavaScript courses</span></h2>
@@ -66,9 +65,9 @@
                     <div id="listOfCourses" class="mt-2 border-t-2 cursor-pointer" style="display: none;">
                         <ul>
                             <input type="checkbox" id="videod">
-                            <label>JAVASCRIPT</label><br>
+                            <label><a href="/search/topic/javascript">JAVASCRIPT</a></label><br>
                             <input type="checkbox" id="videod">
-                            <label>PYTHON</label><br>
+                            <label><a href="/search/topic/python">PYTHON</a></label><br>
                             <input type="checkbox" id="videod">
                             <label>CSS</label><br>
                             <input type="checkbox" id="videod">
@@ -184,7 +183,7 @@
                     </div>
 
                 </div>
-                <div class="lg:w-9/12 w-full">
+                <div class="lg:w-9/12 w-full" id="ClearDiv" onloadstart="clearOldDiv()">
                         <% author.forEach(course=>{ %>
                             <a href="desc/<%= course._id %>"> <span onclick = 'window.location.href = `/search/desc/course._id `'>
                                 <div class="flex my-4" onclick="clickcourseName('<%= JSON.stringify(course) %>')">
@@ -256,4 +255,10 @@
     //     let sortFun = document.getElementById("sortFun");
     //     sortFun.setAttribute("class","block");
     // }
+
+    function clearOldDiv(){
+        let a = document.createElement("clearDiv");
+        a.innerHTML = "";
+    }
+    
 </script>
