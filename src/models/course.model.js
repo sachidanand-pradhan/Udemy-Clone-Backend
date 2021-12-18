@@ -13,6 +13,8 @@ const courseSchema = new mongoose.Schema(
       author: { type: String, required: true},
       content: [{ type: String, required: true }],
       description: { type: String, required: true},
+      requirement: [{ type: String, required: true }],
+      include: [{ type: String, required: true }],
       tags: [{type: String, required: true }]
     },
     {
