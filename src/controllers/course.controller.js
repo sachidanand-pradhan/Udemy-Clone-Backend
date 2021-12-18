@@ -59,7 +59,6 @@ router.get("/search", async (req, res) => {
         const totalPages = Math.ceil((await Author.find().countDocuments()) / size);
 
         const cookie = req.cookies.jwt;
-
         return res.render("courses", {
             author,
             cookie,
