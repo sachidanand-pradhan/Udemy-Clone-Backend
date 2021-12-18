@@ -28,11 +28,11 @@ async function makePayment() {
   let month_error = document.getElementById("month_error")
   let year_error = document.getElementById("year_error")
   let sec_error = document.getElementById("sec_error")
-  // let _error= document.getElementById("country").value;
-  // let _error= document.getElementById("terrio").value;
+  let country_error= document.getElementById("country_error");
+  let state_error= document.getElementById("state_error");
 
 
-  try {
+  try { 
     let res = await fetch(`http://localhost:2345/checkout`, {
       method: "POST",
       body: JSON.stringify(missprint),
@@ -65,6 +65,12 @@ async function makePayment() {
         }
         if(key === "security"){
           sec_error.innerText = "* "+k[key]
+        }
+        if(key === "country"){
+          country_error.innerText = "* "+k[key]
+        }
+        if(key === "state"){
+          state_error.innerText = "* "+k[key]
         }
 
       }
