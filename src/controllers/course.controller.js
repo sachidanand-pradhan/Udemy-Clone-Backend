@@ -48,9 +48,10 @@ router.get("/home", async (req, res) => {
 router.get("/search", async (req, res) => {
     try {
         const author = await Author.find({}).lean().exec();
+        const cookie = req.cookies.jwt;
 
         return res.render("courses", {
-            author,
+            author, cookie
         });
         
     } catch (e) {
@@ -85,8 +86,9 @@ router.get("/search/sort/:query", async (req, res) => {
         }else if(q == 4){
             author = await Author.find().sort({"rating":1}).lean().exec();
         }
+        const cookie = req.cookies.jwt;
         return res.render(`courses`, {
-            author
+            author, cookie
         })
 
     } catch (e) {
