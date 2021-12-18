@@ -45,7 +45,7 @@ app.use("/", course);
 
 // For an actual app you should configure this with an experation time, better keys, proxy and secure
 app.use(cookieSession({
-    name: 'tuto-session',
+    name: 'gooogle',
     keys: ['key1', 'key2']
   }))
 
@@ -66,7 +66,10 @@ app.use(passport.session());
 app.get('/', (req, res) => res.render('/home'))
 app.get('/failed', (req, res) => res.send('You Failed to log in!'))
 
-
+// In this route you can see that if the user is logged in u can acess his info in: req.user
+app.get('/home', isLoggedIn, (req, res) =>{
+    res.render("/home",{name:req.user.displayName,email:req.user.emails[0].value})
+})
 
 // Auth Routes
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
