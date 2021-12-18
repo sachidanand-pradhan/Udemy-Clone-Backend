@@ -5,7 +5,6 @@ async function createCarousel(data) {
     // console.log("carouselData", data);
 
     makeCarouselOf(JSON.parse(data));
-
     // a function to create the carousel
     function makeCarouselOf(data) {
         let carouselList = document.querySelectorAll('.carousel');

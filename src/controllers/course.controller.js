@@ -47,17 +47,12 @@ router.get("/home", async (req, res) => {
 
 router.get("/search", async (req, res) => {
     try {
-
         const author = await Author.find({}).lean().exec();
-        // const author = [{
-        //     name:"js",
-        //     title:"intro to js",
-        //     price: 555
-        // }]
+
         return res.render("courses", {
             author,
         });
-
+        
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }
