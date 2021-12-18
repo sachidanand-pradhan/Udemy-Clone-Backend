@@ -50,7 +50,7 @@ router.get("/search", async (req, res) => {
     try {
 
         const page = +req.query.page || 1;
-        const size = +req.query.size || 5;
+        const size = +req.query.size || 10;
 
         const skip = (page - 1) * size;
 
@@ -74,10 +74,10 @@ router.get("/search", async (req, res) => {
 router.get("/search/:query", async (req, res) => {
     try {
         let author;
-        author = await Author.find({type: req.params.query}).lean().exec();
+        author = await Author.find({ type: req.params.query }).lean().exec();
 
         const page = +req.query.page || 1;
-        const size = +req.query.size || 5;
+        const size = +req.query.size || 10;
 
         const skip = (page - 1) * size;
 
@@ -101,27 +101,46 @@ router.get("/search/:query", async (req, res) => {
 
 router.get("/search/sort/:query", async (req, res) => {
     try {
-        let q = req.params.query;
+        console.log("it's working or not")
+        let q = +req.params.query;
+        console.log(q)
+        var c = 0,d="";
         let author;
         if (q == 1) {
-            author = await Author.find().sort({ "price": 1 }).lean().exec();
+            author = await Author.find().sort({ "price":1}).lean().exec();
+            d="price";
+            c=1;
         } else if (q == 2) {
-            author = await Author.find().sort({ "price": -1 }).lean().exec();
+            author = await Author.find().sort({ "price":-1}).lean().exec();
+            d="price";
+            c=-1;
         }
         else if (q == 3) {
             author = await Author.find().sort({ "rating": -1 }).lean().exec();
+            d="rating";
+            c=-1;
         } else if (q == 4) {
             author = await Author.find().sort({ "rating": 1 }).lean().exec();
+            d="rating";
+            c=1;
         }
 
         const page = +req.query.page || 1;
-        const size = +req.query.size || 5;
+        const size = +req.query.size || 10;
 
         const skip = (page - 1) * size;
 
-        author = await Author.find().skip(skip).limit(size).lean().exec();
+        console.log(d,c)
 
-        const totalPages = Math.ceil((await Author.find().countDocuments()) / size);
+        if(d == "price"){
+            author = await Author.find().sort({"price":c}).skip(skip).limit(size).lean().exec();
+        }else{
+            author = await Author.find().sort({"rating":c}).skip(skip).limit(size).lean().exec();
+        }
+
+        
+
+        const totalPages = Math.ceil((await Author.find().sort({"d":c}).countDocuments()) / size);
 
         const cookie = req.cookies.jwt;
 
@@ -142,17 +161,15 @@ router.get("/search/sort/:query", async (req, res) => {
 router.get("/search/topic/:q", async (req, res) => {
     try {
         let q = req.params.q;
-        console.log(q);
         let author;
-        author = await  Author.find({"type": q}).lean().exec();
-        console.log(author);
+        author = await Author.find({ "type": q }).lean().exec();
 
         const page = +req.query.page || 1;
-        const size = +req.query.size || 5;
+        const size = +req.query.size || 10;
 
         const skip = (page - 1) * size;
 
-        author = await Author.find().skip(skip).limit(size).lean().exec();
+        author = await Author.find({ "type": q }).skip(skip).limit(size).lean().exec();
 
         const totalPages = Math.ceil((await Author.find().countDocuments()) / size);
 
@@ -167,7 +184,7 @@ router.get("/search/topic/:q", async (req, res) => {
 
     } catch (e) {
         return res.render("error", ({
-            status:"failed",message: e.message
+            status: "failed", message: e.message
         }));
     }
 })
