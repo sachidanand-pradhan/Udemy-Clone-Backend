@@ -40,7 +40,7 @@ async (req, res) => {
                 
             };
         });
-        return res.status(400).json({ errors: newError});
+        return res.status(400).json(newError);
     }
     try {
         const payment = await Payment.create(req.body);
