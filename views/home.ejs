@@ -12,9 +12,9 @@
 </head>
 
 
-<body onclick="hide()" onload="createCarousel('<%= JSON.stringify(author) %>')">
+<body onclick="hide()" onload="loadFunc('<%= JSON.stringify(author) %>', '<%= cookie %>', )">
     <%- include('./components/header') %>
-    <%= console.log("This is the cookie", cookie); %>
+
         <!-- intro -->
         <div class="intro h-auto w-full">
             <img class="w-full"
@@ -356,7 +356,7 @@
             </div>
 
             <!-- Transform your life -->
-                <div class='lg:w-4/5 m-auto lg:px-10 lg:flex' onclick="createCarousel('<%= JSON.stringify(author) %>')">
+                <div class='lg:w-4/5 m-auto lg:px-10 lg:flex'>
                     <img src='https://s.udemycdn.com/home/non-student-cta/transform-1x-v3.jpg'
                         alt='become an instructor' class='px-28 lg:px-14 m-auto' />
 
