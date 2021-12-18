@@ -33,11 +33,11 @@ async function makePayment() {
     let data = await res.json();
     // console.log(data);
 
-    data.forEach((e) =>{
-      
-      let erro = Object.values(e);
-      alert(erro[0])
-    })
+    for(k of data){
+      for(key in k){
+        console.log(key,k[key]);
+      }
+    }
 
   } catch (e) {
     console.log(e);
