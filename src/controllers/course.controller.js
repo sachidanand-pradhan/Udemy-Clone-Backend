@@ -50,7 +50,7 @@ router.get("/search", async (req, res) => {
     try {
 
         const page = +req.query.page || 1;
-        const size = +req.query.size || 2;
+        const size = +req.query.size || 5;
 
         const skip = (page - 1) * size;
 
@@ -77,7 +77,7 @@ router.get("/search/:query", async (req, res) => {
         author = await Author.find({type: req.params.query}).lean().exec();
 
         const page = +req.query.page || 1;
-        const size = +req.query.size || 10;
+        const size = +req.query.size || 5;
 
         const skip = (page - 1) * size;
 
@@ -115,7 +115,7 @@ router.get("/search/sort/:query", async (req, res) => {
         }
 
         const page = +req.query.page || 1;
-        const size = +req.query.size || 10;
+        const size = +req.query.size || 5;
 
         const skip = (page - 1) * size;
 
@@ -148,7 +148,7 @@ router.get("/search/topic/:q", async (req, res) => {
         console.log(author);
 
         const page = +req.query.page || 1;
-        const size = +req.query.size || 10;
+        const size = +req.query.size || 5;
 
         const skip = (page - 1) * size;
 
