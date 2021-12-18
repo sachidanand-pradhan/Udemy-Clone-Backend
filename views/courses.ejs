@@ -15,8 +15,9 @@
 </head>
 
 <body onclick="hide()" onload = "senddata(`<%=JSON.stringify(author)%>`,`<%=totalPages%>`,`<%=page%>`)">
+    
     <%- include('./components/header') %>
-    <%= console.log(totalPages,page)%>
+    <%= console.log(totalPages,page) %>
         <div class="w-11/12 m-auto">
             <h1 class="font-bold lg:text-4xl text-2xl my-4">10,000 results for “javascript”</h1>
             <h2 class="text-xl font-bold">Explore <span class="text-blue-800">JavaScript courses</span></h2>
@@ -227,7 +228,7 @@
         </div>
 
         <div class="w-8/12 m-auto mt-8">
-            <div class="w-4/12 m-auto" id="pagination">
+            <div class="w-4/12 m-auto" onload = "senddata(`<%=JSON.stringify(author)%>`,`<%=totalPages%>`)" id="pagination">
                  <!-- <a href="#" class="text-2xl px-4 py-2 hover:bg-gray-600 rounded">❮</a>
                 <a href="#" class="text-2xl px-4 py-2 hover:bg-gray-600 rounded">1</a>
                 <a href="#" class="text-2xl px-4 py-2 hover:bg-gray-600 rounded">2</a>
