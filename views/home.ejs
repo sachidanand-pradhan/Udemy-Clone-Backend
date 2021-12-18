@@ -12,15 +12,21 @@
 </head>
 
 
-<body onclick="hide()" onload="createCarousel('<%= JSON.stringify(author) %>')">
+<body onclick="hide()" onload="loadFunc('<%= JSON.stringify(author) %>', '<%= cookie %>', )">
     <%- include('./components/header') %>
-    <%= console.log("This is the cookie", cookie); %>
+
+
+
+
         <!-- intro -->
         <div class="intro h-auto w-full">
             <img class="w-full"
                 src='https://img-b.udemycdn.com/notices/web_banner/slide_1_image_udlite/db24b94e-d190-4d5a-b1dd-958f702cc8f5.jpg?secure=rzO5o24POVnBKsw0jfCtIA%3D%3D%2C1636530597'
                 alt='intro img' />
         </div>
+
+
+
 
         <!-- intro search -->
         <div class='p-6 bg-gray-50 h-auto shadow-lg md:absolute md:top-24 md:left-14 md:w-intro z-0'>
@@ -63,9 +69,12 @@
             </div>
         </div>
 
+
+
         <div class=' border border-gray-300 h-auto p-8'>
                     <div class="text-2xl my-2 font-bold hidden sm:block">Expand you career opprotunities with Python
                     </div>
+
                     <p class='text-md md:w-11/12 xl:w-2/3 h-18 hidden sm:block overflow-hidden'>Whether you work in
                         machine
                         learning or finance,
@@ -92,6 +101,7 @@
                         with
                         over 183,000 video courses</div>
                 </div>
+
                 <div class=' flex md:w-1/3'>
                     <div class='w-10 bg-gray-300 h-10 my-5 ml-7 my-2 rounded-full p-2'>
                         <img src="https://img.icons8.com/ios-glyphs/22/000000/star--v1.png" />
@@ -99,6 +109,7 @@
                     <div class='font-bold text-md w-3/5 m-4 sm:py-3 md:py-0'>Choose courses taught by real-world experts
                     </div>
                 </div>
+
                 <div class='flex md:w-1/3 lg:pl-10'>
                     <div class='w-10 bg-gray-300 h-10 my-5 ml-7 my-2 rounded-full p-2'>
                         <img src="https://img.icons8.com/material/32/000000/infinity-large.png" />
@@ -109,12 +120,16 @@
                     </div>
                 </div>
             </div>
+
             <!-- courses - 2 -->
+
             <div class='px-8 my-6 mt-14'>
                 <h3 class='text-2xl font-bold'>Hot and new courses in English</h3>
                 <div class='carousel relative p-8'></div>
             </div>
+
             <!-- top categories => media done -->
+
             <div class="p-8">
                 <h3 class='text-2xl font-bold'>Top categories</h3>
                 <div class="categories hidden sm:block sm:grid sm:grid-cols-3 md:grid-cols-4 gap-8 my-6">
@@ -123,61 +138,83 @@
                             alt='category' />
                         <h5 class='text-md font-bold my-2 '>Design</h5>
                     </div>
+
                     <div class='transform hover:scale-105 transition cursor-pointer'>
                         <img src='https://s.udemycdn.com/home/top-categories/lohp-category-development-v2.jpg'
                             alt='category' />
                         <h5 class='text-md font-bold my-2  '>Development</h5>
                     </div>
+
                     <div class='transform hover:scale-105 transition cursor-pointer'>
                         <img src='https://s.udemycdn.com/home/top-categories/lohp-category-marketing-v2.jpg'
                             alt='category' />
                         <h5 class='text-md font-bold my-2  '>Marketing</h5>
                     </div>
+
                     <div class='transform hover:scale-105 transition cursor-pointer'>
                         <img src='https://s.udemycdn.com/home/top-categories/lohp-category-it-and-software-v2.jpg'
                             alt='category' />
                         <h5 class='text-md font-bold my-2  '>IT and Software</h5>
                     </div>
+
                     <div class='transform hover:scale-105 transition cursor-pointer'>
                         <img src='https://s.udemycdn.com/home/top-categories/lohp-category-personal-development-v2.jpg'
                             alt='category' />
                         <h5 class='text-md font-bold my-2  '>Personal Development</h5>
                     </div>
+
                     <div class='transform hover:scale-105 transition cursor-pointer'>
                         <img src='https://s.udemycdn.com/home/top-categories/lohp-category-business-v2.jpg'
                             alt='category' />
                         <h5 class='text-md font-bold my-2  '>Business</h5>
                     </div>
+
                     <div class='transform hover:scale-105 transition cursor-pointer'>
                         <img src='https://s.udemycdn.com/home/top-categories/lohp-category-photography-v2.jpg'
                             alt='category' />
                         <h5 class='text-md font-bold my-2  '>Photography</h5>
                     </div>
+
                     <div class='transform hover:scale-105 transition cursor-pointer'>
                         <img src='https://s.udemycdn.com/home/top-categories/lohp-category-music-v2.jpg'
                             alt='category' />
                         <h5 class='text-md font-bold my-2  '>Music</h5>
                     </div>
+
                 </div>
+
                 <div class='sm:hidden'>
+
                     <div
                         class='rounded-full hover:bg-gray-100 cursor-pointer w-max p-2.5 my-1 font-bold text-sm border border-black inline-block inline-block'>
-                        Design</div>
+                        Design
+                    </div>
+
                     <div
                         class='rounded-full hover:bg-gray-100 cursor-pointer w-max p-2.5 my-1 font-bold text-sm border border-black inline-block'>
-                        Development</div>
+                        Development
+                    </div>
+
                     <div
                         class='rounded-full hover:bg-gray-100 cursor-pointer w-max p-2.5 my-1 font-bold text-sm border border-black inline-block'>
-                        Marketing</div>
+                        Marketing
+                    </div>
+
                     <div
                         class='rounded-full hover:bg-gray-100 cursor-pointer w-max p-2.5 my-1 font-bold text-sm border border-black inline-block'>
-                        IT and Software</div>
+                        IT and Software
+                    </div>
+
                     <div
                         class='rounded-full hover:bg-gray-100 cursor-pointer w-max p-2 my-1 font-bold text-sm border border-black inline-block'>
-                        Personal Development</div>
+                        Personal Development
+                    </div>
+
                     <div
                         class='rounded-full hover:bg-gray-100 cursor-pointer w-max p-2 my-1 font-bold text-sm border border-black inline-block'>
-                        Business</div>
+                        Business
+                    </div>
+                    
                     <div
                         class='rounded-full hover:bg-gray-100 cursor-pointer w-max p-2 my-1 font-bold text-sm border border-black inline-block'>
                         Photography</div>
@@ -356,7 +393,7 @@
             </div>
 
             <!-- Transform your life -->
-                <div class='lg:w-4/5 m-auto lg:px-10 lg:flex' onclick="createCarousel('<%= JSON.stringify(author) %>')">
+                <div class='lg:w-4/5 m-auto lg:px-10 lg:flex'>
                     <img src='https://s.udemycdn.com/home/non-student-cta/transform-1x-v3.jpg'
                         alt='become an instructor' class='px-28 lg:px-14 m-auto' />
 

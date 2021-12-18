@@ -25,12 +25,14 @@
             <div id="cart" class="w-10/12 ml-20 h-auto flex mb-10">
                 <div id="items_inCart" class="w-10/12 h-auto m-auto justify-center" style="height: fit-content;"></div>
 
+
                 <div class="w-4/12 ml-4" id='cartSummary'>
                     <p class="ml-2 mt-2 text-2xl">Total :</p>
                     <div id="TotalPrice" class="ml-2 mt-2 text-xl font-bold flex">
                         <p id="old" class='my-1' ></p>
                         <p id="new" class='my-1 px-3'></p>
                     </div>
+
                     <a href="/checkout"><button
                             class="px-28 py-4 bg-purple-600 hover:bg-purple-800 mt-4 text-white rounded-sm">Checkout</button></a>
                     <h4 class="mt-4">Promotions</h4>
@@ -39,11 +41,13 @@
                         <p id="paragraph" class="inline-block">masai10 is applied</p>
                     </div>
 
+
                     <p class="mt-2 ml-8" id="update"></p>
                     <input class="mt-5 p-4 border-2" type="text" id="promocode" placeholder="promo code">
                     <button class="mt-2 bg-purple-600 hover:bg-purple-800 text-white px-6 py-4 rounded-sm"
                         onclick="discount('<%= JSON.stringify(author) %>')">Apply</button>
                 </div>
+
             </div>
 
             <div>
@@ -51,11 +55,12 @@
                 <div class='carousel relative mx-14 px-6 '></div>
             </div>
 
+
             <%- include('./components/footer') %>
 </body>
 
 </html>
+
 <script src="/js/cart.js"> </script>
+
 <script src='/js/navbar.js'></script>
-<script>
-</script>

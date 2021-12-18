@@ -14,6 +14,7 @@
     <script src="/js/pagination.js"></script>>
 </head>
 
+
 <body onclick="hide()" onload = "senddata(`<%=JSON.stringify(author)%>`,`<%=totalPages%>`,`<%=page%>`)">
     
     <%- include('./components/header') %>
@@ -55,6 +56,8 @@
                         rated</div>
                 </div>
             </div>
+
+
             <div class="w-11/12 ml-8 flex">
                 <div class="w-3/12 lg:block hidden p-2 mr-4 cursor-pointer">
                     <div onclick="showDiv()" class="font-bold mt-4 flex justify-between cursor-pointer">
@@ -127,6 +130,7 @@
                             <label>Practice Tests</label><br>
                         </ul>
                     </div>
+
                     <div onclick="showDiv4()" class="font-bold mt-4 flex justify-between">
                         <div  class="cursor-pointer">Ratings</div>
                         <div  class="cursor-pointer"><span class="material-icons mr-6 font-bold">expand_more</span></div>
@@ -144,6 +148,7 @@
 
                         </ul>
                     </div>
+
                     <div onclick="showDiv5()" class="font-bold mt-4 flex justify-between">
                         <div class="cursor-pointer">Video Duration</div>
                         <div class="cursor-pointer"><span class="material-icons mr-6 font-bold">expand_more</span></div>
@@ -160,6 +165,7 @@
 
                         </ul>
                     </div>
+
                     <div onclick="showDiv6()" class="font-bold mt-4 flex justify-between">
                         <div  class="cursor-pointer">Subtitles</div>
                         <div  class="cursor-pointer"><span class="material-icons mr-6 font-bold">expand_more</span></div>
@@ -181,6 +187,7 @@
 
                         </ul>
                     </div>
+                    
 
                 </div>
                 <div class="lg:w-9/12 w-full" id="ClearDiv" onloadstart="clearOldDiv()">
