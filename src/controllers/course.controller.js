@@ -15,7 +15,7 @@ router.post('/courses', async function (req, res) {
 router.get("/courses/show", async function (req, res) {
     try {
         const author = await Author.find().lean().exec()
-        return res.status(200).send({author});
+        return res.status(200).send({ author });
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }
@@ -24,7 +24,7 @@ router.get("/courses/show", async function (req, res) {
 router.get("/courses", async function (req, res) {
     try {
         const author = await Author.find().lean().exec()
-        return res.render("courses",{
+        return res.render("courses", {
             author,
         });
     } catch (e) {
@@ -47,11 +47,30 @@ router.get("/home", async (req, res) => {
 
 router.get("/search", async (req, res) => {
     try {
+
+        const page = +req.query.page || 1;
+        const size = +req.query.size || 2;
+
+        // page = 1 skip (0) limit (2) // (1 -1) * 2 = 0
+        // page = 2 skip(2) limit (2) // (2 -1 )* 2 = 2
+        // skip items = (page - 1) * size
+
+        const skip = (page - 1) * size;
+
+        const author = await Author.find().skip(skip).limit(size).lean().exec();
+
+        const totalPages = Math.ceil((await Author.find().countDocuments()) / size);
+
+        console.log(author,totalPages,page);
+
         const author = await Author.find({}).lean().exec();
         const cookie = req.cookies.jwt;
 
         return res.render("courses", {
-            author, cookie
+            cookie,
+            author,
+            totalPages,
+            page,
         });
         
     } catch (e) {
@@ -76,15 +95,15 @@ router.get("/search/sort/:query", async (req, res) => {
     try {
         let q = req.params.query;
         let author;
-        if(q == 1){
-            author = await Author.find().sort({"price":1}).lean().exec();
-        }else if(q == 2){
-            author = await Author.find().sort({"price":-1}).lean().exec();
+        if (q == 1) {
+            author = await Author.find().sort({ "price": 1 }).lean().exec();
+        } else if (q == 2) {
+            author = await Author.find().sort({ "price": -1 }).lean().exec();
         }
-        else if(q == 3){
-            author = await Author.find().sort({"rating":-1}).lean().exec();
-        }else if(q == 4){
-            author = await Author.find().sort({"rating":1}).lean().exec();
+        else if (q == 3) {
+            author = await Author.find().sort({ "rating": -1 }).lean().exec();
+        } else if (q == 4) {
+            author = await Author.find().sort({ "rating": 1 }).lean().exec();
         }
         const cookie = req.cookies.jwt;
         return res.render(`courses`, {
@@ -93,15 +112,31 @@ router.get("/search/sort/:query", async (req, res) => {
 
     } catch (e) {
         return res.render("error", ({
-            status:"failed",message: e.message
+            status: "failed", message: e.message
         }));
     }
 })
 
+// router.get("/search/filter/:query", async (req, res) => {
+//     try {
+//         let q = req.query.query;
+//         console.log(q);
+//         let author = Author.find({"type": q}).lean().exec();
+//         return res.render(`courses`, {
+//             author
+//         })
+
+//     } catch (e) {
+//         return res.render("error", ({
+//             status:"failed",message: e.message
+//         }));
+//     }
+// })
+
 router.get("/desc/:id", async function (req, res) {
     const author = await Author.findById(req.params.id).lean().exec();
 
-    return res.render("desc",{
+    return res.render("desc", {
         author,
     });
 });
@@ -109,7 +144,7 @@ router.get("/desc/:id", async function (req, res) {
 router.get("/search/sort/desc/:id", async function (req, res) {
     const author = await Author.findById(req.params.id).lean().exec();
 
-    return res.render("desc",{
+    return res.render("desc", {
         author,
     });
 });
@@ -146,4 +181,4 @@ router.delete("/:id", async (req, res) => {
 })
 
 
-module.exports =  router;
+module.exports = router;
