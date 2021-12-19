@@ -5,6 +5,7 @@ const auth = async (req, res, next) => {
   try {
     console.log("Inside Auth")
     const token = req.cookies.jwt;
+    console.log("This is my Token "+token);
 
     if (!token) {
       return res.redirect('/signup');
