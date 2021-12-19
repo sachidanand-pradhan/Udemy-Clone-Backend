@@ -266,17 +266,19 @@ applied.addEventListener("click", () => {
 
 
 function discount() {
-    let data = JSON.parse(localStorage.getItem("udemyCart"));
+    // let data = JSON.parse(localStorage.getItem("udemyCart"));
     let coupon = document.getElementById("promocode");
     console.log(coupon.value);
 
-    let tot = data.reduce(price_sum, 0);
-    console.log(tot);
+    let tot = document.querySelector('#old').textContent.split("₹")[1];
+    console.log("total is", tot);
+
 
 
     if (coupon.value == "masai10") {
         alert('10% discount has been applied');
-        var sum = Math.ceil(tot - (tot * 0.10));
+        var sum = Math.ceil(+tot - (+tot * 0.10));
+
         TotalPrice.querySelector('#old').style.textDecoration = 'line-through';
         TotalPrice.querySelector('#new').textContent = "₹" + sum;
         let update = document.getElementById("update");
