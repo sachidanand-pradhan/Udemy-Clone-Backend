@@ -2578,37 +2578,49 @@ function done() {
 
 async function makeRequest(token) {
     console.log("make request is working with the token", token);
+
     if (token !== 'not logged in') {
         try {
             let res = await fetch(`http://localhost:2345/signup/${token}`);
             res = await res.json();
             console.log(res);
-            done()
-            change(res);
+            return res;
         } catch (e) {
             console.log("error in makeRequest from navbar ", e.message);
         }
     }
 }
 
+
 // console.log(dt);
-function change(u) {
-    console.log("data in change func :", u);
-    u.forEach((e) => {
-        let A = e.full_Name[0].toUpperCase()
-        pahlaleter.innerText = A
-        username.innerText = A
-        useremail.innerText = e.email
-        userkanaam.innerText = e.full_Name
-        mobusername.innerText = A
-        mobuserkanaam.innerText = e.full_Name
-        mobuseremail.innerText = e.email
-    });
+async function change() {
+    let token = document.cookie;
+    token = token.split('=');
+    token = token[1];
+
+    console.log("data in change func :", token);
+
+    if(!token) return;
+    else {
+        let u = await makeRequest(token);
+
+        u.forEach((e) => {
+            let A = e.full_Name[0].toUpperCase()
+            pahlaleter.innerText = A
+            username.innerText = A
+            useremail.innerText = e.email
+            userkanaam.innerText = e.full_Name
+            mobusername.innerText = A
+            mobuserkanaam.innerText = e.full_Name
+            mobuseremail.innerText = e.email
+        });
+        done();
+    }
 }
+change();
 
 
 // links for sign in and sign up 
-
 document.getElementById("signin").addEventListener('click', () => {
     window.location.href = "/login"
 })
@@ -2617,22 +2629,6 @@ document.getElementById("signin").addEventListener('click', () => {
     window.location.href = "/signup"
 })
 
-//    --------------------------------------------------- //
-
-
-// -----  function for toggle on mobilemenu --------
-// let afterhovermenu = document.getElementById("afterhovermenu")
-// let cross = document.getElementById("cross")
-// cross.addEventListener('click', () => {
-//     afterhovermenu.setAttribute('class', 'hidden')
-// })
-
-// let menuIcon = document.getElementById('menu-icon');
-// menuIcon.onclick = showmenu;
-
-// function showmenu() {
-//     afterhovermenu.setAttribute('class', 'flex md:hidden fixed w-full')
-// }
 
 let afterhovermenu = document.getElementById("afterhovermenu");
 let cross = document.getElementById("cross")
@@ -2692,16 +2688,6 @@ function appendMovies(courses) {
             p.onclick = () => { window.location.href = `/search/${course.type}` }
         })
     }
-    // ShowCoursesName.innerHTML = null;
-    // console.log("datafetch", course);
-    // course.forEach(function (el) {
-    //     // movies_div.style.display = "block";
-    //     p = document.createElement("p");
-    //     p.innerText = el[0].name;
-    //     console.log(el[0].name,"name---");
-    //     ShowCoursesName.append(p);
-    // });
-
 }
 
 async function main() {

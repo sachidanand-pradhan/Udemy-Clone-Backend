@@ -14,10 +14,7 @@ const registrationSchema = new mongoose.Schema(
       },
       email:{ type:String,
         required:true,
-        trim : true,
         unique: true,
-        match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-   
       },
       password:{type:String,
         required : true,
@@ -29,7 +26,9 @@ const registrationSchema = new mongoose.Schema(
           type:String,
           required:true
         }
-      }]
+      }],
+      cartItems: [{ type: String, required: false}],
+      wishList: [{ type: String, required: false}],
     },
     {
       versionKey: false,
