@@ -9,6 +9,7 @@
     <link rel="icon" href="https://www.udemy.com/staticx/udemy/images/v8/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/style.css">
     <script src='/js/courses.js'></script>
+    <script src='/js/carousel.js'></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
 
@@ -287,12 +288,12 @@ color: #1c1d1f;">
                                 </p>
                             </div>
                             <div class="w-full flex">
+                                <!-- <%= console.log(author._id) %> -->
                                 <button
-                                    class="w-4/5 h-12 py-2 text-white font-semibold bg-purple-600 hover:bg-purple-800"
-                                    onclick='addtocart()'>
+                                    class="w-4/5 h-12 py-2 text-white font-semibold bg-purple-600 hover:bg-purple-800" onclick = 'passId("cart")'>
                                     Add to cart
                                 </button>
-                                <button class="px-2 py-2 border border-black ml-2">
+                                <button class="px-2 py-2 border border-black ml-2 likeBtn" onclick = 'passId("wishlist")'>
                                     🤍
                                 </button>
                             </div>
@@ -392,6 +393,21 @@ color: #1c1d1f;">
     function buyNowfun(p) {
         window.location.href = "/cart";
     }
+
+    async function passId(whereTogo) {
+        let id = window.location.href.split("/");
+        id = id[id.length-1];
+        console.log("the id in pass id func is", id);
+
+        let course = await fetch(`http://localhost:2345/search/getSingle/${id}`);
+        course = await course.json();
+
+        console.log("The course you are looking for is", course);
+
+        if(whereTogo == 'cart') addtocart(course);
+        else if(whereTogo = 'wishlist') addToWishlist(course);
+    }
+
 </script>
 
 <script src='/js/navbar.js'></script>

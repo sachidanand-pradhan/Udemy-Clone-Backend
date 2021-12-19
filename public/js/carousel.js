@@ -208,9 +208,11 @@ async function createCarousel() {
 
                 // creating like button
                 let like = document.createElement('div');
-                like.className = 'rounded-full w-10 border border-gray-900 border-2 h-10 ml-2 p-2';
+                like.className = 'rounded-full w-10 border border-gray-900 border-2 h-10 ml-2 p-2 likeBtn';
                 like.innerHTML = '<img src="https://img.icons8.com/ios/48/000000/like.png"/>';
-                like.onclick = () => { like.innerHTML = '<img src="https://img.icons8.com/emoji/48/000000/heart-suit.png"/>' }
+                like.onclick = () => { addToWishlist(product)}
+
+               
 
                 // appending everything to parent card
                 cartDiv.append(addToCartDiv, like);
@@ -295,6 +297,9 @@ async function createCarousel() {
 
 
 async function addtocart(p) {
+
+    console.log("p at add to cart is :", p);
+
     let cookie = document.cookie;
     // console.log("cookie in addtocart in carousel.js is:", cookie);
 
@@ -320,7 +325,7 @@ async function addtocart(p) {
 
         let out = await fetch(`http://localhost:2345/login/updateCart/${userId}`, {
             method: "PATCH",
-            headers: {"Content-type": "application/json"},
+            headers: { "Content-type": "application/json" },
             body: JSON.stringify({
                 product: p
             })
@@ -331,5 +336,39 @@ async function addtocart(p) {
         alert("item added to user DB")
     }
     // alert("Course added to cart");
+}
+
+
+async function addToWishlist(p) {
+    let cookie = document.cookie;
+    console.log("cookie in wishlist in carousel.js is:", cookie);
+
+    if (cookie.length > 1) {
+        // alert("cookie is present in carousel.js")
+        cookie = cookie.split('=');
+        // console.log("docum.cookie", cookie);
+
+        let token = cookie[1];
+
+        let res = await makeRequest(token);
+        console.log("the produt data in carousel addd to cart is ", p);
+
+        let userId = res[0]._id;
+        console.log("userId in add to cart :", userId);
+
+        let out = await fetch(`http://localhost:2345/login/updateWishlist/${userId}`, {
+            method: "PATCH",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+                product: p
+            })
+        })
+
+        out = await out.json();
+        // console.log("out in addtocart is", out);
+        alert("item added to user DB")
+
+        document.querySelector('.likeBtn').innerHTML = '<img src="https://img.icons8.com/emoji/20/000000/heart-suit.png"/>'
+    }
 }
 

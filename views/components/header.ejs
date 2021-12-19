@@ -148,7 +148,7 @@
     </div>
 </div>
 <!--------------------------------------------- navbar ------------------------------------------------->
-<div class="flex justify-between items-center h-20 bg-white">
+<div class="flex justify-between items-center h-20 bg-white shadow-lg">
     <!-- mobilemenu -->
     <button id='menu-icon' class="mx-4 md:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -173,7 +173,7 @@
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
         </button>
-        <input oninput="debounce(main,1500)" type="text" placeholder="Search for something"
+        <input oninput="debounce(main,1500)" type="text" placeholder="Search for javascript or python"
             class="h-10 outline-none mx-4 w-full bg-transparent" id="courseData">
     </div>  
 
@@ -186,7 +186,7 @@
         <span>Teach on Udemy</span>
     </button>
     <!-- my learning -->
-    <button id="learning" class="hidden">
+    <button id="learning" class="hidden" onclick = 'window.location.href = "/Mylearning"'>
         <span>My Learning</span>
     </button>
     <!-- favoraite -->
@@ -496,7 +496,7 @@
     </a>
 </div>
 <!-- ----------   after hover on favorite   --------- -->
-<div id="hoverfavorite" class="hidden" style="margin-left: 70%;">
+<div id="wishlist" class="hidden" style="margin-left: 70%;">
     <h1 class="text-center m-3 font-normal text-gray-400">Your wishlist is empty.</h1>
     <a href="#">
         <div class="text-center font-medium text-blue-700 m-4"> Explore courses</div>
@@ -524,7 +524,7 @@
     </div>
     <hr>
     <!-- others -->
-    <div class="m-4 text-gray-600 text-sm hover:text-blue-700"><a href="#">My Learning</a></div>
+    <div class="m-4 text-gray-600 text-sm hover:text-blue-700"><a onclick = 'window.location.href = "/Mylearning"'>My Learning</a></div>
     <!-- cart -->
     <div class="flex justify-between m-4 text-gray-600">
         <a href="#" class="hover:text-blue-700 text-sm">My cart</a>

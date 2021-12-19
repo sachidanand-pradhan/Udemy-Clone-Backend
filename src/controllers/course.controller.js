@@ -200,7 +200,6 @@ router.get("/search/topic/:q", async (req, res) => {
       .limit(size)
       .lean()
       .exec();
-
     const cookie = req.cookies.jwt;
 
     return res.render("courses", {
@@ -272,5 +271,15 @@ router.delete("/:id", async (req, res) => {
     return res.status(500).json({ message: e.message, status: "Failed" });
   }
 });
+
+
+router.get("/search/getSingle/:id", async(req, res) => {
+  try {
+    let result = await Author.findById(req.params.id).lean().exec();
+    res.status(200).send(result);
+  } catch (e) {
+    return res.status(500).json({ message: e.message, status: "Failed" });
+  }
+})
 
 module.exports = router;

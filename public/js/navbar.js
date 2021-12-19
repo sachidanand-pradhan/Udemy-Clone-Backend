@@ -2381,90 +2381,10 @@ hoveronteach.addEventListener('mouseout', () => {
 })
 
 
-//  after hover on ****   cart  ****   
+//  after hover on cart  ****   
 
 let cart = document.getElementById("cart")
-cart.addEventListener('mouseover', async () => {
-    let hovercart = document.getElementById("hovercart")
-    let cartItem;
-
-    let cookie = document.cookie;
-
-    if (cookie.length <= 1) {
-        cartItem = JSON.parse(localStorage.getItem('udemyCart')) || [];
-    } else {
-        cookie = cookie.split('=');
-        console.log("docum.cookie", cookie);
-
-        let token = cookie[1];
-
-        let res = await makeRequest(token);
-        // res = await res.json();
-        cartItem = [];
-        cartItem.push(JSON.parse(res[0].cartItems));
-        console.log("cart Item in hover cart in navbar is :", cartItem);
-    }
-
-    if ( !cartItem || cartItem.length == 0) {
-        hovercart.innerHTML = "";
-        let h1 = document.createElement('h1');
-        h1.className = 'text-center m-3 font-normal text-gray-400';
-        h1.innerText = 'Your cart is empty'
-        let div = document.createElement('div');
-        div.className = 'text-center font-medium text-blue-700 m-4';
-        div.onclick = () => { window.location.href = '/home' };
-        div.innerText = 'Keep Shopping';
-
-        hovercart.append(h1, div);
-    } else {
-        hovercart.innerHTML = "";
-
-        cartItem.forEach((course) => {
-            let div = document.createElement('div');
-            div.className = 'flex h-auto';
-
-            let imgDiv = document.createElement('div');
-            imgDiv.className = 'w-18 my-2 mx-1';
-
-            let img = document.createElement('img');
-            img.src = course.image;
-            img.className = 'w-18';
-            imgDiv.append(img);
-
-            let contentDiv = document.createElement('div');
-
-            let h1 = document.createElement('p');
-            h1.innerText = course.title;
-            h1.className = 'font-bold h-8 overflow-hidden leading-4 m-0 text-sm w-44  ';
-
-            let author = document.createElement('p');
-            author.innerText = course.author;
-            author.className = 'text-gray-400 h-4 overflow overflow-hidden text-xs m-0 w-44';
-
-            let price = document.createElement('p');
-            price.innerHTML = "₹" + course.price;
-            price.className = 'w-auto font-bold text-sm m-0 w-44'
-
-            contentDiv.append(h1, author, price);
-            div.append(imgDiv, contentDiv);
-            hovercart.append(div);
-        })
-
-        let totalDiv = document.createElement('div');
-        console.log('cart in navbar', cartItem);
-
-        let sum = 0;
-        cartItem.forEach(({ price }) => {
-            sum += price;
-        });
-        console.log('el.price', sum);
-        totalDiv.innerHTML = `<h1 class = 'font-bold m-2 mx-4'>Total: ₹${sum}</h1><div onclick = 'window.location.href = "/cart"' class = 'bg-gray-900 p-3 text-center font-bold text-white m-4  '>Go To Cart</div>`;
-        totalDiv.className = 'border border-gray-300';
-        hovercart.append(totalDiv);
-    }
-
-    hovercart.setAttribute('class', 'hidden md:block w-72 break-words bg-white justify-center absolute ')
-})
+cart.onmouseover = () => { hoverResult('hovercart') }
 
 cart.addEventListener('mouseout', () => {
     hovercart.setAttribute('class', 'hidden')
@@ -2501,25 +2421,26 @@ hoverlearning.addEventListener('mouseout', () => {
 
 
 let favorite = document.getElementById("favorite")
-let hoverfavorite = document.getElementById("hoverfavorite")
+let hoverfavorite = document.getElementById("wishlist");
 
-favorite.addEventListener('mouseover', () => {
-    hoverfavorite.setAttribute('class', 'block w-72 break-words bg-white absolute')
-})
+favorite.onmouseover = () => {
+    hoverResult('wishlist');
+    // hoverfavorite.setAttribute('class', 'block w-72 break-words bg-white absolute')
+}
 
 favorite.addEventListener('mouseout', () => {
     hoverfavorite.setAttribute('class', 'hidden')
 })
-hoverfavorite.addEventListener('mouseover', () => {
+
+hoverfavorite.onmouseover = () => {
     hoverfavorite.setAttribute('class', 'block w-72 break-words bg-white absolute')
-})
+}
+
 hoverfavorite.addEventListener('mouseout', () => {
     hoverfavorite.setAttribute('class', 'hidden')
 })
 
 //  after hover on ****   bell  ****  
-
-
 let bell = document.getElementById("bell")
 let hoverbell = document.getElementById("hoverbell")
 
@@ -2759,5 +2680,91 @@ function cartPage() {
 //     makeRequest(cookie);
 // }
 
+async function hoverResult(trigger) {
+    let hovercart = document.getElementById(trigger);
+    let cartItem;
 
+    let cookie = document.cookie;
+
+    if (cookie.length <= 1) {
+        cartItem = JSON.parse(localStorage.getItem('udemyCart')) || [];
+    } else {
+        cookie = cookie.split('=');
+        console.log("docum.cookie", cookie);
+
+        let token = cookie[1];
+
+        let res = await makeRequest(token);
+        // res = await res.json();
+        // console.log("the res at hover cart is", res);
+
+        if (trigger == "hovercart") cartItem = res[0].cartItems;
+        else if (trigger == 'wishlist') cartItem = res[0].wishList;
+
+        console.log("cart Item in hover cart in navbar is :", cartItem);
+    }
+
+    if (!cartItem || cartItem.length == 0) {
+        hovercart.innerHTML = "";
+        let h1 = document.createElement('h1');
+        h1.className = 'text-center m-3 font-normal text-gray-400';
+        h1.innerText = 'Your cart is empty'
+        let div = document.createElement('div');
+        div.className = 'text-center font-medium text-blue-700 m-4';
+        div.onclick = () => { window.location.href = '/home' };
+        div.innerText = 'Keep Shopping';
+
+        hovercart.append(h1, div);
+    } else {
+        hovercart.innerHTML = "";
+
+        cartItem.forEach((course) => {
+            let div = document.createElement('div');
+            div.className = 'flex h-auto border-b py-2';
+
+            let imgDiv = document.createElement('div');
+            imgDiv.className = 'w-18 my-2 mx-1';
+
+            let img = document.createElement('img');
+            img.src = course.image;
+            img.className = 'w-18';
+            imgDiv.append(img);
+
+            let contentDiv = document.createElement('div');
+
+            let h1 = document.createElement('p');
+            h1.innerText = course.title;
+            h1.className = 'font-bold h-8 overflow-hidden leading-4 m-0 text-sm w-44  ';
+
+            let author = document.createElement('p');
+            author.innerText = course.author;
+            author.className = 'text-gray-400 h-4 overflow overflow-hidden text-xs m-0 w-44';
+
+            let price = document.createElement('p');
+            price.innerHTML = "₹" + course.price;
+            price.className = 'w-auto font-bold text-sm m-0 w-44'
+
+            contentDiv.append(h1, author, price);
+            div.append(imgDiv, contentDiv);
+            hovercart.append(div);
+        })
+
+        let totalDiv = document.createElement('div');
+        console.log('cart in navbar', cartItem);
+
+        let sum = 0;
+        cartItem.forEach(({ price }) => {
+            sum += price;
+        });
+
+        console.log('el.price', sum);
+        if (trigger == 'hovercart') totalDiv.innerHTML = `<h1 class = 'font-bold m-2 mx-4'>Total: ₹${sum}</h1><div onclick = 'window.location.href = "/cart"' class = 'bg-gray-900 p-3 text-center font-bold text-white m-4'>Go To Cart</div>`;
+        else if (trigger == 'wishlist') totalDiv.innerHTML = `<div onclick = 'window.location.href = "/Mylearning"' class = 'bg-gray-900 p-3 text-center font-bold text-white m-4'>Go To Wishlist</div>`;
+
+        totalDiv.className = 'border border-gray-300';
+        hovercart.append(totalDiv);
+    }
+
+    hovercart.setAttribute('class', 'hidden md:block w-72 break-words bg-white justify-center absolute ')
+}
 

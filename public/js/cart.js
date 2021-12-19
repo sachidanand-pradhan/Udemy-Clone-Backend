@@ -307,24 +307,11 @@ var popupBox = document.getElementById('popupBox')
 //  var showbtn = document.getElementById('showbtn')
 //   showbtn.addEventListener('click',showkaro)
 
-var checkoutBtn = document.getElementById('checkoutBtn')
-//   checkoutBtn.addEventListener('click',apicall)
+var checkoutBtn = document.getElementById('checkout');
+checkoutBtn.onclick = () => {
+ showkaro();
+}
 
-
-//   function for api call
-
-// async function apicall (){
-//     try{
-//         let res = await fetch(`http://localhost:2345/checkout`)
-
-//         let data = await res.json()
-
-//         console.log(data)
-//     }
-//     catch(e){
-//          console.log(e);
-//     }
-// }
 
 var cross1 = document.getElementById('cross1')
 cross1.addEventListener('click', hiddenkaro)
@@ -333,8 +320,14 @@ var popupBox = document.getElementById('popupBox');
 
 
 function showkaro() {
-    console.log("showkaro working");
-    popupBox.setAttribute('class', 'flex backdrop-filter backdrop-brightness-50 cursor-pointer fixed w-full h-full justify-center')
+    let cookie = document.cookie;
+    console.log("cookie in wishlist in carousel.js is:", cookie);
+
+    if(cookie.length <= 1)  popupBox.setAttribute('class', 'flex backdrop-filter backdrop-brightness-50 cursor-pointer fixed w-full h-full justify-center');
+    else {
+        window.location.href = '/checkout'
+    }
+    // console.log("showkaro working");
 }
 
 function hiddenkaro() {
