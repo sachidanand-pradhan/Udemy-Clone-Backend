@@ -28,8 +28,8 @@ const registrationSchema = new mongoose.Schema(
           required:true
         }
       }],
-      cartItems: [{ type: String, required: false}],
-      wishList: [{ type: String, required: false}],
+      cartItems: [{ type: Object, required: false}],
+      wishList: [{ type: Object, required: false}],
     },
     {
       versionKey: false,

@@ -296,23 +296,39 @@ async function createCarousel() {
 
 async function addtocart(p) {
     let cookie = document.cookie;
-    console.log("cookie in addtocart in carousel.js is:", cookie);
+    // console.log("cookie in addtocart in carousel.js is:", cookie);
 
-    if(cookie.length <= 1) {
-        alert("token is not persent in addtocart in carousel.js")
+    if (cookie.length <= 1) {
+        // alert("token is not persent in addtocart in carousel.js")
         let data = JSON.parse(localStorage.getItem("udemyCart")) || [];
         data.push(p);
         localStorage.setItem("udemyCart", JSON.stringify(data));
+        alert("item added to local storage");
     }
     else {
-        alert("cookie is present in carousel.js")
+        // alert("cookie is present in carousel.js")
         cookie = cookie.split('=');
-        console.log("docum.cookie", cookie);
+        // console.log("docum.cookie", cookie);
 
         let token = cookie[1];
 
         let res = await makeRequest(token);
-        console.log("the user data in carousel addd to cart is ", res);
+        // console.log("the produt data in carousel addd to cart is ", p);
+
+        let userId = res[0]._id;
+        // console.log("userId in add to cart :", userId);
+
+        let out = await fetch(`http://localhost:2345/login/updateCart/${userId}`, {
+            method: "PATCH",
+            headers: {"Content-type": "application/json"},
+            body: JSON.stringify({
+                product: p
+            })
+        })
+
+        out = await out.json();
+        // console.log("out in addtocart is", out);
+        alert("item added to user DB")
     }
     // alert("Course added to cart");
 }
