@@ -13,9 +13,114 @@
 
 <body onload="loadCart('<%= JSON.stringify(author) %>')">
 
-    <%- include('./components/header') %>
-        <%= console.log(author) %>
+    <button id="showbtn" class="border border-black p-6 bg-red-300">Show</button>
+    <div id="popupBox" class="hidden">
+        <div id="signupBox" class="bg-white h-4/5 mt-16 z-50 cursor-default" style="width: 370px;">
 
+            <div style="
+            font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto,
+              segoe ui, Helvetica, Arial, sans-serif, apple color emoji,
+              segoe ui emoji, segoe ui symbol;
+            font-size: 15px;
+            line-height: 1.43;
+            color: #1c1d1f;
+          " class="grid justify-items-center">
+                <div class="flex justify-between mt-2" style="height: 70px; width: 380px; padding: 24px 34px 24px 24px; ">
+                  <h1 class="font-bold" style="font-size: 15px; text-align: center;">
+                    Sign Up and Start Learning!
+                  </h1>
+                  <div id="cross1" class="cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                  </div>
+                </div>
+                <hr style="width: 330px;" class="mx-4">
+          
+                <div class="flex" style="width: 380px; padding: 24px 24px 16px 24px;">
+                  <form action="/signup" method="post" id="form" class="grid gap-y-2">
+                    <div style="border: 1.5px solid #1c1d1f" class="flex w-80">
+                      <div class="flex items-center">
+                          <div>
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                                </svg>
+                          </div>
+                      </div>
+                      <div>
+                        <input style="font: size 18px; outline: none;" class="text-xl text-gray-500 p-2" type="text"
+                          placeholder="Full Name" id="name" name="fullName" required />
+                      </div>
+                    </div>
+                    <div style="border: 1.5px solid #1c1d1f" class="border-gray-800 border-2 flex w-80">
+                      <div class="flex items-center">
+                          <div>
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                </svg>
+                          </div>
+                      </div>
+                      <div>
+                        <input style="font: size 18px; outline: none; " class="text-xl text-gray-500 p-2" type="email" id="email"
+                          placeholder="Email" name="Email" required />
+                      </div>
+                    </div>
+                    <div style="border: 1.5px solid #1c1d1f" class="border-gray-800 border-2 flex w-80">
+                      <div class="flex items-center">
+                          <div>
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                  <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                                </svg>
+                          </div>
+                      </div>
+                      <div>
+                        <input style="font: size 18px; outline: none;" class="text-xl text-gray-500 p-2" type="password"
+                          id="password" placeholder="Password" name="Password" required />
+                      </div>
+                    </div>
+                    <div class="mt-2">
+                      <input type="checkbox" id="checkbox" name="check" required />
+                      <label for="">I’m in for emails with exciting discounts and personalized
+                        recommendations</label>
+                    </div>
+                    <br />
+                    <div class="flex text-white  items-center">
+                      <button style="background-color: #7325a3; height: 48px; width: 320px; border: 1px solid #ffffff;"
+                        class="p-3 font-bold" type="submit" onclick="redirectToHomepage()">
+                        Sign Up
+                      </button>
+                    </div>
+                    <div class="w-80">
+                      <p style="text-align: center; font-size: 12px">
+                        By signing up, you agree to our
+                        <a style="color: #401b9c" href="">Terms of Use</a> and
+                        <a style="color: #401b9c" href="">Privacy Policy.</a>
+                      </p>
+                    </div>
+                    <hr style="width: 320px;" class="mr-4">
+                    <div class="flex mt-2" style="height: 45px; width: 380px; padding: 0 0 24px 0; text-align: center;">
+                      <h1 class="ml-14"> Already have an account?</h1>
+                      <a href="/login" style="color: #5624d0" class="font-bold">Login</a>
+          
+                    </div>
+                </div>
+                </form>
+          
+          
+          
+              </div>
+              </div>
+              </div>
+
+
+            
+        </div>
+    </div>
+
+    <%- include('./components/header') %>npm
+        <%= console.log(author) %>
+        <!-- popup for signup -->
             <div class="w-full bg-black flex">
                 <div class="font-bold text-5xl text-white py-12 pl-60">Shopping Cart</div>
             </div>
@@ -33,8 +138,9 @@
                         <p id="new" class='my-1 px-3'></p>
                     </div>
 
-                    <a href="/checkout"><button
-                            class="px-28 py-4 bg-purple-600 hover:bg-purple-800 mt-4 text-white rounded-sm">Checkout</button></a>
+                    <button id="checkoutBtn" class="px-28 py-4 bg-purple-600 hover:bg-purple-800 mt-4 text-white rounded-sm">
+                        Checkout
+                    </button>
                     <h4 class="mt-4">Promotions</h4>
                     <div>
                         <button id="applid">X</button>
