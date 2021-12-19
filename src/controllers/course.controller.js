@@ -116,19 +116,19 @@ router.get("/search/sort/:query", async (req, res) => {
       d = "";
     let author;
     if (q == 1) {
-      author = await Author.find().sort({ price: 1 }).lean().exec();
+      author = await Author.find({type:"javascript"}).sort({ price: 1 }).lean().exec();
       d = "price";
       c = 1;
     } else if (q == 2) {
-      author = await Author.find().sort({ price: -1 }).lean().exec();
+      author = await Author.find({type:"javascript"}).sort({ price: -1 }).lean().exec();
       d = "price";
       c = -1;
     } else if (q == 3) {
-      author = await Author.find().sort({ rating: -1 }).lean().exec();
+      author = await Author.find({type:"javascript"}).sort({ rating: -1 }).lean().exec();
       d = "rating";
       c = -1;
     } else if (q == 4) {
-      author = await Author.find().sort({ rating: 1 }).lean().exec();
+      author = await Author.find({type:"javascript"}).sort({ rating: 1 }).lean().exec();
       d = "rating";
       c = 1;
     }
@@ -141,14 +141,14 @@ router.get("/search/sort/:query", async (req, res) => {
     console.log(d, c);
 
     if (d == "price") {
-      author = await Author.find()
+      author = await Author.find({type:"javascript"})
         .sort({ price: c })
         .skip(skip)
         .limit(size)
         .lean()
         .exec();
     } else {
-      author = await Author.find()
+      author = await Author.find({type:"javascript"})
         .sort({ rating: c })
         .skip(skip)
         .limit(size)
@@ -157,7 +157,7 @@ router.get("/search/sort/:query", async (req, res) => {
     }
 
     const totalPages = Math.ceil(
-      (await Author.find().sort({ d: c }).countDocuments()) / size
+      (await Author.find({type:"javascript"}).sort({ d: c }).countDocuments()) / size
     );
 
     const cookie = req.cookies.jwt;
