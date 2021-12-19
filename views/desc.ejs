@@ -13,338 +13,378 @@
 </head>
 
 
-<body onclick="hide()" onload = "makeRequest(`<%= cookie %>`)" style="font-family: sf pro text,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+<body onclick="hide()" onload="makeRequest(`<%= cookie %>`)" style="font-family: sf pro text,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
 color: #1c1d1f;">
-     <%- include('./components/header') %>
-    <div class="flex mb-10">
-        <div id="left">
-            <div style="background-color: #1c1D1F; color: #ffffff;" id="black" class="flex w-full">
-                <div id="blackLeft" class="border-2 border-red-500" style="width: 66.6%;">
-                    <div id="inner" class="ml-36 pt-4 pr-14">
-                        <div style="color: #CEC0FC;" class="cursor-pointer font-bold text-sm py-4"> Development > Web
-                            Devlopment >
-                            <span id="title">Javascript</span>
+    <%- include('./components/header') %>
+        <div class="flex mb-10 w-full">
+            <div id="left">
+                <div style="background-color: #1c1D1F; color: #ffffff;" id="black" class="flex w-full">
+                    <div id="blackLeft" class="" style="width:65%">
+                        <div id="inner" class="ml-36 pt-4 pr-14">
+                            <div style="color: #CEC0FC;" class="cursor-pointer font-bold text-sm py-4"> Development >
+                                Web
+                                Devlopment >
+                                <span id="title">Javascript</span>
+                            </div>
+                            <h1 id="courseName" class="text-3xl pb-2 font-bold">
+                                <%= author.name %>
+                            </h1>
+                            <h3 id="course1" class="text-lg pb-2 font-semibold">
+                                <%= author.title %>
+                            </h3>
+                            <div class="pb-2"> <span
+                                    style="background-color: #eceb98;color:#3d3c0a; padding: 4px 6px;">Bestseller</span><span
+                                    id="rating">
+                                    <p>⭐⭐⭐⭐⭐</p> 4.7
+                                </span><span><a href="#" style="color: #CEC0FC;"> <u>.(118,739
+                                            ratings).</u> </a></span><span>521,515
+                                    students</span></div>
+                            <div class="pb-2">
+                                <span>Created by </span><a id="author_name" style="color: #CEC0FC;" href=""><u>
+                                        <%= author.author %>
+                                    </u></a>
+                            </div>
+                            <div class="pb-2">
+                                <span>Last updated 10/2021 </span><span>English</span><span> English, French
+                                    [Auto],</span><span><a href="#"> <u>6 more</u></a></span>
+                            </div>
                         </div>
-                        <h1 id="courseName" class="text-3xl pb-2 font-bold">
-                            <%= author.name %>
-                        </h1>
-                        <h3 id="course1" class="text-lg pb-2 font-semibold">
-                            <%= author.title %>
-                        </h3>
-                        <div class="pb-2"> <span
-                                style="background-color: #eceb98;color:#3d3c0a; padding: 4px 6px;">Bestseller</span><span
-                                id="rating">
-                                <p>⭐⭐⭐⭐⭐</p> 4.7
-                            </span><span><a href="#" style="color: #CEC0FC;"> <u>.(118,739
-                                        ratings).</u> </a></span><span>521,515
-                                students</span></div>
-                        <div class="pb-2">
-                            <span>Created by </span><a id="author_name" style="color: #CEC0FC;" href=""><u>
-                                    <%= author.author %>
-                                </u></a>
-                        </div>
-                        <div class="pb-2">
-                            <span>Last updated 10/2021 </span><span>English</span><span> English, French
-                                [Auto],</span><span><a href="#"> <u>6 more</u></a></span>
+                    </div>
+                    <div id="blackRight" class="" style="width: 35%;">
+                        <div class=" mt-28" style="width: 62%; margin-left:6px">
+                            <img class="w-full" src="<%= author.image %>" alt="<%author.name%>">
                         </div>
                     </div>
                 </div>
-                <div id="blackRight" class="border lg:mt-32 sm:mr-22 border-2 border-blue-500" style="width: 25%;">
-                    <img class="w-full" src="<%= author.image %>" alt="<%author.name%>">
-                </div>
-            </div>
-            <div id="white" class="flex">
-                <div id="whiteLeft" class="ml-36" style="width: 56%;">
-                    <div id="learn" class="w-3/4"> </div>
+                <div id="white" class="flex">
+                    <div id="whiteLeft" class="ml-36" style="width: 56%;">
+                        <div id="learn" class="w-3/4"> </div>
 
-                    <div id="curated" class="w-3/4 border flex p-4 mt-6 border-gray-300">
-                        <div id="u-lo">
-                            <img class="h-6 w-6" src="https://cdn.worldvectorlogo.com/logos/udemy-3.svg" alt="">
-                        </div>
-                        <div class="ml-5 pt-1">
-                            <span class="font-bold">Curated for the <a style="color: 
+                        <div id="curated" class="w-3/4 border flex p-4 mt-6 border-gray-300">
+                            <div id="u-lo">
+                                <img class="h-6 w-6" src="https://cdn.worldvectorlogo.com/logos/udemy-3.svg" alt="">
+                            </div>
+                            <div class="ml-5 pt-1">
+                                <span class="font-bold">Curated for the <a style="color: 
                         #401b9c;" href="#"><u>Udemy Buisness</u></a> collection</span>
+                            </div>
                         </div>
-                    </div>
 
-                    <h1 class="w-3/4 mt-6 font-bold text-2xl ">Course content</h1>
+                        <h1 class="w-3/4 mt-6 font-bold text-2xl ">Course content</h1>
 
-                    <div class="flex w-3/4 border border-gray-300 mt-6">
-                        <div>
-                            <span>21 sections </span><span class="font-bold">.</span><span> 315 lectures</span><span> .
-                            </span><span>68h 21m total length</span>
-                        </div>
-                        <div>
-                            <span style="color: 
+                        <div class="flex w-3/4 border border-gray-300 mt-6">
+                            <div>
+                                <span>21 sections </span><span class="font-bold">.</span><span> 315
+                                    lectures</span><span> .
+                                </span><span>68h 21m total length</span>
+                            </div>
+                            <div>
+                                <span style="color: 
                        #401b9c;" class="cursor-pointer ml-28"><u>Expand all</u></span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div id="content" class="w-3/4 border border-gray-300 mt-6"></div>
+                        <div id="content" class="w-3/4 border border-gray-300 mt-6"></div>
 
-                    <div id="requirements" class="w-3/4  mt-6">
-                        <h1 class="font-bold text-2xl">Requirements</h1>
-                        <ul class="p-6 text-sm">
-                            <li id="r1"> No coding experience is necessary to take this course! I take you from beginner
-                                to expert!</li><br />
-                            <li id="r2">Any computer and OS will work — Windows, macOS or Linux. We will set up your
-                                text editor the course.
-                            </li> <br />
-                            <li id="r3">A basic understanding of HTML and CSS is a plus, but not a must! The course
-                                includes an HTML and CSS
-                                crash course.</li>
-                        </ul>
+                        <div id="requirements" class="w-3/4  mt-6">
+                            <h1 class="font-bold text-2xl">Requirements</h1>
+                            <ul class="p-6 text-sm">
+                                <li id="r1"> No coding experience is necessary to take this course! I take you from
+                                    beginner
+                                    to expert!</li><br />
+                                <li id="r2">Any computer and OS will work — Windows, macOS or Linux. We will set up your
+                                    text editor the course.
+                                </li> <br />
+                                <li id="r3">A basic understanding of HTML and CSS is a plus, but not a must! The course
+                                    includes an HTML and CSS
+                                    crash course.</li>
+                            </ul>
 
-                    </div>
-                    <div id="top_companies" class="w-3/4 border border-gray-300 p-4 mt-6">
-                        <h1 style="color:#1c1d1f;
+                        </div>
+                        <div id="top_companies" class="w-3/4 border border-gray-300 p-4 mt-6">
+                            <h1 style="color:#1c1d1f;
                     font-family:SuisseWorks;
                     font-size:19px;
                     font-weight:700;" class="pt-2 ml-4">Top companies trust Udemy</h1>
-                        <h3 class="ml-4 mt-1">Get you team access to Udemy's top 6,000+ courses</h3>
-                        <div id="com-logo" class="flex mt-3 pb-3">
-                            <div class=""><img class="w-20" src="https://s.udemycdn.com/partner-logos/v4/apple-dark.svg"
-                                    alt=""></div>
-                            <div><img class="w-24 ml-5" src="https://s.udemycdn.com/partner-logos/v4/box-dark.svg"
-                                    alt=""></div>
-                            <div><img class="w-20 ml-5"
-                                    src="https://s.udemycdn.com/partner-logos/v4/volkswagen-dark.svg" alt=""></div>
-                            <div><img class="w-36 ml-5" src="https://s.udemycdn.com/partner-logos/v4/netflix-dark.svg"
-                                    alt=""></div>
-                            <div><img class="w-36 ml-5"
-                                    src="https://s.udemycdn.com/partner-logos/v4/eventbrite-dark.svg" alt=""></div>
-                        </div>
+                            <h3 class="ml-4 mt-1">Get you team access to Udemy's top 6,000+ courses</h3>
+                            <div id="com-logo" class="flex mt-3 pb-3">
+                                <div class=""><img class="w-20"
+                                        src="https://s.udemycdn.com/partner-logos/v4/apple-dark.svg" alt=""></div>
+                                <div><img class="w-24 ml-5" src="https://s.udemycdn.com/partner-logos/v4/box-dark.svg"
+                                        alt=""></div>
+                                <div><img class="w-20 ml-5"
+                                        src="https://s.udemycdn.com/partner-logos/v4/volkswagen-dark.svg" alt=""></div>
+                                <div><img class="w-36 ml-5"
+                                        src="https://s.udemycdn.com/partner-logos/v4/netflix-dark.svg" alt=""></div>
+                                <div><img class="w-36 ml-5"
+                                        src="https://s.udemycdn.com/partner-logos/v4/eventbrite-dark.svg" alt=""></div>
+                            </div>
 
-                        <button class="border border-black font-bold cursor-pointer p-2">Try Udemy Buisness</button>
-                    </div>
-                    <div id="show_desc" class="w-3/4 mt-6">
-                        <h1 class="font-extrabold text-2xl pb-2">Description</h1>
-                        <p class="text"><span id="desc1" class="font-bold italic">* The #1 bestselling JavaScript course
-                                on Udemy! *</span> <br /><span id="desc2" class="font-bold italic">* Completely re-built
-                                from scratch in October 2020 (68 hours video) *</span> <br /> <span id="desc3"
-                                class="italic text-sm">"Really, really well made course. Super in-depth, with great
-                                challenges and projects that will solidify your Javascript understanding. I found the
-                                lectures were paced perfectly -- Jonas doesn't skip over anything that might be useful
-                                to a JS developer" </span><span class="font-semibold">-- </span> <span class="text-lg"
-                                id="author">Carson Bartholomew</span> <span class="hidden" id="moreText"> <span
-                                    class="text-sm" id="desc4">JavaScript is the most popular programming language in
-                                    the world. It powers the entire modern web. It provides millions of high-paying jobs
-                                    all over the world.</span> <br /> <span class="text-sm">That's why you want to learn
-                                    JavaScript too. And you came to the right place!</span> <br /> <span
-                                    class="font-bold ">Why is this the right JavaScript course for you?</span> <br />
-                                <span class="italic">This is the most complete JavaScript course on Udemy. It's an
-                                    all-in-one package that will take you from the very fundamentals of JavaScript, all
-                                    the way to building modern and complex applications.</span> <br /> <span
-                                    class="text-sm">You will learn modern JavaScript from the very beginning,
-                                    step-by-step. I will guide you through </span> <span
-                                    class="font-bold text-sm">practical and fun code examples, important theory </span>
-                                <span class="text-sm">about how JavaScript works behind the scenes, and </span><span
-                                    class="cla
+                            <button class="border border-black font-bold cursor-pointer p-2">Try Udemy Buisness</button>
+                        </div>
+                        <div id="show_desc" class="w-3/4 mt-6">
+                            <h1 class="font-extrabold text-2xl pb-2">Description</h1>
+                            <p class="text"><span id="desc1" class="font-bold italic">* The #1 bestselling JavaScript
+                                    course
+                                    on Udemy! *</span> <br /><span id="desc2" class="font-bold italic">* Completely
+                                    re-built
+                                    from scratch in October 2020 (68 hours video) *</span> <br /> <span id="desc3"
+                                    class="italic text-sm">"Really, really well made course. Super in-depth, with great
+                                    challenges and projects that will solidify your Javascript understanding. I found
+                                    the
+                                    lectures were paced perfectly -- Jonas doesn't skip over anything that might be
+                                    useful
+                                    to a JS developer" </span><span class="font-semibold">-- </span> <span
+                                    class="text-lg" id="author">Carson Bartholomew</span> <span class="hidden"
+                                    id="moreText"> <span class="text-sm" id="desc4">JavaScript is the most popular
+                                        programming language in
+                                        the world. It powers the entire modern web. It provides millions of high-paying
+                                        jobs
+                                        all over the world.</span> <br /> <span class="text-sm">That's why you want to
+                                        learn
+                                        JavaScript too. And you came to the right place!</span> <br /> <span
+                                        class="font-bold ">Why is this the right JavaScript course for you?</span>
+                                    <br />
+                                    <span class="italic">This is the most complete JavaScript course on Udemy. It's an
+                                        all-in-one package that will take you from the very fundamentals of JavaScript,
+                                        all
+                                        the way to building modern and complex applications.</span> <br /> <span
+                                        class="text-sm">You will learn modern JavaScript from the very beginning,
+                                        step-by-step. I will guide you through </span> <span
+                                        class="font-bold text-sm">practical and fun code examples, important theory
+                                    </span>
+                                    <span class="text-sm">about how JavaScript works behind the scenes, and </span><span
+                                        class="cla
                         font-bold text-sm">beautiful and complete projects.</span> <br /> <span class="text-sm">You
-                                    will also learn how to think like a developer, how to plan application features, how
-                                    to architect your code, how to debug code, and a lot of other real-world skills that
-                                    you will need on your developer job.</span> <br /> <span class="text-sm">And unlike
-                                    other courses, this one actually contains beginner, intermediate, advanced, and even
-                                    expert topics, so </span><span class="text-sm font-bold">you don't have to buy any
-                                    other course in order to master JavaScript from the ground up!</span> <br /> <span
-                                    class="text-sm">But... You don't have to go into all these topics. This is a huge
-                                    course, because, after all, it's "The Complete JavaScript Course". In fact, it's
-                                    like many courses in one! But you can become an excellent developer by watching only
-                                    parts of the course. That's why I built this course in a very modular way, and
-                                    designed pathways that will take you through the course faster.</span> <br />
-                                <span class="text-sm italic">By the end of the course, you will have the knowledge and
-                                    confidence that you need in order to ace your job interviews and become a
-                                    professional developer.</span></span></p>
-                        <span style="color: 
+                                        will also learn how to think like a developer, how to plan application features,
+                                        how
+                                        to architect your code, how to debug code, and a lot of other real-world skills
+                                        that
+                                        you will need on your developer job.</span> <br /> <span class="text-sm">And
+                                        unlike
+                                        other courses, this one actually contains beginner, intermediate, advanced, and
+                                        even
+                                        expert topics, so </span><span class="text-sm font-bold">you don't have to buy
+                                        any
+                                        other course in order to master JavaScript from the ground up!</span> <br />
+                                    <span class="text-sm">But... You don't have to go into all these topics. This is a
+                                        huge
+                                        course, because, after all, it's "The Complete JavaScript Course". In fact, it's
+                                        like many courses in one! But you can become an excellent developer by watching
+                                        only
+                                        parts of the course. That's why I built this course in a very modular way, and
+                                        designed pathways that will take you through the course faster.</span> <br />
+                                    <span class="text-sm italic">By the end of the course, you will have the knowledge
+                                        and
+                                        confidence that you need in order to ace your job interviews and become a
+                                        professional developer.</span></span></p>
+                            <span style="color: 
                     #401b9c;" id="read_more_btn" class="cursor-pointer font-bold flex">Show more</span>
-                    </div>
-                    <div id="F-review" class="w-3/4 mt-6 border border-gray-300">
-                        <h1 class="font-bold text-2xl p-6">Featured review</h1>
-                        <div class="flex">
-                            <div class="rounded-full ml-5 h-24 w-24 items-center -mt-3 mb-2 justify-center"><img
-                                    class="rounded-full" src="https://img-c.udemycdn.com/user/200_H/106349520_68e8.jpg"
-                                    alt=""></div>
-                            <div class="ml-6">
-                                <h1 class="font-bold text-base">Vishal Ramane</h1>
-                                <h1>18 courses</h1>
-                                <h1>1 review</h1>
+                        </div>
+                        <div id="F-review" class="w-3/4 mt-6 border border-gray-300">
+                            <h1 class="font-bold text-2xl p-6">Featured review</h1>
+                            <div class="flex">
+                                <div class="rounded-full ml-5 h-24 w-24 items-center -mt-3 mb-2 justify-center"><img
+                                        class="rounded-full"
+                                        src="https://img-c.udemycdn.com/user/200_H/106349520_68e8.jpg" alt=""></div>
+                                <div class="ml-6">
+                                    <h1 class="font-bold text-base">Vishal Ramane</h1>
+                                    <h1>18 courses</h1>
+                                    <h1>1 review</h1>
+                                </div>
+                            </div>
+                            <h1 class="ml-5">⭐⭐⭐⭐⭐ 10 months ago</h1>
+                            <h1 class="text-sm ml-5">I had some development experience before (backend) and I wanted to
+                                really learn JavaScript and I must tell you, this is the best JavaScript course on the
+                                internet period. It has everything you need to get you up to speed and more!!! Apart
+                                from
+                                innovative challenges and awesome projects, what I personally really admired was the
+                                fact
+                                that Jonas really took a lot of effort in explaining "How JS works under the hood" and
+                                that
+                                is the most precious</h1>
+                            <br />
+                            <h1 id="feedback" class="ml-5">Was this review helpful?</h1>
+                            <div class="flex mt-2 ml-5 mb-3">
+                                <div id="thumsup" class="rounded-full bg-gray-300 justify-center"><button><img
+                                            class="h-10 w-11 p-2"
+                                            src="https://cdn-icons-png.flaticon.com/512/25/25297.png" alt=""></button>
+                                </div>
+                                <div id="thumsdown" class="rounded-full bg-gray-300 justify-center ml-4"><button><img
+                                            class="h-10 w-11 p-2 pb-1"
+                                            src="https://cdn-icons-png.flaticon.com/512/25/25237.png" alt=""></button>
+                                </div>
+                                <div class="ml-8 tex mt-2"><a href="#"><u>Report</u></a></div>
                             </div>
                         </div>
-                        <h1 class="ml-5">⭐⭐⭐⭐⭐ 10 months ago</h1>
-                        <h1 class="text-sm ml-5">I had some development experience before (backend) and I wanted to
-                            really learn JavaScript and I must tell you, this is the best JavaScript course on the
-                            internet period. It has everything you need to get you up to speed and more!!! Apart from
-                            innovative challenges and awesome projects, what I personally really admired was the fact
-                            that Jonas really took a lot of effort in explaining "How JS works under the hood" and that
-                            is the most precious</h1>
-                        <br />
-                        <h1 id="feedback" class="ml-5">Was this review helpful?</h1>
-                        <div class="flex mt-2 ml-5 mb-3">
-                            <div id="thumsup" class="rounded-full bg-gray-300 justify-center"><button><img
-                                        class="h-10 w-11 p-2" src="https://cdn-icons-png.flaticon.com/512/25/25297.png"
-                                        alt=""></button></div>
-                            <div id="thumsdown" class="rounded-full bg-gray-300 justify-center ml-4"><button><img
-                                        class="h-10 w-11 p-2 pb-1"
-                                        src="https://cdn-icons-png.flaticon.com/512/25/25237.png" alt=""></button></div>
-                            <div class="ml-8 tex mt-2"><a href="#"><u>Report</u></a></div>
-                        </div>
-                    </div>
-                    <div id="instructor" class="w-3/4 mt-6">
-                        <h1 class="font-bold text-2xl">Instructor</h1>
-                        <h1 style="color: 
+                        <div id="instructor" class="w-3/4 mt-6">
+                            <h1 class="font-bold text-2xl">Instructor</h1>
+                            <h1 style="color: 
                     #401b9c;" class="font-bold text-lg mt-2 mb-1"><u>Jonas Schmedtmann</u></h1>
-                        <h2 class="mb-2">Web Developer, Designer, and Teacher</h2>
-                        <div class="flex mt-4 mb-4">
-                            <div>
-                                <img class="rounded-full w-1/2 ml-2"
-                                    src="https://img-c.udemycdn.com/user/200_H/7799204_2091_5.jpg" alt="">
+                            <h2 class="mb-2">Web Developer, Designer, and Teacher</h2>
+                            <div class="flex mt-4 mb-4">
+                                <div>
+                                    <img class="rounded-full w-1/2 ml-2"
+                                        src="https://img-c.udemycdn.com/user/200_H/7799204_2091_5.jpg" alt="">
+                                </div>
+                                <div>
+                                    <h1>⭐⭐⭐⭐⭐ 4.7 Instructor Rating</h1>
+                                    <h1>255,741 Reviews</h1>
+                                    <h1>1,189,656 Students</h1>
+                                    <h1>5 Courses</h1>
+                                </div>
                             </div>
-                            <div>
-                                <h1>⭐⭐⭐⭐⭐ 4.7 Instructor Rating</h1>
-                                <h1>255,741 Reviews</h1>
-                                <h1>1,189,656 Students</h1>
-                                <h1>5 Courses</h1>
-                            </div>
-                        </div>
-                        <p class="text1 text-sm">Hi, I'm Jonas! I have been identified as one of Udemy's Top Instructors
-                            and all my premium courses have earned the best-selling status for outstanding performance
-                            and student satisfaction. <br /> <br />
+                            <p class="text1 text-sm">Hi, I'm Jonas! I have been identified as one of Udemy's Top
+                                Instructors
+                                and all my premium courses have earned the best-selling status for outstanding
+                                performance
+                                and student satisfaction. <br /> <br />
 
-                            I'm a full-stack web developer and designer with a passion for building beautiful things
-                            from scratch. I've been building websites and apps since 2010 and also have a Master's
-                            degree in Engineering. <br /> <br /> <span class="hidden" id="moreText1">
-                                I discovered my passion for teaching and helping others by sharing all I knew when I was
-                                in college, and that passion brought me to Udemy in 2015. <br /> <br />
+                                I'm a full-stack web developer and designer with a passion for building beautiful things
+                                from scratch. I've been building websites and apps since 2010 and also have a Master's
+                                degree in Engineering. <br /> <br /> <span class="hidden" id="moreText1">
+                                    I discovered my passion for teaching and helping others by sharing all I knew when I
+                                    was
+                                    in college, and that passion brought me to Udemy in 2015. <br /> <br />
 
-                                Here, in all my courses, what students love the most is that I take the time to explain
-                                every concept in a way that everyone can easily understand. <br /> <br />
+                                    Here, in all my courses, what students love the most is that I take the time to
+                                    explain
+                                    every concept in a way that everyone can easily understand. <br /> <br />
 
-                                <span class="font-bold italic"> So, do you want to learn how to build awesome websites
-                                    with modern HTML and CSS?</span> <br /> <br />
+                                    <span class="font-bold italic"> So, do you want to learn how to build awesome
+                                        websites
+                                        with modern HTML and CSS?</span> <br /> <br />
 
-                                <span class="font-bold italic">Looking for a complete JavaScript course that takes you
-                                    from zero to an advanced developer?</span> <br /> <br />
-                                <span class="font-bold italic">Or maybe you want to build modern and fast back-end
-                                    applications with Node.js?</span>
-                                <br /> <br />
+                                    <span class="font-bold italic">Looking for a complete JavaScript course that takes
+                                        you
+                                        from zero to an advanced developer?</span> <br /> <br />
+                                    <span class="font-bold italic">Or maybe you want to build modern and fast back-end
+                                        applications with Node.js?</span>
+                                    <br /> <br />
 
-                                Then don't waste your time with random tutorials or incomplete youtube videos. All my
-                                courses are easy-to-follow, all-in-one packages that will take your skills to the next
-                                level. <br /> <br />
+                                    Then don't waste your time with random tutorials or incomplete youtube videos. All
+                                    my
+                                    courses are easy-to-follow, all-in-one packages that will take your skills to the
+                                    next
+                                    level. <br /> <br />
 
-                                These courses are exactly the courses I wish I had when I was first getting into web
-                                development! <br /> <br />
+                                    These courses are exactly the courses I wish I had when I was first getting into web
+                                    development! <br /> <br />
 
-                                So see for yourself, enroll in one of my courses (or all of them :D) and join <span
-                                    class="font-bold">1,000,000+</span> happy students today.
-                            </span>
-                        </p>
-                        <span style="color: 
-                        #401b9c;" id="read_more_btn1" class="cursor-pointer font-bold flex">Show more</span>
-                    </div>
-                </div>
-                <div id="whiteRight" class="w-3/12 sticky top-0 z-50 border bg-white h-96 mr-28  "
-                    style="width: 336px;">
-                    <div class="ml-4">
-                        <div>
-                            <p class="font-bold my-4 mr-4 text-3xl">
-                                ₹<%= author.price %>
+                                    So see for yourself, enroll in one of my courses (or all of them :D) and join <span
+                                        class="font-bold">1,000,000+</span> happy students today.
+                                </span>
                             </p>
-                        </div>
-                        <div class="w-full flex">
-                            <button class="w-4/5 h-12 py-2 text-white font-semibold bg-purple-600 hover:bg-purple-800"
-                                onclick='addtocart()'>
-                                Add to cart
-                            </button>
-                            <button class="px-2 py-2 border border-black ml-2">
-                                🤍
-                            </button>
-                        </div>
-                        <div>
-                            <button
-                                class="text-center my-4 py-2 hover:bg-gray-100 text-black border border-black font-semibold"
-                                style="width: 302px;" onclick='window.location.href = "/cart"'>
-                                Buy now
-                            </button>
-                        </div>
-                        <div>
-                            <h1 class="font-bold text-l">This course includes:</h1>
-                            <div class="flex my-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 ml-1 h-4 w-4"
-                                    style="margin-top: 2px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
-                                </svg>
-                                <p class="text-sm">69 hours on-demand video</p>
-                            </div>
-                            <div class="flex my-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 2px;"
-                                    class="mt-1 mr-4 ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                                </svg>
-                                <p class="text-sm">21 articles</p>
-                            </div>
-                            <div class="flex my-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 2px;"
-                                    class="mt-1 mr-4 ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                                </svg>
-                                <p class="text-sm">18 downloadable resources</p>
-                            </div>
-                            <div class="flex my-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="margin-top: 2px;"
-                                    class="mt-1 mr-4 ml-1 h-4 w-4" viewBox="0 0 16 16">
-                                    <path
-                                        d="M5.68 5.792 7.345 7.75 5.681 9.708a2.75 2.75 0 1 1 0-3.916ZM8 6.978 6.416 5.113l-.014-.015a3.75 3.75 0 1 0 0 5.304l.014-.015L8 8.522l1.584 1.865.014.015a3.75 3.75 0 1 0 0-5.304l-.014.015L8 6.978Zm.656.772 1.663-1.958a2.75 2.75 0 1 1 0 3.916L8.656 7.75Z" />
-                                </svg>
-                                <p class="text-sm">Full lifetime access</p>
-                            </div>
-                            <div class="flex my-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 2px;"
-                                    class="mt-1 mr-4 ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                                </svg>
-                                <p class="text-sm">Access on mobile and TV</p>
-                            </div>
-                            <div class="flex my-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="margin-top: 2px;"
-                                    class="mt-1 mr-4 ml-1 h-3.5 w-3.5" viewBox="0 0 16 16">
-                                    <path
-                                        d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z" />
-                                </svg>
-                                <p class="text-sm">Certificate of completion</p>
-                            </div>
-                        </div>
-
-                        <div class="flex my-2">
-                            <a href="#" class="m-3 underline underline-offset-8 text-black font-semibold ">Apply Coupon</a>
-                            <a href="#" class="m-3 underline underline-offset-4 text-black font-semibold " >Gift this course</a>
-                        </div>
-                        <div>
-                            <h1 class="font-bold text-xl my-2">Training 5 or more people?</h1>
-                            <p class="text-sm">Get your team access to 6,000+ top Udemy courses anytime, anywhere.</p>
-                        </div>
-
-                        <div class="border-2 border-black px-4 py-2 my-4 text-center">
-                            Type Bussiness
-
+                            <span style="color: 
+                        #401b9c;" id="read_more_btn1" class="cursor-pointer font-bold flex">Show more</span>
                         </div>
                     </div>
+                    <div id="whiteRight" class="w-3/12 sticky top-0 z-50 border bg-white h-96 mr-28  "
+                        style="width: 336px;">
+                        <div class="ml-4">
+                            <div>
+                                <p class="font-bold my-4 mr-4 text-3xl">
+                                    ₹<%= author.price %>
+                                </p>
+                            </div>
+                            <div class="w-full flex">
+                                <button
+                                    class="w-4/5 h-12 py-2 text-white font-semibold bg-purple-600 hover:bg-purple-800"
+                                    onclick='addtocart()'>
+                                    Add to cart
+                                </button>
+                                <button class="px-2 py-2 border border-black ml-2">
+                                    🤍
+                                </button>
+                            </div>
+                            <div>
+                                <button
+                                    class="text-center my-4 py-2 hover:bg-gray-100 text-black border border-black font-semibold"
+                                    style="width: 302px;" onclick='window.location.href = "/cart"'>
+                                    Buy now
+                                </button>
+                            </div>
+                            <div>
+                                <h1 class="font-bold text-l">This course includes:</h1>
+                                <div class="flex my-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 ml-1 h-4 w-4"
+                                        style="margin-top: 2px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+                                    </svg>
+                                    <p class="text-sm">69 hours on-demand video</p>
+                                </div>
+                                <div class="flex my-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 2px;"
+                                        class="mt-1 mr-4 ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                    </svg>
+                                    <p class="text-sm">21 articles</p>
+                                </div>
+                                <div class="flex my-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 2px;"
+                                        class="mt-1 mr-4 ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                                    </svg>
+                                    <p class="text-sm">18 downloadable resources</p>
+                                </div>
+                                <div class="flex my-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="margin-top: 2px;"
+                                        class="mt-1 mr-4 ml-1 h-4 w-4" viewBox="0 0 16 16">
+                                        <path
+                                            d="M5.68 5.792 7.345 7.75 5.681 9.708a2.75 2.75 0 1 1 0-3.916ZM8 6.978 6.416 5.113l-.014-.015a3.75 3.75 0 1 0 0 5.304l.014-.015L8 8.522l1.584 1.865.014.015a3.75 3.75 0 1 0 0-5.304l-.014.015L8 6.978Zm.656.772 1.663-1.958a2.75 2.75 0 1 1 0 3.916L8.656 7.75Z" />
+                                    </svg>
+                                    <p class="text-sm">Full lifetime access</p>
+                                </div>
+                                <div class="flex my-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 2px;"
+                                        class="mt-1 mr-4 ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                    </svg>
+                                    <p class="text-sm">Access on mobile and TV</p>
+                                </div>
+                                <div class="flex my-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="margin-top: 2px;"
+                                        class="mt-1 mr-4 ml-1 h-3.5 w-3.5" viewBox="0 0 16 16">
+                                        <path
+                                            d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z" />
+                                    </svg>
+                                    <p class="text-sm">Certificate of completion</p>
+                                </div>
+                            </div>
+
+                            <div class="flex my-2">
+                                <a href="#" class="m-3 underline underline-offset-8 text-black font-semibold ">Apply
+                                    Coupon</a>
+                                <a href="#" class="m-3 underline underline-offset-4 text-black font-semibold ">Gift this
+                                    course</a>
+                            </div>
+                            <div>
+                                <h1 class="font-bold text-xl my-2">Training 5 or more people?</h1>
+                                <p class="text-sm">Get your team access to 6,000+ top Udemy courses anytime, anywhere.
+                                </p>
+                            </div>
+
+                            <div class="border-2 border-black px-4 py-2 my-4 text-center">
+                                Type Bussiness
+
+                            </div>
+                        </div>
+
+                    </div>
+
 
                 </div>
-
-
             </div>
         </div>
-    </div>
-    <!-- footer -->
-    <%- include('./components/footer') %>
+        <!-- footer -->
+        <%- include('./components/footer') %>
 </body>
 
 </html>
