@@ -369,8 +369,9 @@ async function addToWishlist(p) {
         alert("item added to user DB")
 
         document.querySelector('.likeBtn').innerHTML = '<img src="https://img.icons8.com/emoji/20/000000/heart-suit.png"/>'
-    }else{
-        alert("Please login otherwise you will not able to add wishlist")
+
+    }else {
+        alert("Please login to add to wishlist");
     }
 }
 
