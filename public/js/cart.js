@@ -241,13 +241,10 @@ function discount() {
 // <-----------  popup option for signup ------------->
 
 
- var cross1 = document.getElementById('cross1')
- cross1.addEventListener('click',hiddenkaro)
+ 
 
- var popupBox = document.getElementById('popupBox')
-
- var showbtn = document.getElementById('showbtn')
-  showbtn.addEventListener('click',showkaro)
+//  var showbtn = document.getElementById('showbtn')
+//   showbtn.addEventListener('click',showkaro)
 
   var checkoutBtn = document.getElementById('checkoutBtn')
 //   checkoutBtn.addEventListener('click',apicall)
@@ -267,6 +264,11 @@ function discount() {
 //          console.log(e);
 //     }
 // }
+
+var cross1 = document.getElementById('cross1')
+ cross1.addEventListener('click',hiddenkaro)
+
+ var popupBox = document.getElementById('popupBox');
 
 
  function showkaro () {

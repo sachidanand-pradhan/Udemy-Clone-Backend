@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,12 +10,49 @@
     <script src='/js/carousel.js'></script>
     <title>My Learning</title>
 </head>
-<body onload="loadCart('<%= JSON.stringify(author) %>'), makeRequest(`<%= cookie %>`)">
+<body onclick="hide()" onload = "loadCart(`<%=JSON.stringify(author)%>`), makeRequest(`<%= cookie %>`)">
     <%- include('./components/header') %>
-    <%= console.log(author) %>
-    <div id="blackbox" class=""></div>
-    
+        <%= console.log(author) %>
+            <div id="blackbox" class="w-full bg-black h-40 flex flex-col text-white">
+                <div class="w-4/12 ml-52 mt-16 font-semibold">
+                    <div class="text-3xl mx-4 font-bold">My Learning</div>
+                    <div class="flex w-full h-14 flex-row mt-4">
+                        <div><a href="#" class="text-xl mx-4 hover:underline decoration-8 ">All courses</a></div>
+                        <div><a href="#" class="text-xl mx-4 hover:underline decoration-8">WishList</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-9/12 m-auto px-8 border-2 grid-cols-4 bg-yellow-400" id="displayDiv">
+                
+            </div>
+
+            <%- include('./components/footer') %>
+
 </body>
+
 </html>
 <script src="/js/learning.js"> </script>
 <script src='/js/navbar.js'></script>
+<script>
+    
+    function loadCart(data){
+        let parent = document.getElementById("displayDiv");
+        let datas = JSON.parse(data);
+        console.log(data);
+        parent.innerHTML = "";
+        datas.forEach((el)=>{
+            let div = document.createElement("div");
+            let img = document.createElement("img");
+            let p = document.createElement("p");
+            let t = document.createElement("p");
+            let rating = document.createElement("p");
+
+            img.src=el.image;
+            p.innerText=el.name;
+            t.innerText=el.title;
+            div.append(img,p,t);
+            parent.append(div);
+
+        })
+    }
+</script>
