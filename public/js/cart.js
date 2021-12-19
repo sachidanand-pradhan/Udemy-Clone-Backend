@@ -179,33 +179,61 @@ async function loadCart() {
             removeDiv.append(remove, saveForLater, moveToWishlist);
             remove.addEventListener('click', removeCourse);
 
-            function removeCourse(event) {
+            async function removeCourse(event) {
                 let child = event.target.parentNode.parentNode;
-                let id = child.querySelector('.courseId').textContent;
+                let data;
 
-                console.log("the id in the child is :", id);
                 let cookie = document.cookie;
 
-                // if (!cookie || cookie.length <= 1) {
-                // let cart = data.filter((item) => {
-                //     if (item.title != el.title) return item;
-                // })
-                // localStorage.setItem('udemyCart', JSON.stringify(cart));
-                // child.remove();
 
-                // let tot = cart.reduce(price_sum, 0);
-                // console.log(tot);
+                if (!cookie || cookie.length <= 1) {
+                    data = JSON.parse(localStorage.getItem('udemyCart'));
 
-                // let TotalPrice = document.getElementById("TotalPrice");
-                // TotalPrice.querySelector('#old').textContent = `₹${tot}`;
+                    cart = data.filter((item) => {
+                        if (item.title != el.title) return item;
+                    })
 
-                // let courseCart = document.getElementById("courseCart");
-                // courseCart.innerText = `${cart.length} courses in Cart`;
-                // window.location.href = '/cart';
-            }
+                    localStorage.setItem('udemyCart', JSON.stringify(cart));
+                    child.remove();
+                } else {
+                    let idOfProduct = child.querySelector('.courseId').textContent;
+                    // console.log("the id in the child is :", idOfProduct);
 
-            async function removeCourseInDb(id) {
-                alert("the Id in removeCourseId is :", id);
+                    cookie = cookie.split('=');
+                    // console.log("docum.cookie", cookie);
+
+                    let token = cookie[1];
+
+                    let res = await makeRequest(token);
+                    // console.log("the produt data in carousel addd to cart is ", p);
+
+                    let userId = res[0]._id;
+                    // console.log("userId in add to cart :", userId);
+
+                    let out = await fetch(`http://localhost:2345/login/updateCart/${userId}`, {
+                        method: "DELETE",
+                        headers: { "Content-type": "application/json" },
+                        body: JSON.stringify({
+                            productId: idOfProduct
+                        })
+                    })
+
+                    out = await out.json();
+                    console.log("out in addtocart is", out);
+
+                    cart = out.cartItems;
+                }
+
+                let tot = cart.reduce(price_sum, 0);
+                console.log(tot);
+
+                let TotalPrice = document.getElementById("TotalPrice");
+                TotalPrice.querySelector('#old').textContent = `₹${tot}`;
+
+                let courseCart = document.getElementById("courseCart");
+                courseCart.innerText = `${cart.length} courses in Cart`;
+
+                window.location.href = '/cart';
             }
 
             right.append(priceDiv, oldprice);
@@ -274,12 +302,12 @@ cross1.addEventListener('click', hiddenkaro)
 
 var popupBox = document.getElementById('popupBox')
 
- 
+
 
 //  var showbtn = document.getElementById('showbtn')
 //   showbtn.addEventListener('click',showkaro)
 
-  var checkoutBtn = document.getElementById('checkoutBtn')
+var checkoutBtn = document.getElementById('checkoutBtn')
 //   checkoutBtn.addEventListener('click',apicall)
 
 
@@ -299,9 +327,9 @@ var popupBox = document.getElementById('popupBox')
 // }
 
 var cross1 = document.getElementById('cross1')
- cross1.addEventListener('click',hiddenkaro)
+cross1.addEventListener('click', hiddenkaro)
 
- var popupBox = document.getElementById('popupBox');
+var popupBox = document.getElementById('popupBox');
 
 
 function showkaro() {
