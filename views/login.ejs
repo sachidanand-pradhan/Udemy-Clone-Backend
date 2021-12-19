@@ -10,7 +10,7 @@
     rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body onload = 'makeRequest("<%= cookie %>")'>
     <%- include('./components/header') %>
    <div style="font-family: sf pro text,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
    font-size: 15px;
@@ -50,7 +50,7 @@
            line-height:22.88px;
            margin:0px 0px 8px;" id="google" class="flex p-2 gap-x-5 hover:text-blue-700 cursor-pointer w-80">
                  <div id="g-logo"><img style="width: 30px;" src="https://img.icons8.com/color/48/000000/google-logo.png"/></div>
-                 <div>Continue with Google</div>
+                 <div><a href="/google">Continue with Google</a></div>
            </div>
            <div style="align-items:center;
            border-color:#d1d7dc;
@@ -126,62 +126,5 @@
    <%- include('./components/footer') %>
 </body>
 </html>
-<script src="./scripts/navbar.js" async></script>
-<script type="module">
-   import navbar from './components/header.js';
 
-let promise = new Promise((resolve,reject) => {
-    let header = document.getElementById('nav');
-
-    header.innerHTML = navbar();
-
-    resolve('Navbar imported');
-});
-promise.then((res) => {
-    console.log( res );
-    addFunctionalityToNavbar();
-    console.log( 'done' );
-})
-
-
-// let btn = document.getElementById('logIn_Btn');
-// btn.onclick = ()=>{
-//     login(event);
-// }
-
-// function login(e) {
-//   e.preventDefault();
-
-//   let form = document.getElementById("form");
-
-//   let retrieveData = JSON.parse(localStorage.getItem("udemyUsers"));
-
-//   let email = form.email.value;
-//   let password = form.password.value;
-
-//   let flag = false;
-//   retrieveData.forEach(function (i) {
-//     if (email == i.email && password == i.password) {
-//       flag = true;
-//     }
-//   });
-//   if (flag === true) {
-//     alert("Login Sucessfully!");
-//     if (localStorage.getItem("check") === null) {
-//         localStorage.setItem("check", JSON.stringify([]))
-//     }
-//     let dt = JSON.parse(localStorage.getItem("check"));
-//     dt = [];
-//     dt.push(email,'logedin');
-//      //console.log(dt);
-//     localStorage.setItem("check", JSON.stringify(dt));
-
-//     window.location.href = "home.html";
-    
-//   } else {
-//     alert("Invalid usename or password!");
-//   }
-// }
-
-
-</script>
+<script src="/js/navbar.js" async></script>

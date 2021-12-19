@@ -14,7 +14,6 @@ function loadCart(input) {
     if (!data || data.length == 0) {
         courseCart.innerText = data.length + " Courses in Cart";
 
-
         const cartItems = document.getElementById("items_inCart")
         const cartSummary = document.getElementById("cartSummary");
         cartSummary.style.display = 'none';
@@ -31,11 +30,9 @@ function loadCart(input) {
 
         let keepShopping = document.createElement("div");
         keepShopping.innerText = "Keep Shopping";
-        keepShopping.className = 'bg-purple-800 p-4 m-auto text-white my-10';
+        keepShopping.className = '0 p-4 m-auto text-white bg-purple-800 my-10';
         keepShopping.style.width = 'fit-content';
         keepShopping.onclick = () => { window.location.href = '/home' };
-
-
 
         cartItems.append(img, para, keepShopping)
         // var p_item = document.getElementById("coursenum")
@@ -54,73 +51,112 @@ function loadCart(input) {
             courseCart.innerText = data.length + " Courses in Cart";
 
             let div = document.createElement("div");
-            div.setAttribute('class', 'flex m-2 border ');
+            div.setAttribute('class', 'flex border p-2');
             div.width = 'fit-content';
 
             let left = document.createElement("div");
-            let mid = document.createElement("div");
-            let right = document.createElement("div");
+            left.className = 'text-right';
 
+            let mid = document.createElement("div");
+            // mid.className 
+
+            let right = document.createElement("div");
+            right.className = 'text-right px-2';
 
             left.style.width = "30%";
             // left.style.border = "2px solid black";
             left.style.marginLeft = "5px";
 
-            mid.style.width = "60%";
-            mid.style.marginLeft = "5px";
+            mid.style.width = "55%";
+            mid.style.margin = "0px 10px";
             // mid.style.border = "2px solid black";
 
-
-            right.style.width = "10%";
-            right.style.margin = "5px";
+            right.style.width = "11%";
+            right.style.margin = "0px 10px";
             // right.style.border = "2px solid black";
 
             let img = document.createElement("img");
             img.src = el.image;
             left.append(img);
             img.style.width = "100%";
-            img.setAttribute('class', 'cursor-pointer my-4  ')
+            img.setAttribute('class', 'cursor-pointer')
 
             let p = document.createElement("p");
-            p.innerText = el.name;
-            p.setAttribute('class', 'font-bold cursor-pointer');
-
-            let title = document.createElement("p");
-            title.innerText = el.title;
-            title.setAttribute('class', 'lg:flex hidden cursor-pointer');
+            p.innerText = el.title;
+            p.setAttribute('class', 'font-bold cursor-pointer h-6 overflow-hidden');
 
             let author = document.createElement("p");
             author.innerText = el.author;
+            author.setAttribute('class', 'lg:flex text-sm text-gray-800 m-0 hidden cursor-pointer h-4 overflow-hidden');
+
+            let ratingDiv = document.createElement("div");
+            ratingDiv.className = 'flex  py-2';
+
+            if (el.rating >= 4.8) {
+                let bestSeller = document.createElement('div');
+                bestSeller.setAttribute('class', 'text-sm w-max px-1 font-semibold mr-3');
+                bestSeller.style.background = '#eceb98';
+                bestSeller.style.color = '#3d3c0a';
+                bestSeller.innerText = 'Bestseller';
+                ratingDiv.append(bestSeller);
+            }
 
             let rating = document.createElement("p");
-            rating.innerText = el.rating + " ⭐⭐⭐⭐⭐";
+            rating.innerText = el.rating;
+            rating.className = 'text-xs text-orange-400 font-bold pt-1';
 
-            mid.append(p, title, author, rating);
+            let stars = document.createElement('div');
+            stars.setAttribute('class', 'flex w-max h-max mx-1.5 my-0 inline-block right-4 pt-1');
+            stars.innerHTML = `<img src="https://img.icons8.com/fluency/14/000000/star.png" class='h-4 w-3.5'/>
+                       <img src="https://img.icons8.com/fluency/14/000000/star.png" class='h-4 w-3.5'/>
+                       <img src="https://img.icons8.com/fluency/14/000000/star.png" class='h-4 w-3.5'/>
+                       <img src="https://img.icons8.com/fluency/14/000000/star.png" class='h-4 w-3.5'/>
+                       <img src="https://img.icons8.com/color/14/000000/star-half-empty.png" class='h-4 w-3.5'/>`
 
+            let noOfRatings = document.createElement('p');
+            noOfRatings.setAttribute('class', 'text-xs text-gray-500 my-0 pt1');
+            noOfRatings.innerHTML = '(118,644)';
+
+            ratingDiv.append(rating, stars, noOfRatings);
+
+            let hoursAndLectures = document.createElement('p');
+            hoursAndLectures.textContent = '30 total hours • 380 lectures • All Levels';
+            hoursAndLectures.className = 'text-xs text-gray-700';
+
+            mid.append(p, author, ratingDiv, hoursAndLectures);
+
+            let priceDiv = document.createElement('div');
+            priceDiv.className = 'flex text-right justify-end';
 
             let price = document.createElement("p");
-            price.innerText = "Rs " + el.price;
-            price.setAttribute('class', 'font-bold');
+            price.innerText = "₹" + el.price; 
+            price.setAttribute('class', 'font-bold text-lg m-0 p-0');
+
+            let tag = document.createElement('div');
+            tag.className = 'mt-2 pl-1'
+            tag.innerHTML = '<img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/16/000000/external-tag-interface-kiranshastry-solid-kiranshastry.png"/>'
+            priceDiv.append(price, tag);
+
             let oldprice = document.createElement("p");
-            // text-decoration: line-through;
             oldprice.innerText = "₹" + 1055;
-            oldprice.setAttribute('class', 'line-through');
+            oldprice.setAttribute('class', 'line-through text-md text-gray-800 m-0 mr-2 p-0');
 
             let removeDiv = document.createElement('div');
-            removeDiv.className = 'm-4 w-48';
+            removeDiv.className = 'mr-4 w-44 text-right';
+
             let remove = document.createElement('p');
             remove.innerHTML = 'Remove';
-            remove.className = 'text-purple-500  cursor-pointer text-sm';
+            remove.className = 'text-purple-500  w-full cursor-pointer text-sm';
 
             let saveForLater = document.createElement('p');
             saveForLater.innerHTML = 'Save For Later';
-            saveForLater.className = 'text-purple-500  cursor-pointer text-sm';
+            saveForLater.className = 'text-purple-500  w-full cursor-pointer text-sm';
 
             let moveToWishlist = document.createElement('p');
             moveToWishlist.innerHTML = 'Move To Wishlist';
-            moveToWishlist.className = 'text-purple-500 cursor-pointer text-sm';
-
+            moveToWishlist.className = 'text-purple-500 w-full cursor-pointer text-sm';
             removeDiv.append(remove, saveForLater, moveToWishlist);
+
             remove.addEventListener('click', removeCourse);
             function removeCourse(event) {
                 let child = event.target.parentNode;
@@ -135,13 +171,14 @@ function loadCart(input) {
                 console.log(tot);
 
                 let TotalPrice = document.getElementById("TotalPrice");
-                TotalPrice.querySelector('#old').textContent = `Rs. ${tot}`;
+                TotalPrice.querySelector('#old').textContent = `₹${tot}`;
 
                 let courseCart = document.getElementById("courseCart");
                 courseCart.innerText = `${cart.length} courses in Cart`;
                 window.location.href = '/cart';
             }
-            right.append(price, oldprice);
+
+            right.append(priceDiv, oldprice);
             div.append(left, mid, removeDiv, right);
             d.append(div);
         });
@@ -149,7 +186,7 @@ function loadCart(input) {
         var tot = data.reduce(price_sum, 0);
         console.log(tot);
 
-        document.getElementById('old').textContent = `Rs ${tot}`;
+        document.getElementById('old').textContent = `₹${tot}`;
     }
 }
 
@@ -183,9 +220,10 @@ function discount() {
         alert('10% discount has been applied');
         var sum = Math.ceil(tot - (tot * 0.10));
         TotalPrice.querySelector('#old').style.textDecoration = 'line-through';
-        TotalPrice.querySelector('#new').textContent = "Rs" + sum;
+        TotalPrice.querySelector('#new').textContent = "₹" + sum;
         let update = document.getElementById("update");
         update.innerText = null;
+
         update.append("coupon code is applied");
         update.style.color = "green";
     } else {

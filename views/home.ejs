@@ -12,12 +12,8 @@
 </head>
 
 
-<body onclick="hide()" onload="loadFunc('<%= JSON.stringify(author) %>', '<%= cookie %>', )">
+<body onclick="hide()" onload="loadFunc('<%= cookie %>')">
     <%- include('./components/header') %>
-
-
-
-
         <!-- intro -->
         <div class="intro h-auto w-full">
             <img class="w-full"
@@ -432,5 +428,7 @@
 </html>
 
 <script src='/js/navbar.js'></script>
+
 <script>
+    createCarousel();
 </script>

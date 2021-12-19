@@ -13,12 +13,8 @@ const router = express.Router();
 
 router.get("", auth, async function (req, res) {
     try {
-            const cookie = req.cookies.jwt;
-            const author = Course.find().lean().exec();
-            res.render("checkout", { author, cookie})
-        
-       
-        
+        const cookie = req.cookies.jwt;
+        res.render("checkout", { cookie })
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }
@@ -34,23 +30,24 @@ router.post("/", body("name").isLength({ min: 4, max: 20 }).withMessage("Name is
 
     async (req, res) => {
         const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            let newError = errors.array().map(({ msg, param, location }) => {
+                let a = { [param]: msg }
+                console.log(a)
+                return {
+                    [param]: msg,
+                };
+            });
+            return res.status(400).json(newError);
+        }
         try {
-            if (!errors.isEmpty()) {
-                let newError = errors.array().map(({ msg, param, location }) => {
-                    let a = { [param]: msg }
-                    console.log(a)
-                    return {
-                        [param]: msg,
-                    };
-                });
-                return res.status(400).send("error is here");
-            }
             const payment = await Payment.create(req.body);
-            console.log(payment)
-            return res.redirect("/home");
+            // console.log(payment)
+            return res.status(201).json({ payment });
         } catch (e) {
             return res.send(500).json({ status: "failed", message: e.message });
         }
+
     })
 
 

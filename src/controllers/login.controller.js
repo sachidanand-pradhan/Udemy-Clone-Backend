@@ -7,9 +7,8 @@ const Author = require('../models/course.model')
 
 router.get("", async (req, res) => {
     try {
-      const author = Author.find().lean().exec();
       const cookie = req.cookies.jwt;
-      return res.render("login", { author, cookie });
+      return res.render("login", { cookie });
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }

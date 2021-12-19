@@ -11,7 +11,8 @@
     <script src='/js/carousel.js'></script>
 </head>
 
-<body onload="loadCart('<%= JSON.stringify(author) %>')">
+<body onload="loadCart('<%= JSON.stringify(author) %>'), makeRequest(`<%= cookie %>`)">
+
 
     <button id="showbtn" class="border border-black p-6 bg-red-300">Show</button>
     <div id="popupBox" class="hidden">
@@ -123,17 +124,22 @@
         <!-- popup for signup -->
             <div class="w-full bg-black flex">
                 <div class="font-bold text-5xl text-white py-12 pl-60">Shopping Cart</div>
+    <%- include('./components/header') %>
+        <%= console.log(author) %>
+            <div class="w-full flex">
+                <div class="font-bold text-5xl pl-20">Shopping Cart</div>
+
             </div>
-            <div id="courseCart" class='ml-20 my-4' style=' margin-top:40px; font-size:20px'>Courses in Cart</div>
+            <div id="courseCart" class='ml-28 my-4' style=' margin-top:40px; font-size:20px'>Courses in Cart</div>
             <div id="cart" class="w-10/12 ml-20 flex border border-gray-200 h-auto mb-10" style='width:80%'></div>
 
             <div id="cart" class="w-10/12 ml-20 h-auto flex mb-10">
-                <div id="items_inCart" class="w-10/12 h-auto m-auto justify-center" style="height: fit-content;"></div>
+                <div id="items_inCart" class="w-11/12 h-auto m-auto justify-center" style="height: fit-content;"></div>
 
 
                 <div class="w-4/12 ml-4" id='cartSummary'>
-                    <p class="ml-2 mt-2 text-2xl">Total :</p>
-                    <div id="TotalPrice" class="ml-2 mt-2 text-xl font-bold flex">
+                    <p class="ml-2 mt-2 text-lg">Total :</p>
+                    <div id="TotalPrice" class="ml-2 text-4xl font-bold flex">
                         <p id="old" class='my-1' ></p>
                         <p id="new" class='my-1 px-3'></p>
                     </div>
@@ -143,14 +149,14 @@
                     </button>
                     <h4 class="mt-4">Promotions</h4>
                     <div>
-                        <button id="applid">X</button>
-                        <p id="paragraph" class="inline-block">masai10 is applied</p>
-                    </div>
+                    <a href="/checkout"><button
+                            class="px-28 py-4 bg-purple-600 hover:bg-purple-800 mt-4 text-white rounded-sm">Checkout</button></a>
+                    <h4 class="mt-4 text-xl font-bold">Promotions</h4>
+                  
 
-
-                    <p class="mt-2 ml-8" id="update"></p>
-                    <input class="mt-5 p-4 border-2" type="text" id="promocode" placeholder="promo code">
-                    <button class="mt-2 bg-purple-600 hover:bg-purple-800 text-white px-6 py-4 rounded-sm"
+                    <p class="mt-2 ml-8 flex" id="update"></p>
+                    <input class="mt-5 py-1 px-2 border border-gray-900" type="text" id="promocode" placeholder="Enter Coupon">
+                    <button class="mt-2 bg-purple-600 hover:bg-purple-800 border border-purple-800 text-white px-6 py-1 rounded-sm"
                         onclick="discount('<%= JSON.stringify(author) %>')">Apply</button>
                 </div>
 

@@ -1,10 +1,23 @@
 console.log("navbar script is running");
+
+
+
+let username = document.getElementById("username")
+let userkanaam = document.getElementById("userkanaam")
+let useremail = document.getElementById("useremail")
+let mobusername = document.getElementById("mobusername")
+let mobuserkanaam = document.getElementById("mobuserkanaam")
+let mobuseremail = document.getElementById("mobuseremail")
+let pahlaleter = document.getElementById("pahlaleter")
+
+
 // function for category----------------------------------****************--------------------
-let cat = document.getElementById("cat")
+var cat = document.getElementById("cat")
 var firstdiv = document.getElementById("firstdiv")
 var secdiv = document.getElementById("secdiv")
 var onetwo = document.getElementById("onetwo")
 var thirdiv = document.getElementById("thirdiv")
+
 cat.addEventListener('mouseover', () => {
     onetwo.setAttribute('class', 'flex ml-28')
 })
@@ -2530,43 +2543,29 @@ hoveruser.addEventListener('mouseleave', () => {
 })
 
 //      for  signin and sign up  ***** -------------
-
-
-let signin = document.getElementById("signin")
-let signup = document.getElementById("signup")
-let language = document.getElementById("language")
-let beforlogin = document.getElementById("beforlogin")
-let afterlogin = document.getElementById("afterlogin")
-let username = document.getElementById("username")
-let userkanaam = document.getElementById("userkanaam")
-let useremail = document.getElementById("useremail")
-let mobusername = document.getElementById("mobusername")
-let mobuserkanaam = document.getElementById("mobuserkanaam")
-let mobuseremail = document.getElementById("mobuseremail")
-let pahlaleter = document.getElementById("pahlaleter")
 function ok() {
-    signin.setAttribute('class', 'hidden md:block mx-2 text-sm border border-black px-3 font-semibold py-2')
-    signup.setAttribute('class', 'hidden md:block mx-2 text-sm border border-black bg-black text-white px-3 font-semibold py-2')
-    language.setAttribute('class', 'hidden md:block mx-2 border border-black px-2 py-2 mr-4')
+    document.getElementById("signin").setAttribute('class', 'hidden md:block mx-2 text-sm border border-black px-3 font-semibold py-2')
+     document.getElementById("signup").setAttribute('class', 'hidden md:block mx-2 text-sm border border-black bg-black text-white px-3 font-semibold py-2')
+    document.getElementById("language").setAttribute('class', 'hidden md:block mx-2 border border-black px-2 py-2 mr-4')
     user.setAttribute('class', 'hidden')
     learning.setAttribute('class', 'hidden')
     bell.setAttribute('class', 'hidden')
     favorite.setAttribute('class', 'hidden')
-    beforlogin.setAttribute('class', 'block')
-    afterlogin.setAttribute('class', 'hidden')
+    document.getElementById("beforlogin").setAttribute('class', 'block')
+    document.getElementById("afterlogin").setAttribute('class', 'hidden')
 }
 
 function done() {
     console.log("done func from navbar is running");
-    signin.setAttribute('class', 'hidden')
-    signup.setAttribute('class', 'hidden')
+    document.getElementById("signin").setAttribute('class', 'hidden')
+     document.getElementById("signup").setAttribute('class', 'hidden')
     user.setAttribute('class', 'py-9 px-1 mr-4 hidden md:block')
-    language.setAttribute('class', 'hidden')
+    document.getElementById("language").setAttribute('class', 'hidden')
     learning.setAttribute('class', 'mx-2 text-sm hidden md:block hover:text-blue-800 py-7')
     bell.setAttribute('class', 'mx-2 py-7 hidden md:block')
     favorite.setAttribute('class', 'mx-2 py-7 hidden md:block')
-    beforlogin.setAttribute('class', 'hidden')
-    afterlogin.setAttribute('class', 'flex gap-2 m-4')
+    document.getElementById("beforlogin").setAttribute('class', 'hidden')
+    document.getElementById("afterlogin").setAttribute('class', 'flex gap-2 m-4')
 }
 // let dt = JSON.parse(localStorage.getItem("check"));// This line?
 
@@ -2610,11 +2609,11 @@ function change(u) {
 
 // links for sign in and sign up 
 
-signin.addEventListener('click', () => {
+document.getElementById("signin").addEventListener('click', () => {
     window.location.href = "/login"
 })
 // ------- //
-signup.addEventListener('click', () => {
+ document.getElementById("signup").addEventListener('click', () => {
     window.location.href = "/signup"
 })
 
@@ -2705,11 +2704,13 @@ function appendMovies(courses) {
 
 }
 
-async function main(incomingData) {
+async function main() {
     let name = document.getElementById("courseData").value;
     // console.log("coursename", name);
 
-    incomingData = JSON.parse(incomingData);
+    let incomingData = await fetch("http://localhost:2345/coursesData");
+    incomingData = await incomingData.json();
+
     console.log("incomingData in main before filtering", incomingData);
     if (name.length < 3) {
         return false;
@@ -2729,26 +2730,25 @@ async function main(incomingData) {
     // console.log(res)
 }
 
-function debounce(func, delay, incomingData) {
-    console.log("incoming data", incomingData);
+function debounce(func, delay) {
     if (timerId) {
         clearTimeout(timerId)
     }
 
     timerId = setTimeout(function () {
-        func(incomingData);
+        func();
     }, delay);
 }
-
-
 
 
 function cartPage() {
     window.location.href = "/cart";
 }
 
-function loadFunc(authorData, cookie) {
+function loadFunc(cookie) {
     cookie = cookie || "not logged in";
-    if (createCarousel) { createCarousel(authorData) };
     makeRequest(cookie);
 }
+
+
+
