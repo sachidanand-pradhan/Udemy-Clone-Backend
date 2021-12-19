@@ -236,3 +236,43 @@ function discount() {
 
 }
 
+
+
+// <-----------  popup option for signup ------------->
+
+
+ let cross1 = document.getElementById('cross1')
+ cross1.addEventListener('click',hiddenkaro)
+
+ let popupBox = document.getElementById('popupBox')
+
+ let showbtn = document.getElementById('showbtn')
+  showbtn.addEventListener('click',showkaro)
+
+  let checkoutBtn = document.getElementById('checkoutBtn')
+  checkoutBtn.addEventListener('click',apicall)
+
+
+//   function for api call
+
+async function apicall (){
+    try{
+        let res = await fetch(`http://localhost:2345/checkout`)
+
+        let data = await res.json()
+
+        console.log(data)
+    }
+    catch(e){
+         console.log(e);
+    }
+}
+
+
+ function showkaro () {
+     popupBox.setAttribute('class','flex backdrop-filter backdrop-brightness-50 cursor-pointer fixed w-full h-full justify-center')
+ }
+
+ function hiddenkaro () {
+     popupBox.setAttribute('class', 'hidden')
+ }

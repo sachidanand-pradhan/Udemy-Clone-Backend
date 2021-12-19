@@ -12,6 +12,17 @@ router.post('/courses', async function (req, res) {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }
 });
+
+router.get('/coursesData', async function (req, res) {
+    try {
+        const author = await Author.find().lean().exec();
+        return res.status(200).send(author);
+    }
+    catch (e) {
+        return res.status(500).json({ message: e.message, status: "failed send coursesData in the controller" })
+    }
+});
+
 router.get("/courses/show", async function (req, res) {
     try {
         const author = await Author.find().lean().exec()
@@ -34,15 +45,10 @@ router.get("/courses", async function (req, res) {
 
 router.get("/home", async (req, res) => {
     try {
-        let author = await Author.find().lean().exec();
-        // console.log("author in course controller:", author);
-
         const cookie = req.cookies.jwt;
         return res.render("home", {
-            author,
             cookie
         });
-
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "Failed" })
     }
@@ -65,7 +71,7 @@ router.get("/search", async (req, res) => {
             author,
             cookie,
             totalPages,
-            page
+            page,
         });
 
     } catch (e) {
@@ -193,31 +199,31 @@ router.get("/search/topic/:q", async (req, res) => {
 
 router.get("/desc/:id", async function (req, res) {
     const author = await Author.findById(req.params.id).lean().exec();
-
+    const cookie = req.cookies.jwt;
     return res.render("desc", {
-        author,
+        author, cookie
     });
 });
 router.get("/search/desc/:id", async function (req, res) {
     const author = await Author.findById(req.params.id).lean().exec();
-
+    const cookie = req.cookies.jwt;
     return res.render("desc", {
-        author,
+        author, cookie
     });
 });
 
 router.get("/search/sort/desc/:id", async function (req, res) {
     const author = await Author.findById(req.params.id).lean().exec();
-
+    const cookie = req.cookies.jwt;
     return res.render("desc", {
-        author,
+        author, cookie
     });
 });
 router.get("/search/topic/desc/:id", async function (req, res) {
     const author = await Author.findById(req.params.id).lean().exec();
-
+    const cookie = req.cookies.jwt;
     return res.render("desc", {
-        author,
+        author, cookie
     });
 });
 
