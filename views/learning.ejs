@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,12 +10,64 @@
     <script src='/js/carousel.js'></script>
     <title>My Learning</title>
 </head>
-<body onload="loadCart('<%= JSON.stringify(author) %>'), makeRequest(`<%= cookie %>`)">
+<body onclick="hide()" onload = "loadCart(`<%=JSON.stringify(author)%>`), makeRequest(`<%= cookie %>`)">
     <%- include('./components/header') %>
-    <%= console.log(author) %>
-    <div id="blackbox" class=""></div>
-    
+        <%= console.log(author) %>
+            <div id="blackbox" class="w-full bg-black h-40 flex flex-col text-white">
+                <div class="w-4/12 ml-52 mt-16 font-semibold">
+                    <div class="text-3xl mx-4 font-bold">My Learning</div>
+                    <div class="flex w-full h-14 flex-row mt-4">
+                        <div><a href="/Mylearning" class="text-xl mx-4 hover:underline decoration-8 ">All courses</a></div>
+                        <div><a href="#" class="text-xl mx-4 hover:underline decoration-8">WishList</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-9/12 m-auto px-8 border-2 grid grid-cols-4 mt-8 " id="displayDiv">
+                
+            </div>
+
+            <%- include('./components/footer') %>
+
 </body>
+
 </html>
 <script src="/js/learning.js"> </script>
 <script src='/js/navbar.js'></script>
+<script>
+    
+    function loadCart(data){
+        let parent = document.getElementById("displayDiv");
+        let datas = JSON.parse(data);
+        parent.innerHTML = "";
+        datas.forEach((el)=>{
+            let div = document.createElement("div");
+            div.setAttribute('class','mx-4 my-4 h-52 truncate border transform hover:scale-105 transition cursor-pointer');
+            div.addEventListener("click",()=>{
+                console.log("el",el._id);
+                window.location.href = `/desc/${el._id}`;
+            })
+            let divRating = document.createElement("div");
+            let img = document.createElement("img");
+            let p = document.createElement("p");
+            p.setAttribute("class","font-bold ml-2")
+            let t = document.createElement("p");
+            t.setAttribute("class","ml-2");
+            let rating = document.createElement("p");
+            rating.innerText=el.rating;
+            rating.setAttribute("class","ml-2");
+            let stat = document.createElement("p");
+            stat.innerText = "⭐⭐⭐⭐⭐";
+            stat.setAttribute("class","mr-2 text-sm")
+
+            divRating.append(rating,stat);
+            divRating.setAttribute("class","flex justify-between");
+
+            img.src=el.image;
+            p.innerText=el.name;
+            t.innerText=el.title;
+            div.append(img,p,t,divRating);
+            parent.append(div);
+
+        })
+    }
+</script>

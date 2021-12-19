@@ -13,7 +13,24 @@ router.get("/", async function (req, res) {
     } catch (e) {
         return res.status(500).json({ message: e.message, status: "failed at cart.controller" })
     }
-})
+});
+
+router.get("/desc/:id", async function (req, res) {
+  const author = await Author.findById(req.params.id).lean().exec();
+  const cookie = req.cookies.jwt;
+  return res.render("desc", {
+    author,
+    cookie,
+  });
+});
+router.get("/search/desc/:id", async function (req, res) {
+  const author = await Author.findById(req.params.id).lean().exec();
+  const cookie = req.cookies.jwt;
+  return res.render("desc", {
+    author,
+    cookie,
+  });
+});
 
 
 module.exports = router;
