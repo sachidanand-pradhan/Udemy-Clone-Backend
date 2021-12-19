@@ -47,8 +47,8 @@ app.use("/", course);
 
 // For an actual app you should configure this with an experation time, better keys, proxy and secure
 app.use(cookieSession({
-    name: 'gooogle',
-    keys: ['key1', 'key2']
+    name: 'jwt',
+    keys: ['key1']
   }))
 
 // Auth middleware that checks if the user is logged in

@@ -50,5 +50,20 @@ router.get("/cookie", async (req, res) => {
       return res.status(500).json({ message: e.message, status: "Failed" })
   }
 });
+    
+router.patch("/updateCart/:userId", async (req, res) => {
+  try {
+      let product = req.body.product;
+      console.log(product);
+      
+      let result = await login.findByIdAndUpdate(req.params.userId, {$push: {cartItems: product}}).lean().exec();
+
+      res.status(200).send(result);
+  } catch (e) {
+      return res.status(500).json({ message: e.message, status: "Failed" })
+  }
+});
+
+
 
 module.exports = router;

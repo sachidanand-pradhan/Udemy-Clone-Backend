@@ -11,11 +11,10 @@
   <script src='/js/carousel.js'></script>
 </head>
 
-<body onload="loadCart('<%= JSON.stringify(author) %>')">
-
-  <button onclick="showkaro()" class="border border-black p-6 bg-red-300">Show</button>
-  <div id="popupBox" class="hidden">
-    <div id="signupBox" class="bg-white h-4/5 mt-16 z-50 cursor-default" style="width: 370px;">
+<body onload = 'loadCart()'>
+    <button onclick="showkaro()" class="border border-black p-6 bg-red-300">Show</button>
+    <div id="popupBox" class="hidden">
+        <div id="signupBox" class="bg-white h-4/5 mt-16 z-50 cursor-default" style="width: 370px;">
 
       <div style="
             font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto,

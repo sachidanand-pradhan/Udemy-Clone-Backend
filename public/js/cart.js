@@ -5,11 +5,28 @@ let courseCart = document.getElementById("courseCart");
 courseCart.innerText = null;
 
 // add(cart);
-function loadCart(input) {
+async function loadCart() {
     // data = JSON.parse(data);
-    createCarousel(input);
-    let data = JSON.parse(localStorage.getItem('udemyCart'));
-    console.log("data in loadCart", data);
+    createCarousel();
+
+    let cookie = document.cookie;
+    let data;
+
+    if (!cookie || cookie.length <= 1) {
+        data = JSON.parse(localStorage.getItem('udemyCart'));
+        console.log("local stroage data in loadCart", data);
+    } else {
+        cookie = cookie.split('=');
+        let token = cookie[1];
+
+        data = [];
+
+        let res = await makeRequest(token);
+        console.log("res in cart page is:", res);
+
+        if (res[0].cartItems.length !== 0) { data = res[0].cartItems }
+        console.log("cart Item in cart page is :", data);
+    }
 
     if (!data || data.length == 0) {
         courseCart.innerText = data.length + " Courses in Cart";
@@ -123,13 +140,17 @@ function loadCart(input) {
             hoursAndLectures.textContent = '30 total hours • 380 lectures • All Levels';
             hoursAndLectures.className = 'text-xs text-gray-700';
 
-            mid.append(p, author, ratingDiv, hoursAndLectures);
+            let idDiv = document.createElement('p');
+            idDiv.innerText = el._id;
+            idDiv.className = 'hidden courseId';
+
+            mid.append(p, author, ratingDiv, hoursAndLectures, idDiv);
 
             let priceDiv = document.createElement('div');
             priceDiv.className = 'flex text-right justify-end';
 
             let price = document.createElement("p");
-            price.innerText = "₹" + el.price; 
+            price.innerText = "₹" + el.price;
             price.setAttribute('class', 'font-bold text-lg m-0 p-0');
 
             let tag = document.createElement('div');
@@ -156,26 +177,35 @@ function loadCart(input) {
             moveToWishlist.innerHTML = 'Move To Wishlist';
             moveToWishlist.className = 'text-purple-500 w-full cursor-pointer text-sm';
             removeDiv.append(remove, saveForLater, moveToWishlist);
-
             remove.addEventListener('click', removeCourse);
+
             function removeCourse(event) {
-                let child = event.target.parentNode;
+                let child = event.target.parentNode.parentNode;
+                let id = child.querySelector('.courseId').textContent;
 
-                let cart = data.filter((item) => {
-                    if (item.title != el.title) return item;
-                })
-                localStorage.setItem('udemyCart', JSON.stringify(cart));
-                child.remove();
+                console.log("the id in the child is :", id);
+                let cookie = document.cookie;
 
-                let tot = cart.reduce(price_sum, 0);
-                console.log(tot);
+                // if (!cookie || cookie.length <= 1) {
+                // let cart = data.filter((item) => {
+                //     if (item.title != el.title) return item;
+                // })
+                // localStorage.setItem('udemyCart', JSON.stringify(cart));
+                // child.remove();
 
-                let TotalPrice = document.getElementById("TotalPrice");
-                TotalPrice.querySelector('#old').textContent = `₹${tot}`;
+                // let tot = cart.reduce(price_sum, 0);
+                // console.log(tot);
 
-                let courseCart = document.getElementById("courseCart");
-                courseCart.innerText = `${cart.length} courses in Cart`;
-                window.location.href = '/cart';
+                // let TotalPrice = document.getElementById("TotalPrice");
+                // TotalPrice.querySelector('#old').textContent = `₹${tot}`;
+
+                // let courseCart = document.getElementById("courseCart");
+                // courseCart.innerText = `${cart.length} courses in Cart`;
+                // window.location.href = '/cart';
+            }
+
+            async function removeCourseInDb(id) {
+                alert("the Id in removeCourseId is :", id);
             }
 
             right.append(priceDiv, oldprice);
@@ -237,9 +267,12 @@ function discount() {
 }
 
 
-
 // <-----------  popup option for signup ------------->
 
+var cross1 = document.getElementById('cross')
+cross1.addEventListener('click', hiddenkaro)
+
+var popupBox = document.getElementById('popupBox')
 
  
 
@@ -271,11 +304,11 @@ var cross1 = document.getElementById('cross1')
  var popupBox = document.getElementById('popupBox');
 
 
- function showkaro () {
-     console.log("showkaro working");
-     popupBox.setAttribute('class','flex backdrop-filter backdrop-brightness-50 cursor-pointer fixed w-full h-full justify-center')
- }
+function showkaro() {
+    console.log("showkaro working");
+    popupBox.setAttribute('class', 'flex backdrop-filter backdrop-brightness-50 cursor-pointer fixed w-full h-full justify-center')
+}
 
- function hiddenkaro () {
-     popupBox.setAttribute('class', 'hidden')
- }
+function hiddenkaro() {
+    popupBox.setAttribute('class', 'hidden')
+}

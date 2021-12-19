@@ -2384,12 +2384,28 @@ hoveronteach.addEventListener('mouseout', () => {
 //  after hover on ****   cart  ****   
 
 let cart = document.getElementById("cart")
-cart.addEventListener('mouseover', () => {
+cart.addEventListener('mouseover', async () => {
     let hovercart = document.getElementById("hovercart")
+    let cartItem;
 
-    let cart = JSON.parse(localStorage.getItem('udemyCart'));
+    let cookie = document.cookie;
 
-    if (cart.length == 0) {
+    if (cookie.length <= 1) {
+        cartItem = JSON.parse(localStorage.getItem('udemyCart')) || [];
+    } else {
+        cookie = cookie.split('=');
+        console.log("docum.cookie", cookie);
+
+        let token = cookie[1];
+
+        let res = await makeRequest(token);
+        // res = await res.json();
+        cartItem = [];
+        cartItem.push(JSON.parse(res[0].cartItems));
+        console.log("cart Item in hover cart in navbar is :", cartItem);
+    }
+
+    if ( !cartItem || cartItem.length == 0) {
         hovercart.innerHTML = "";
         let h1 = document.createElement('h1');
         h1.className = 'text-center m-3 font-normal text-gray-400';
@@ -2403,7 +2419,7 @@ cart.addEventListener('mouseover', () => {
     } else {
         hovercart.innerHTML = "";
 
-        cart.forEach((course) => {
+        cartItem.forEach((course) => {
             let div = document.createElement('div');
             div.className = 'flex h-auto';
 
@@ -2435,10 +2451,10 @@ cart.addEventListener('mouseover', () => {
         })
 
         let totalDiv = document.createElement('div');
-        console.log('cart in navbar', cart);
+        console.log('cart in navbar', cartItem);
 
         let sum = 0;
-        cart.forEach(({ price }) => {
+        cartItem.forEach(({ price }) => {
             sum += price;
         });
         console.log('el.price', sum);
@@ -2545,7 +2561,7 @@ hoveruser.addEventListener('mouseleave', () => {
 //      for  signin and sign up  ***** -------------
 function ok() {
     document.getElementById("signin").setAttribute('class', 'hidden md:block mx-2 text-sm border border-black px-3 font-semibold py-2')
-     document.getElementById("signup").setAttribute('class', 'hidden md:block mx-2 text-sm border border-black bg-black text-white px-3 font-semibold py-2')
+    document.getElementById("signup").setAttribute('class', 'hidden md:block mx-2 text-sm border border-black bg-black text-white px-3 font-semibold py-2')
     document.getElementById("language").setAttribute('class', 'hidden md:block mx-2 border border-black px-2 py-2 mr-4')
     user.setAttribute('class', 'hidden')
     learning.setAttribute('class', 'hidden')
@@ -2558,7 +2574,7 @@ function ok() {
 function done() {
     console.log("done func from navbar is running");
     document.getElementById("signin").setAttribute('class', 'hidden')
-     document.getElementById("signup").setAttribute('class', 'hidden')
+    document.getElementById("signup").setAttribute('class', 'hidden')
     user.setAttribute('class', 'py-9 px-1 mr-4 hidden md:block')
     document.getElementById("language").setAttribute('class', 'hidden')
     learning.setAttribute('class', 'mx-2 text-sm hidden md:block hover:text-blue-800 py-7')
@@ -2577,7 +2593,7 @@ function done() {
 // }
 
 async function makeRequest(token) {
-    console.log("make request is working with the token", token);
+    // console.log("make request is working with the token", token);
 
     if (token !== 'not logged in') {
         try {
@@ -2595,14 +2611,20 @@ async function makeRequest(token) {
 // console.log(dt);
 async function change() {
     let token = document.cookie;
+    // token = token || "not accessing document cookies";
+    // console.log("cookie in change fun", token);
+
     token = token.split('=');
     token = token[1];
 
-    console.log("data in change func :", token);
+    // console.log("data in change func :", token);
+    // console.log("token in change", token);
 
-    if(!token) return;
+    if (!token) return;
     else {
         let u = await makeRequest(token);
+
+        // console.log("user in change", u);
 
         u.forEach((e) => {
             let A = e.full_Name[0].toUpperCase()
@@ -2625,7 +2647,7 @@ document.getElementById("signin").addEventListener('click', () => {
     window.location.href = "/login"
 })
 // ------- //
- document.getElementById("signup").addEventListener('click', () => {
+document.getElementById("signup").addEventListener('click', () => {
     window.location.href = "/signup"
 })
 
@@ -2731,10 +2753,11 @@ function cartPage() {
     window.location.href = "/cart";
 }
 
-function loadFunc(cookie) {
-    cookie = cookie || "not logged in";
-    makeRequest(cookie);
-}
+// function loadFunc(cookie) {
+//     cookie = cookie || "not logged in";
+//     // console.log("cookie from load func is:", cookie);
+//     makeRequest(cookie);
+// }
 
 
 
