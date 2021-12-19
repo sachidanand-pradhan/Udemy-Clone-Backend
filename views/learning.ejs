@@ -46,11 +46,13 @@
             let p = document.createElement("p");
             let t = document.createElement("p");
             let rating = document.createElement("p");
+            rating.innerText=el.rating
+
 
             img.src=el.image;
             p.innerText=el.name;
             t.innerText=el.title;
-            div.append(img,p,t);
+            div.append(img,p,t,rating);
             parent.append(div);
 
         })
