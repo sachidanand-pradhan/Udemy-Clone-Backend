@@ -5,11 +5,28 @@ let courseCart = document.getElementById("courseCart");
 courseCart.innerText = null;
 
 // add(cart);
-function loadCart(input) {
+async function loadCart() {
     // data = JSON.parse(data);
-    createCarousel(input);
-    let data = JSON.parse(localStorage.getItem('udemyCart'));
-    console.log("data in loadCart", data);
+    createCarousel();
+
+    let cookie = document.cookie;
+    let data;
+
+    if (!cookie || cookie.length <= 1) {
+        data = JSON.parse(localStorage.getItem('udemyCart'));
+        console.log("local stroage data in loadCart", data);
+    } else {
+        cookie = cookie.split('=');
+        let token = cookie[1];
+
+        data = [];
+
+        let res = await makeRequest(token);
+        console.log("res in cart page is:", res);
+
+        if (res[0].cartItems.length !== 0) { data = res[0].cartItems }
+        console.log("cart Item in cart page is :", data);
+    }
 
     if (!data || data.length == 0) {
         courseCart.innerText = data.length + " Courses in Cart";
@@ -123,13 +140,17 @@ function loadCart(input) {
             hoursAndLectures.textContent = '30 total hours • 380 lectures • All Levels';
             hoursAndLectures.className = 'text-xs text-gray-700';
 
-            mid.append(p, author, ratingDiv, hoursAndLectures);
+            let idDiv = document.createElement('p');
+            idDiv.innerText = el._id;
+            idDiv.className = 'hidden courseId';
+
+            mid.append(p, author, ratingDiv, hoursAndLectures, idDiv);
 
             let priceDiv = document.createElement('div');
             priceDiv.className = 'flex text-right justify-end';
 
             let price = document.createElement("p");
-            price.innerText = "₹" + el.price; 
+            price.innerText = "₹" + el.price;
             price.setAttribute('class', 'font-bold text-lg m-0 p-0');
 
             let tag = document.createElement('div');
@@ -156,16 +177,52 @@ function loadCart(input) {
             moveToWishlist.innerHTML = 'Move To Wishlist';
             moveToWishlist.className = 'text-purple-500 w-full cursor-pointer text-sm';
             removeDiv.append(remove, saveForLater, moveToWishlist);
-
             remove.addEventListener('click', removeCourse);
-            function removeCourse(event) {
-                let child = event.target.parentNode;
 
-                let cart = data.filter((item) => {
-                    if (item.title != el.title) return item;
-                })
-                localStorage.setItem('udemyCart', JSON.stringify(cart));
-                child.remove();
+            async function removeCourse(event) {
+                let child = event.target.parentNode.parentNode;
+                let data;
+
+                let cookie = document.cookie;
+
+
+                if (!cookie || cookie.length <= 1) {
+                    data = JSON.parse(localStorage.getItem('udemyCart'));
+
+                    cart = data.filter((item) => {
+                        if (item.title != el.title) return item;
+                    })
+
+                    localStorage.setItem('udemyCart', JSON.stringify(cart));
+                    child.remove();
+                } else {
+                    let idOfProduct = child.querySelector('.courseId').textContent;
+                    // console.log("the id in the child is :", idOfProduct);
+
+                    cookie = cookie.split('=');
+                    // console.log("docum.cookie", cookie);
+
+                    let token = cookie[1];
+
+                    let res = await makeRequest(token);
+                    // console.log("the produt data in carousel addd to cart is ", p);
+
+                    let userId = res[0]._id;
+                    // console.log("userId in add to cart :", userId);
+
+                    let out = await fetch(`http://localhost:2345/login/updateCart/${userId}`, {
+                        method: "DELETE",
+                        headers: { "Content-type": "application/json" },
+                        body: JSON.stringify({
+                            productId: idOfProduct
+                        })
+                    })
+
+                    out = await out.json();
+                    console.log("out in addtocart is", out);
+
+                    cart = out.cartItems;
+                }
 
                 let tot = cart.reduce(price_sum, 0);
                 console.log(tot);
@@ -175,6 +232,7 @@ function loadCart(input) {
 
                 let courseCart = document.getElementById("courseCart");
                 courseCart.innerText = `${cart.length} courses in Cart`;
+
                 window.location.href = '/cart';
             }
 
@@ -237,16 +295,19 @@ function discount() {
 }
 
 
-
 // <-----------  popup option for signup ------------->
 
+var cross1 = document.getElementById('cross')
+cross1.addEventListener('click', hiddenkaro)
 
- 
+var popupBox = document.getElementById('popupBox')
+
+
 
 //  var showbtn = document.getElementById('showbtn')
 //   showbtn.addEventListener('click',showkaro)
 
-  var checkoutBtn = document.getElementById('checkoutBtn')
+var checkoutBtn = document.getElementById('checkoutBtn')
 //   checkoutBtn.addEventListener('click',apicall)
 
 
@@ -266,16 +327,16 @@ function discount() {
 // }
 
 var cross1 = document.getElementById('cross1')
- cross1.addEventListener('click',hiddenkaro)
+cross1.addEventListener('click', hiddenkaro)
 
- var popupBox = document.getElementById('popupBox');
+var popupBox = document.getElementById('popupBox');
 
 
- function showkaro () {
-     console.log("showkaro working");
-     popupBox.setAttribute('class','flex backdrop-filter backdrop-brightness-50 cursor-pointer fixed w-full h-full justify-center')
- }
+function showkaro() {
+    console.log("showkaro working");
+    popupBox.setAttribute('class', 'flex backdrop-filter backdrop-brightness-50 cursor-pointer fixed w-full h-full justify-center')
+}
 
- function hiddenkaro () {
-     popupBox.setAttribute('class', 'hidden')
- }
+function hiddenkaro() {
+    popupBox.setAttribute('class', 'hidden')
+}
