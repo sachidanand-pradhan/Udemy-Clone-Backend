@@ -29,6 +29,7 @@ const desc = require('./controllers/desc.controller');
 const checkout = require("./controllers/chechout.controller")
 const cart = require("./controllers/cart.controller")
 const logout = require('./controllers/logout.controller');
+const learning = require('./controllers/learning.controller');
 
 //const google = require('./controllers/google.contoller')
 
@@ -38,6 +39,7 @@ app.use('/login', login);
 app.use('/desc',desc);
 app.use("/checkout",checkout);
 app.use('/cart',cart);
+app.use('/Mylearning',learning);
 app.use("/", course);
 //app.use('/google', google)
 
