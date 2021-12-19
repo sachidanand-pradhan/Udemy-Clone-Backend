@@ -18,8 +18,8 @@ color: #1c1d1f;">
      <%- include('./components/header') %>
     <div class="flex mb-10">
         <div id="left">
-            <div style="background-color: #1c1D1F; color: #ffffff;" id="black" class="flex">
-                <div id="blackLeft" style="width: 65.5%;">
+            <div style="background-color: #1c1D1F; color: #ffffff;" id="black" class="flex w-full">
+                <div id="blackLeft" class="border-2 border-red-500" style="width: 66.6%;">
                     <div id="inner" class="ml-36 pt-4 pr-14">
                         <div style="color: #CEC0FC;" class="cursor-pointer font-bold text-sm py-4"> Development > Web
                             Devlopment >
@@ -49,7 +49,7 @@ color: #1c1d1f;">
                         </div>
                     </div>
                 </div>
-                <div id="blackRight" class="border lg:mt-32 sm:mr-22" style="width: 22%;">
+                <div id="blackRight" class="border lg:mt-32 sm:mr-22 border-2 border-blue-500" style="width: 25%;">
                     <img class="w-full" src="<%= author.image %>" alt="<%author.name%>">
                 </div>
             </div>
