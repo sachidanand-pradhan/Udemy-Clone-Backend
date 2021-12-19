@@ -1,7 +1,5 @@
 
 console.log("carousel script is working");
-console.log('cookie in carousel.js', cookie);
-
 async function createCarousel() {
     let data = await fetch("http://localhost:2345/coursesData");
     data = await data.json();
@@ -204,8 +202,8 @@ async function createCarousel() {
                 let addToCartDiv = document.createElement('div');
                 addToCartDiv.className = 'p-2 text-center h-10 font-bold text-white bg-purple-700 w-max flex-grow hover:bg-purple-900';
                 addToCartDiv.innerText = 'Add To Cart';
-                addToCartDiv.onclick = function (cookie) {
-                    addtocart(product, cookie);
+                addToCartDiv.onclick = function () {
+                    addtocart(product);
                 }
 
                 // creating like button
@@ -292,40 +290,30 @@ async function createCarousel() {
     if (localStorage.getItem("cart") == null) {
         localStorage.setItem("cart", JSON.stringify([]));
     }
-    
+
 }
 
 
-    function addtocart(p, cookie) {
-        if(cookie) alert("cookie is present in addtocart func in carousel.js")
+async function addtocart(p) {
+    let cookie = document.cookie;
+    console.log("cookie in addtocart in carousel.js is:", cookie);
+
+    if(cookie.length <= 1) {
+        alert("token is not persent in addtocart in carousel.js")
         let data = JSON.parse(localStorage.getItem("udemyCart")) || [];
         data.push(p);
         localStorage.setItem("udemyCart", JSON.stringify(data));
-        alert("Course added to cart");
     }
+    else {
+        alert("cookie is present in carousel.js")
+        cookie = cookie.split('=');
+        console.log("docum.cookie", cookie);
 
-// Renuka - Belongs to the home page
-// let selectPopularCourses = document.getElementById('slct-pplr-courses');
-// let selectPopularCoursesRBtn = selectPopularCourses.querySelector('.scrlRight');
-// let selectPopularCoursesLBtn = selectPopularCourses.querySelector('.scrlLeft');
+        let token = cookie[1];
 
-// window.onresize = () => {
-//     if (window.innerWidth <= 850 ) {
-//         selectPopularCoursesRBtn.style.display = 'flex';
-//         selectPopularCoursesLBtn.style.display = 'flex';
-//     }
-//     else {
-//         selectPopularCoursesRBtn.style.display = 'none';
-//         selectPopularCoursesLBtn.style.display = 'none';
-//     }
-// }
+        let res = await makeRequest(token);
+        console.log("the user data in carousel addd to cart is ", res);
+    }
+    // alert("Course added to cart");
+}
 
-// selectPopularCoursesRBtn.addEventListener('click', (event) => {
-//     let selectUl = document.getElementById('select-ul');
-//     selectUl.scrollLeft += 100;
-// })
-
-// selectPopularCoursesLBtn.addEventListener('click', (event) => {
-//     let selectUl = document.getElementById('select-ul');
-//     selectUl.scrollLeft -= 100;
-// })
