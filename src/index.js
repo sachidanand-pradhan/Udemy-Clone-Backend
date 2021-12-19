@@ -83,10 +83,10 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
   }
 );
 
-app.get('/logout', (req, res) => {
-    req.session = null;
-    req.logout();
-    res.redirect('/');
-})
+// app.get('/logout', (req, res) => {
+//     req.session = null;
+//     req.logout();
+//     res.redirect('/');
+// })
 
 module.exports = app;
