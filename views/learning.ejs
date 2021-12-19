@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-9/12 m-auto px-8 border-2 grid-cols-4 bg-yellow-400" id="displayDiv">
+            <div class="w-9/12 m-auto px-8 border-2 grid grid-cols-4 mt-8 " id="displayDiv">
                 
             </div>
 
@@ -42,6 +42,7 @@
         parent.innerHTML = "";
         datas.forEach((el)=>{
             let div = document.createElement("div");
+            div.setAttribute('class','mx-4 my-4 h-48 truncate border transform hover:scale-105 transition cursor-pointer')
             let img = document.createElement("img");
             let p = document.createElement("p");
             let t = document.createElement("p");
