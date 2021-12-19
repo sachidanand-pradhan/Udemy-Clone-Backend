@@ -26,12 +26,11 @@ const cart = require("./controllers/cart.controller")
 const logout = require('./controllers/logout.controller');
 
 
-
 app.use('/logout', logout);
 app.use('/signup', sign);
 app.use('/login', login);
 app.use('/desc',desc);
-app.use("/checkout",checkout);
+app.use("/checkout", checkout);
 app.use('/cart',cart);
 app.use("/", course);
 

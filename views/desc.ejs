@@ -8,16 +8,14 @@
     <title>Online Courses - Learn Anything, On Your Schedule | Udemy</title>
     <link rel="icon" href="https://www.udemy.com/staticx/udemy/images/v8/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/style.css">
-    <script src="./scripts/navbar.js"></script>
     <script src='/js/courses.js'></script>
-    <script src='/js/carousel.js'></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
 
 
 <body onclick="hide()" onload = "makeRequest(`<%= cookie %>`)" style="font-family: sf pro text,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
 color: #1c1d1f;">
-    <header id="nav"></header>
+     <%- include('./components/header') %>
     <div class="flex mb-10">
         <div id="left">
             <div style="background-color: #1c1D1F; color: #ffffff;" id="black" class="flex">
@@ -51,7 +49,7 @@ color: #1c1d1f;">
                         </div>
                     </div>
                 </div>
-                <div id="blackRight" class="border mt-32" style="width: 25%;">
+                <div id="blackRight" class="border lg:mt-32 sm:mr-20" style="width: 25%;">
                     <img class="w-full" src="<%= author.image %>" alt="<%author.name%>">
                 </div>
             </div>
@@ -346,276 +344,15 @@ color: #1c1d1f;">
         </div>
     </div>
     <!-- footer -->
-    <div id="footer"></div>
+    <%- include('./components/footer') %>
 </body>
 
 </html>
-<script type="module">
-    import navbar from "./components/header.js";
-    import footer from './components/footer.js';
 
-    let promise = new Promise((resolve, reject) => {
-        let header = document.getElementById("nav");
-
-        header.innerHTML = navbar();
-
-        resolve("Navbar imported");
-    });
-    promise.then((res) => {
-        console.log(res);
-        addFunctionalityToNavbar();
-        console.log("done");
-    });
-    let footerDiv = document.getElementById('footer');
-    footerDiv.innerHTML = footer();
-</script>
 <script>
-    const readMoreBtn = document.querySelector('#read_more_btn');
-    const text = document.querySelector('.text');
-    readMoreBtn.addEventListener('click', (e) => {
-        text.classList.toggle('show_more');
-
-        if (readMoreBtn.innerHTML === 'Show more') {
-            readMoreBtn.innerHTML = 'Show less ^';
-        } else {
-            readMoreBtn.innerHTML = 'Show more ';
-        }
-    })
-    const readMoreBtn1 = document.querySelector('#read_more_btn1');
-    const text1 = document.querySelector('.text1');
-    readMoreBtn1.addEventListener('click', (e) => {
-        text1.classList.toggle('show_more1');
-
-        if (readMoreBtn1.innerHTML === 'Show more') {
-            readMoreBtn1.innerHTML = 'Show less ^';
-        } else {
-            readMoreBtn1.innerHTML = 'Show more ';
-        }
-    })
-    const tu = document.querySelector('#thumsup');
-    const td = document.querySelector('#thumsdown');
-    const fb = document.querySelector('#feedback');
-
-    tu.addEventListener('click', (e) => {
-        fb.innerHTML = "Thankyou for your feedback"
-    })
-    td.addEventListener('click', (e) => {
-        fb.innerHTML = "Thankyou for your feedback"
-    })
-
-    //-------- Append data from the server
-
-    let desData = JSON.parse(localStorage.getItem("decData"));
-    // console.log(desData);
-
-    showdata(desData[desData.length - 1]);
-
-    let cart = JSON.parse(localStorage.getItem("cart"));
-    // console.log("----+++", cart);
-
-    function showdata(data) {
-
-        let right = document.getElementById("whiteRight");
-
-        right.innerText = null;
-
-
-        //right
-
-        let imgdiv = document.getElementById("blackRight")
-        let imageDiv = document.createElement("div");
-        let img = document.createElement("img");
-        img.src = data.image;
-        img.setAttribute('class', 'w-full')
-        // imageDiv.append(img);
-        imageDiv.append(img);
-        imageDiv.setAttribute('class', 'w-full');
-        imgdiv.append(imageDiv)
-        let price = document.createElement("p");
-        price.innerText = "₹ " + data.price;
-        price.setAttribute('class', 'mt-4 ml-4 text-2xl font-bold text-black');
-
-        let btn = document.createElement("button");
-        btn.innerText = "Add To Cart";
-        btn.setAttribute('class', 'bg-purple-600  w-56 py-3 mt-4 ml-14 font-bold  hover:bg-purple-800 text-white');
-
-        btn.onclick = function () {
-            addtocart(data);
-        }
-
-        let buyNow = document.createElement("button");
-        buyNow.innerText = "Buy Now";
-        buyNow.setAttribute('class', 'border-black border w-56  py-3 mt-4 ml-14 font-bold');
-
-        buyNow.onclick = function () {
-            buyNowfun(data);
-        }
-
-        let includeDiv = document.createElement("div");
-
-        // console.log(data.include[0]);
-
-        let i1 = document.createElement("h2");
-        i1.innerText = data.include[0].i1;
-        i1.setAttribute('class', 'ml-2 mt-2 font-bold')
-
-        let i2 = document.createElement("p");
-        i2.innerText = data.include[0].i2;
-        i2.setAttribute('class', 'ml-2 mt-1 text-base');
-
-        let i3 = document.createElement("p");
-        i3.innerText = data.include[0].i3;
-        i3.setAttribute('class', 'ml-2 mt-1 text-base');
-
-        let i4 = document.createElement("p");
-        i4.innerText = data.include[0].i4;
-        i4.setAttribute('class', 'ml-2 mt-1 text-base');
-
-        let i5 = document.createElement("p");
-        i5.innerText = data.include[0].i5;
-        i5.setAttribute('class', 'ml-2 mt-1 text-base');
-
-        let i6 = document.createElement("p");
-        i6.innerText = data.include[0].i6;
-        i6.setAttribute('class', 'ml-2 mt-1 text-base mb-10');
-
-        let div = document.createElement("div")
-        div.append(price, btn, buyNow, i1, i2, i3, i4, i5, i6)
-        right.append(div);
-        div.setAttribute('class', 'w-96')
-
-
-        let cn = document.getElementById('courseName');
-        let ti = document.getElementById('title');
-        let rat = document.getElementById('rating');
-        let sd = document.getElementById('course1');
-        let auth = document.getElementById('author_name');
-
-        cn.innerHTML = data.title;
-        ti.innerHTML = data.name;
-        rat.innerHTML = data.rating;
-        sd.innerHTML = data.shortDecp;
-        auth.innerHTML = data.author;
-
-
-        let re1 = document.getElementById('r1');
-        let re2 = document.getElementById('r2');
-        let re3 = document.getElementById('r3');
-
-        re1.innerHTML = data.requirement[0].r1
-        re2.innerHTML = data.requirement[0].r2
-        re3.innerHTML = data.requirement[0].r3
-
-        let des1 = document.getElementById('desc1');
-        let des2 = document.getElementById('desc2');
-        let des3 = document.getElementById('desc3');
-        let des4 = document.getElementById('desc4');
-
-        des1.innerHTML = data.description[0].desc1;
-        des2.innerHTML = data.description[0].desc2;
-        des3.innerHTML = data.description[0].desc3;
-        des4.innerHTML = data.description[0].desc4;
-
-
-
-        /////-------whta you will learn
-
-        let addLearn = document.createElement("div");
-
-        let learnDiv = document.createElement("div");
-
-        let learnDiv1 = document.createElement("div");
-        let learnDiv2 = document.createElement("div");
-
-        let learn = document.createElement("h1");
-        learn.innerText = data.learn[0].heading;
-        learn.setAttribute("class", "text-black font-bold text-2xl mb-4");
-
-        let learn_li = document.createElement("p");
-        learn_li.innerText = "✓ " + data.learn[0].l1;
-        learn_li.setAttribute("class", "ml-2 text-black block");
-
-        let learn_li2 = document.createElement("p");
-        learn_li2.innerText = "✓ " + data.learn[0].l2;
-        learn_li2.setAttribute("class", "ml-2 text-black");
-
-        let learn_li3 = document.createElement("p");
-        learn_li3.innerText = "✓ " + data.learn[0].l3;
-        learn_li3.setAttribute("class", "ml-2 text-black");
-
-        let learn_li4 = document.createElement("p");
-        learn_li4.innerText = "✓ " + data.learn[0].l4;
-        learn_li4.setAttribute("class", "ml-2 text-black");
-
-
-        let learn_li5 = document.createElement("p");
-        learn_li5.innerText = "✓ " + data.learn[0].l5;
-        learn_li5.setAttribute("class", "ml-2 text-black");
-
-        let learn_li6 = document.createElement("p");
-        learn_li6.innerText = "✓  " + data.learn[0].l6;
-        learn_li6.setAttribute("class", "ml-2 text-black");
-
-        let learn_li7 = document.createElement("p");
-        learn_li7.innerText = "✓ " + data.learn[0].l7;
-        learn_li7.setAttribute("class", "ml-2 text-black");
-
-        let learn_li8 = document.createElement("p");
-        learn_li8.innerText = "✓ " + data.learn[0].l8;
-        learn_li8.setAttribute("class", "ml-2  text-black");
-
-        learnDiv1.append(learn_li, learn_li2, learn_li3, learn_li4);
-        learnDiv2.append(learn_li5, learn_li6, learn_li7, learn_li8);
-        learnDiv.append(learnDiv1, learnDiv2);
-        learnDiv.setAttribute('class', 'flex');
-        addLearn.append(learn, learnDiv);
-
-        let ler = document.getElementById('learn');
-        ler.append(addLearn, learnDiv1, learnDiv2, learnDiv);
-        addLearn.setAttribute('class', ' w-full m-auto bg-whit mt-8');
-
-        let contentDiv = document.getElementById('content');
-
-        let contMain = document.createElement("div");
-
-        let contetnt_c1 = document.createElement("p");
-        contetnt_c1.innerText = " " + data.content[0].c1;
-        contetnt_c1.setAttribute("class", "text-black ml-4 font-bold");
-
-        let contetnt_c2 = document.createElement("p");
-        contetnt_c2.innerText = "🟃 " + data.content[0].c2;
-        contetnt_c2.setAttribute("class", "text-black ml-4");
-
-        let contetnt_c3 = document.createElement("p");
-        contetnt_c3.innerText = "🟃 " + data.content[0].c3;
-        contetnt_c3.setAttribute("class", "text-black ml-4");
-
-        let contetnt_c4 = document.createElement("p");
-        contetnt_c4.innerText = "🟃 " + data.content[0].c4;
-        contetnt_c4.setAttribute("class", "text-black ml-4");
-
-        let contetnt_c5 = document.createElement("p");
-        contetnt_c5.innerText = "🟃 " + data.content[0].c5;
-        contetnt_c5.setAttribute("class", "text-black ml-4");
-
-        contMain.append(contetnt_c1, contetnt_c2, contetnt_c3, contetnt_c4, contetnt_c5);
-        contMain.setAttribute('class', 'w-8/12 bg-white');
-
-        contentDiv.append(contMain);
-
-    }
-
-    function addtocart(p) {
-        let data = JSON.parse(localStorage.getItem("cart"));
-        data.push(p);
-        localStorage.setItem("cart", JSON.stringify(data));
-        alert("Course added to cart");
-    }
-
     function buyNowfun(p) {
-        let data = JSON.parse(localStorage.getItem("cart"));
-        data.push(p);
-        localStorage.setItem("cart", JSON.stringify(data));
-        window.location.href = "cartPage.html";
+        window.location.href = "/cart";
     }
 </script>
+
+<script src='/js/navbar.js'></script>

@@ -4,12 +4,10 @@ const Author = require('../models/course.model');
 
 router.get("", async (req, res) => {
     try {
-        const author = await Author.find().lean().exec();
         const cookie = req.cookies.jwt;
-        return res.render("desc", { cookie, author});
-
+        return res.render("desc", {cookie});
     } catch (e) {
-        return res.status(500).json({ message: e.message, status: "Failed" })
+        return res.status(500).json({ message: e.message, status: "failed at desc controller" })
     }
 });
 

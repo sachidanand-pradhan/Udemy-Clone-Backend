@@ -10,7 +10,7 @@ router.get("", async (req, res) => {
   try {
     const author = Author.find().lean().exec();
     const cookie = req.cookies.jwt;
-    return res.render("signup", { author, cookie });
+    return res.render("signup", {cookie });
   } catch (e) {
     return res.status(500).json({ message: e.message, status: "Failed" });
   }
