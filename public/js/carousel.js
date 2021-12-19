@@ -210,9 +210,9 @@ async function createCarousel() {
                 let like = document.createElement('div');
                 like.className = 'rounded-full w-10 border border-gray-900 border-2 h-10 ml-2 p-2 likeBtn';
                 like.innerHTML = '<img src="https://img.icons8.com/ios/48/000000/like.png"/>';
-                like.onclick = () => { addToWishlist(product)}
+                like.onclick = () => { addToWishlist(product) }
 
-               
+
 
                 // appending everything to parent card
                 cartDiv.append(addToCartDiv, like);
@@ -370,7 +370,7 @@ async function addToWishlist(p) {
 
         document.querySelector('.likeBtn').innerHTML = '<img src="https://img.icons8.com/emoji/20/000000/heart-suit.png"/>'
 
-    }else {
+    } else {
         alert("Please login to add to wishlist");
     }
 }
