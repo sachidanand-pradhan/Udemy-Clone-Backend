@@ -23,6 +23,7 @@ Install-project with git
 ## Features
 
 - Login and Sign up
+- Carousel & Search Results
 - Sorting on product Page
 - Add to cart
 - Apply the coupon on your cart 
