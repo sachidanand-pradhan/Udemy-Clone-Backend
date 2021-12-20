@@ -12,11 +12,13 @@ Udemy is an E-learning web application for online learning and teaching.
 
 ## Installation and Run Locally
 
-Install my-project with git
+Install-project with git
 
 ```bash
  git clone https://github.com/Sachi4496/Udemy-Clone-Backend.git
 ```
+#### `npm i`
+#### `npm run server`
 
 ## Features
 
