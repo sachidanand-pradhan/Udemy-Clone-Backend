@@ -9,6 +9,9 @@ udemy.com
 Udemy is an E-learning web application for online learning and teaching.
 
 
+## Demo
+
+
 
 ## Installation and Run Locally
 
@@ -37,11 +40,11 @@ Install-project with git
  - [Masai School](https://masaischool.com/)
  
  
-## Presentation Video :-
-[Demo of project]()
+<!-- ## Presentation Video :-
+[Demo of project]() -->
 
-## Deployed Demo link :-
-[Demo of project]()
+<!-- ## Deployed Demo link :-
+[Demo of project]() -->
 
 ## Authors
 -  [Sachidanand Pradhan](https://github.com/Sachi4496)
