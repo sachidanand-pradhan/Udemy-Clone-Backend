@@ -69,5 +69,5 @@ Install-project with git
 - #### GIT
 
 
-## Screenshots :-
-![frontpage]()
+<!-- ## Screenshots :-
+![frontpage]() -->
