@@ -3,11 +3,14 @@ function navbar() {
     return `<!-- click on mobilemenu -->
     <div id="afterhovermenu" class="hidden z-40">
         <div id="hovermenudiv" class="w-72 bg-blue-100 overflow-y-scroll" style="height: 100vh">
+
             <!-- sign in and sign up -->
+
             <div id="beforlogin" class="block">
                 <a href="login.html" class="block m-4 text-indigo-700">log in</a>
                 <a href="signup.html" class="block m-4 text-indigo-700">Sign up</a>
             </div>
+            
             <div id="afterlogin" class="hidden">
                 <div id="mobusername" class="bg-black rounded-full font-bold text-2xl text-white py-4 px-6">A</div>
                 <div class="grid my-auto">
@@ -16,7 +19,9 @@ function navbar() {
                 </div>
             </div>
             <hr>
+
             <!-- others -->
+
             <div class="text-sm font-bold text-gray-600 ml-2 my-2">Most popular</div>
             <div class="flex w-full break-all items-center my-4 cursor-pointer">
                 <h1 class="flex-grow ml-2">Web Development</h1>
