@@ -46,7 +46,7 @@ router.get("/courses", async function (req, res) {
   }
 });
 
-router.get("/home", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const cookie = req.cookies.jwt;
     return res.render("home", {

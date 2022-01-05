@@ -65,14 +65,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Example protected and unprotected routes
-app.get('/', async (req, res) => {
-  res.render('home');
-});
-app.get('/failed',(req, res) => res.send('You Failed to log in!'))
+app.get('/', (req, res) => res.render('/home'))
+app.get('/failed', (req, res) => res.send('You Failed to log in!'))
 
 // In this route you can see that if the user is logged in u can acess his info in: req.user
 app.get('/home', isLoggedIn, (req, res) =>{
-    res.render("home",{name:req.user.displayName,email:req.user.emails[0].value})
+    res.render("/home",{name:req.user.displayName,email:req.user.emails[0].value})
 })
 
 // Auth Routes
