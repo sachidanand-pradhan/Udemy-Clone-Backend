@@ -399,7 +399,7 @@ color: #1c1d1f;">
         id = id[id.length-1];
         console.log("the id in pass id func is", id);
 
-        let course = await fetch(`http://localhost:2345/search/getSingle/${id}`);
+        let course = await fetch(`https://aqueous-fortress-78543.herokuapp.com/search/getSingle/${id}`);
         course = await course.json();
 
         console.log("The course you are looking for is", course);
