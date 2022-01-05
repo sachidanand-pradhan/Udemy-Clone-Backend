@@ -1,7 +1,7 @@
 
 console.log("carousel script is working");
 async function createCarousel() {
-    let data = await fetch("http://localhost:2345/coursesData");
+    let data = await fetch("https://aqueous-fortress-78543.herokuapp.com//coursesData");
     data = await data.json();
     // console.log("carouselData", data);
 
@@ -323,7 +323,7 @@ async function addtocart(p) {
         let userId = res[0]._id;
         // console.log("userId in add to cart :", userId);
 
-        let out = await fetch(`http://localhost:2345/login/updateCart/${userId}`, {
+        let out = await fetch(`https://aqueous-fortress-78543.herokuapp.com//login/updateCart/${userId}`, {
             method: "PATCH",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
@@ -356,7 +356,7 @@ async function addToWishlist(p) {
         let userId = res[0]._id;
         console.log("userId in add to cart :", userId);
 
-        let out = await fetch(`http://localhost:2345/login/updateWishlist/${userId}`, {
+        let out = await fetch(`https://aqueous-fortress-78543.herokuapp.com/login/updateWishlist/${userId}`, {
             method: "PATCH",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
