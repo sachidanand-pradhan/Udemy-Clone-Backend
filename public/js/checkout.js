@@ -28,7 +28,7 @@ async function makePayment() {
   let state_error = document.getElementById("state_error");
 
   try {
-    let res = await fetch(`http://localhost:2345/checkout`, {
+    let res = await fetch(`https://aqueous-fortress-78543.herokuapp.com/checkout`, {
       method: "POST",
       body: JSON.stringify(missprint),
       headers: {

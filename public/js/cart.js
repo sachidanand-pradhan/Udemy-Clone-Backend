@@ -210,7 +210,7 @@ async function loadCart() {
                     let userId = res[0]._id;
                     // console.log("userId in add to cart :", userId);
 
-                    let out = await fetch(`http://localhost:2345/login/updateCart/${userId}`, {
+                    let out = await fetch(`https://aqueous-fortress-78543.herokuapp.com/login/updateCart/${userId}`, {
                         method: "DELETE",
                         headers: { "Content-type": "application/json" },
                         body: JSON.stringify({
