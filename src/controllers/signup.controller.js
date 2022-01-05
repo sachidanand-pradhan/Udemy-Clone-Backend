@@ -43,7 +43,7 @@ router.post("", async (req, res) => {
     const register = await registerUser.save();
     console.log(register);
 
-      return res.redirect("/home");
+      return res.redirect("/");
    // }
   } catch (e) {
     return res.status(500).json({

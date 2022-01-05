@@ -8,7 +8,7 @@ router.get('/', auth , async (req, res)=>{
     try{
         console.log("Logout succesfully");
         res.clearCookie('jwt');
-        res.redirect("/home");
+        res.redirect("/");
     }
     catch(e){
         res.status(500).send({message:e.message, staus:"Logout Error"});
