@@ -2518,7 +2518,7 @@ async function makeRequest(token) {
 
     if (token !== 'not logged in') {
         try {
-            let res = await fetch(`http://localhost:2345/signup/${token}`);
+            let res = await fetch(`https://aqueous-fortress-78543.herokuapp.com/signup/${token}`);
             res = await res.json();
             console.log(res);
             return res;
@@ -2593,7 +2593,7 @@ var timerId;
 async function searchMovies(course_name) {
     try {
 
-        let res = await fetch(`http://localhost:5000/api/${course_name}`);
+        let res = await fetch(`https://aqueous-fortress-78543.herokuapp.com/api/${course_name}`);
 
         let data = await res.json();
         // console.log("Data:--", data);
@@ -2637,7 +2637,7 @@ async function main() {
     let name = document.getElementById("courseData").value;
     // console.log("coursename", name);
 
-    let incomingData = await fetch("http://localhost:2345/coursesData");
+    let incomingData = await fetch("https://aqueous-fortress-78543.herokuapp.com/coursesData");
     incomingData = await incomingData.json();
 
     console.log("incomingData in main before filtering", incomingData);
