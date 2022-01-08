@@ -43,8 +43,8 @@ Install-project with git
 <!-- ## Presentation Video :-
 [Demo of project]() -->
 
-<!-- ## Deployed Demo link :-
-[Demo of project]() -->
+## Deployed link
+[🔹 Click her to go live](https://aqueous-fortress-78543.herokuapp.com/)
 
 ## Authors
 -  [Sachidanand Pradhan](https://github.com/Sachi4496)
