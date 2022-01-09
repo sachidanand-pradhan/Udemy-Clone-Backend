@@ -21,10 +21,10 @@ router.get("", auth, async function (req, res) {
 })
 
 router.post("/", body("name").isLength({ min: 4, max: 20 }).withMessage("Name is required"),
-    body("card").isLength({ min: 16, max: 17 }).withMessage("Card Number is required"),
+    body("card").isLength({ min: 16, max: 17 }).withMessage("Card Number must be 16 digits"),
     body("month").isLength({ min: 1, max: 3 }).withMessage("Month is required"),
     body("year").isLength({ min: 4, max: 5 }).withMessage("Year is required"),
-    body("security").isLength({ min: 3, max: 4 }).withMessage("Security is required"),
+    body("security").isLength({ min: 3, max: 4 }).withMessage("Security code is required"),
     body("country").isLength({ min: 4, max: 15 }).withMessage("Country is required"),
     body("state").isLength({ min: 4, max: 15 }).withMessage("State is required"),
 
