@@ -14,11 +14,13 @@
     <script src="/js/pagination.js"></script>
 </head>
 
-<body onclick="hide()" onload = "senddata(`<%=JSON.stringify(author)%>`,`<%=totalPages%>`,`<%=page%>`), makeRequest(`<%= cookie %>`)">
+<body onclick="hide()"
+    onload="senddata(`<%=JSON.stringify(author)%>`,`<%=totalPages%>`,`<%=page%>`), makeRequest(`<%= cookie %>`)">
     <%- include('./components/header') %>
         <div class="w-11/12 m-auto">
             <h1 class="font-bold lg:text-4xl text-2xl my-4">10,000 results for “Devlopment Courses”</h1>
-            <h2 class="text-xl font-bold">Explore <span class="text-blue-800">JavaScript, Python, HTML, CSS, PHP courses</span></h2>
+            <h2 class="text-xl font-bold">Explore <span class="text-blue-800">JavaScript, Python, HTML, CSS, PHP
+                    courses</span></h2>
             <h2 class="lg:text-xl text-sm  font-semibold my-2">Students also learn <span class="text-blue-800">Web
                     Development Node.Js React MongoDB CSS HTML</span></h2>
         </div>
@@ -41,15 +43,19 @@
                 <div class="lg:w-36 w-36 hidden lg:ml-28 mt-20 ml-40 absolute z-50 bg-white cursor-pointer"
                     id="sortFun">
                     <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer">Most Relevent</div>
-                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick = 'window.location.href = `/search/sort/${1}`'>
+                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer"
+                        onclick='window.location.href = `/search/sort/${1}`'>
                         Price
                         L-H</div>
-                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick = 'window.location.href = `/search/sort/${2}`'>
+                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer"
+                        onclick='window.location.href = `/search/sort/${2}`'>
                         Price
                         H-L</div>
-                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick = 'window.location.href = `/search/sort/${3}`'>
+                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer"
+                        onclick='window.location.href = `/search/sort/${3}`'>
                         Highest rated</div>
-                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer" onclick = 'window.location.href = `/search/sort/${4}`'>
+                    <div class="text-base hover:bg-blue-400 hover:text-white py-2 cursor-pointer"
+                        onclick='window.location.href = `/search/sort/${4}`'>
                         Lowest
                         rated</div>
                 </div>
@@ -59,16 +65,16 @@
             <div class="w-11/12 ml-8 flex">
                 <div class="w-3/12 lg:block hidden p-2 mr-4 cursor-pointer">
                     <div onclick="showDiv()" class="font-bold mt-4 flex justify-between cursor-pointer">
-                        <div  class="cursor-pointer">Topic</div>
-                        <div  class="cursor-pointer"><span class="material-icons mr-6 font-bold">expand_more</span></div>
+                        <div class="cursor-pointer">Topic</div>
+                        <div class="cursor-pointer"><span class="material-icons mr-6 font-bold">expand_more</span></div>
                     </div>
 
                     <div id="listOfCourses" class="mt-2 border-t-2 cursor-pointer" style="display: none;">
                         <ul>
                             <input type="checkbox" id="videod">
-                            <label><a onclick = 'clearOldDiv("javascript")'>JAVASCRIPT</a></label><br>
+                            <label><a onclick='clearOldDiv("javascript")'>JAVASCRIPT</a></label><br>
                             <input type="checkbox" id="videod">
-                            <label><a onclick = 'clearOldDiv("python")'>PYTHON</a></label><br>
+                            <label><a onclick='clearOldDiv("python")'>PYTHON</a></label><br>
                             <input type="checkbox" id="videod">
                             <label><a href="/search/topic/css">CSS</a></label><br>
                             <input type="checkbox" id="videod">
@@ -80,8 +86,8 @@
                         </ul>
                     </div>
                     <div onclick="showDiv1()" class="font-bold mt-4 flex justify-between">
-                        <div  class="cursor-pointer">Language</div>
-                        <div  class="cursor-pointer"><span class="material-icons mr-6 font-bold">expand_more</span></div>
+                        <div class="cursor-pointer">Language</div>
+                        <div class="cursor-pointer"><span class="material-icons mr-6 font-bold">expand_more</span></div>
                     </div>
                     <div id="listOfCourses1" class="mt-2 border-t-2 cursor-pointer" style="display: none;">
                         <ul>
@@ -100,8 +106,8 @@
                         </ul>
                     </div>
                     <div onclick="showDiv2()" class="font-bold mt-4 flex justify-between">
-                        <div  class="cursor-pointer">Price</div>
-                        <div  class="cursor-pointer"><span class="material-icons mr-6 font-bold">expand_more</span></div>
+                        <div class="cursor-pointer">Price</div>
+                        <div class="cursor-pointer"><span class="material-icons mr-6 font-bold">expand_more</span></div>
                     </div>
                     <div id="listOfCourses2" class="mt-2 border-t-2 cursor-pointer" style="display: none;">
                         <ul>
@@ -113,8 +119,8 @@
                         </ul>
                     </div>
                     <div onclick="showDiv3()" class="font-bold mt-4 flex justify-between">
-                        <div  class="cursor-pointer">Features</div>
-                        <div  class="cursor-pointer"><span class="material-icons mr-6 font-bold">expand_more</span></div>
+                        <div class="cursor-pointer">Features</div>
+                        <div class="cursor-pointer"><span class="material-icons mr-6 font-bold">expand_more</span></div>
                     </div>
                     <div id="listOfCourses3" class="mt-2 border-t-2 cursor-pointer" style="display: none;">
                         <ul>
@@ -130,8 +136,8 @@
                     </div>
 
                     <div onclick="showDiv4()" class="font-bold mt-4 flex justify-between">
-                        <div  class="cursor-pointer">Ratings</div>
-                        <div  class="cursor-pointer"><span class="material-icons mr-6 font-bold">expand_more</span></div>
+                        <div class="cursor-pointer">Ratings</div>
+                        <div class="cursor-pointer"><span class="material-icons mr-6 font-bold">expand_more</span></div>
                     </div>
                     <div id="listOfCourses4" class="mt-2 border-t-2 cursor-pointer" style="display: none;">
                         <ul>
@@ -161,8 +167,8 @@
                     </div>
 
                     <div onclick="showDiv6()" class="font-bold mt-4 flex justify-between">
-                        <div  class="cursor-pointer">Subtitles</div>
-                        <div  class="cursor-pointer"><span class="material-icons mr-6 font-bold">expand_more</span></div>
+                        <div class="cursor-pointer">Subtitles</div>
+                        <div class="cursor-pointer"><span class="material-icons mr-6 font-bold">expand_more</span></div>
                     </div>
                     <div id="listOfCourses6" class="mt-2 border-t-2 cursor-pointer " style="display: none;">
                         <ul>
@@ -181,12 +187,13 @@
 
                         </ul>
                     </div>
-                    
+
 
                 </div>
                 <div class="lg:w-9/12 w-full" id="clearDiv">
-                        <% author.forEach(course=>{ %>
-                            <a href="desc/<%= course._id %>"> <span onclick = 'window.location.href = `/search/desc/course._id `'>
+                    <% author.forEach(course=>{ %>
+                        <a href="desc/<%= course._id %>"> <span
+                                onclick='window.location.href = `/search/desc/course._id `'>
                                 <div class="flex my-4 transform hover:scale-105 transition cursor-pointer">
                                     <div class="w-1/3"><img class="w-full" src="<%= course.image %>"
                                             alt="<%course.name%>"></div>
@@ -203,7 +210,8 @@
                                         <p class="font-bold text-sm text-yellow-700 ">
                                             <%= course.rating %> <span class="font-light text-sm">⭐⭐⭐⭐⭐(12564)</span>
                                         </p>
-                                        <p class="font-light text-gray-800 text-sm">69 total hours ◦ 319 lectures ◦ all levels</p>
+                                        <p class="font-light text-gray-800 text-sm">69 total hours ◦ 319 lectures ◦ all
+                                            levels</p>
                                         <p class="inline-block bg-yellow-300 text-sm px-2 mt-2">Bestseller</p>
                                     </div>
                                     <div class="w-1/5 lg:text-base text-xs">
@@ -218,17 +226,18 @@
                                     <!-- <p><a href="course/<%= course._id %>">Click Here</a></p> -->
                                 </div>
                             </span>
-                            </a>
-                            <hr>
+                        </a>
+                        <hr>
 
-                            <% }) %>
-                    </div>
+                        <% }) %>
                 </div>
             </div>
         </div>
+        </div>
 
         <div class="w-8/12 m-auto mt-8">
-            <div class="w-4/12 m-auto" onload = "senddata(`<%=JSON.stringify(author)%>`,`<%=totalPages%>`)" id="pagination">
+            <div class="w-4/12 m-auto" onload="senddata(`<%=JSON.stringify(author)%>`,`<%=totalPages%>`)"
+                id="pagination">
             </div>
         </div>
 
@@ -251,7 +260,7 @@
     //     sortFun.setAttribute("class","block");
     // }
 
-    function clearOldDiv(query){
+    function clearOldDiv(query) {
         console.log("clearOldDiv func is running with query:", query);
         document.getElementById("clearDiv").innerHTML = "";
         window.location.href = `/search/topic/${query}`
