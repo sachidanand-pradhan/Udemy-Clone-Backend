@@ -60,7 +60,7 @@ Install-project with git
 - [Akash Kumar](https://github.com/KumarAkash22)
 
 ## 🛠 Tech Stacks
-- #### HTML
+- #### EJS
 - #### Tailwind Css
 - #### JavaScript
 - #### Node
