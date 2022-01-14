@@ -311,7 +311,7 @@ var popupBox = document.getElementById('popupBox')
 
 var checkoutBtn = document.getElementById('checkout');
 checkoutBtn.onclick = () => {
- showkaro();
+    showkaro();
 }
 
 
@@ -325,7 +325,7 @@ function showkaro() {
     let cookie = document.cookie;
     console.log("cookie in wishlist in carousel.js is:", cookie);
 
-    if(cookie.length <= 1)  popupBox.setAttribute('class', 'flex backdrop-filter backdrop-brightness-50 cursor-pointer fixed w-full h-full justify-center');
+    if (cookie.length <= 1) popupBox.setAttribute('class', 'flex backdrop-filter backdrop-brightness-50 cursor-pointer fixed w-full h-full justify-center');
     else {
         window.location.href = '/checkout'
     }
