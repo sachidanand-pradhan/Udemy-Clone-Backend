@@ -72,7 +72,7 @@ function add(data) {
         img.src = el.image;
         left.append(img);
         img.style.width = "100%";
-        img.setAttribute('class','cursor-pointer')
+        img.setAttribute('class', 'cursor-pointer')
 
         let p = document.createElement("p");
         p.innerText = el.name;
@@ -94,7 +94,7 @@ function add(data) {
         let i3 = document.createElement("p");
         i3.innerText = el.include[0].i3;
 
-        mid.append(p, title, author, rating, i2,i3);
+        mid.append(p, title, author, rating, i2, i3);
 
 
         let price = document.createElement("p");
